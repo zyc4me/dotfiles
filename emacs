@@ -65,7 +65,7 @@
 ;;; **************************************************************************
 ;;; ***** built-in functions
 ;;; **************************************************************************
-(defun eshell/cl () ;;clear可换其他名称
+(defun eshell/clear () ;;clear可换其他名称
   "Clears the shell buffer ala Unix's clear or DOS' cls"
   (interactive)
   ;; the shell prompts are read-only, so clear that for the duration
@@ -75,9 +75,28 @@
 
 
 
-;;; Load multi-term.el
-(load-file (expand-file-name "~/.emacs.d/multi-term.el"))
-(require 'multi-term)
 
-;;; Setup shell program for use with MultiTerm
-(setq multi-term-program "/bin/bash")
+;;;web-mode插件
+;;;用于嵌有javascript的html页面的编辑模式
+(load-file (expand-file-name "~/.emacs.d/web-mode.el"))
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+
+
+;;;自定义的alias
+;;;用来减少打字数量
+
+;;打开文件
+(defalias 'ff 'find-file)
+
+;;清屏
+(defalias 'cl 'eshell/clear)
