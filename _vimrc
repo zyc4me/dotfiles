@@ -1,70 +1,71 @@
-"C:\Users\Chris\_vimrc
-"gvimÅäÖÃfor win7
+ï»¿"C:\Users\Chris\_vimrc
+"gvimé…ç½®for win7
 
-""""""""""""""""""""""ÆôÓÃwin¿ì½İ¼ü"""""""""""""""""""""
-"""""°üÀ¨ctrl+c,ctrl+vµÈ
+""""""""""""""""""""""å¯ç”¨winå¿«æ·é”®"""""""""""""""""""""
+"""""åŒ…æ‹¬ctrl+c,ctrl+vç­‰
 source $VIMRUNTIME/mswin.vim
-behave mswin   " ¼æÈİwindowsÏÂµÄ¿ì½İ¼ü
+behave mswin   " å…¼å®¹windowsä¸‹çš„å¿«æ·é”®
 
-"""""""""""""""""""""""Òş²ØGUIµÄÃ»ÓÃ×é¼ş""""""""""""""""""""
-set go= " Òş²Ø¹¤¾ßÀ¸
-set guioptions-=m " Òş²Ø²Ëµ¥À¸ 
-set guioptions-=T " Òş²Ø¹¤¾ßÀ¸ 
-""set guioptions-=L " Òş²Ø×ó²à¹ö¶¯Ìõ 
-set guioptions-=r " Òş²ØÓÒ²à¹ö¶¯Ìõ 
+"""""""""""""""""""""""éšè—GUIçš„æ²¡ç”¨ç»„ä»¶""""""""""""""""""""
+set go= " éšè—å·¥å…·æ 
+set guioptions-=m " éšè—èœå•æ  
+set guioptions-=T " éšè—å·¥å…·æ  
+""set guioptions-=L " éšè—å·¦ä¾§æ»šåŠ¨æ¡ 
+set guioptions-=r " éšè—å³ä¾§æ»šåŠ¨æ¡ 
 
-""ÒÔÏÂÊÇÍ¨ÓÃÅäÖÃ""
+""ä»¥ä¸‹æ˜¯é€šç”¨é…ç½®""
 
-""""""""""""""""""""±àÂëÏà¹Ø""""""""""""""""""""""""""""""""
+""""""""""""""""""""ç¼–ç ç›¸å…³""""""""""""""""""""""""""""""""
 set encoding=utf-8 
-""¿¿£¬win7ÏÂÄ¬ÈÏÊÇcp936£¬Õâ²»ÊÇÉîÉîµÄ¿ÓÃ´£¡
-""¿ÉÊÇ£¬Èç¹û½ö½öÉè¶¨encodingÎªutf8£¬ÄÇÃ´²Ëµ¥ºÍ¸÷ÖÖĞÅÏ¢ÌáÊ¾£¬¶¼ÂÒÂëÁË£¡
+""é ï¼Œwin7ä¸‹é»˜è®¤æ˜¯cp936ï¼Œè¿™ä¸æ˜¯æ·±æ·±çš„å‘ä¹ˆï¼
+""å¯æ˜¯ï¼Œå¦‚æœä»…ä»…è®¾å®šencodingä¸ºutf8ï¼Œé‚£ä¹ˆèœå•å’Œå„ç§ä¿¡æ¯æç¤ºï¼Œéƒ½ä¹±ç äº†ï¼
 
+set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-""×¢ÒâÕâ¸öË³ĞòÊÇ¾­¹ı¿¼ÂÇµÄ
+""æ³¨æ„è¿™ä¸ªé¡ºåºæ˜¯ç»è¿‡è€ƒè™‘çš„
 
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
 
-""½â¾ö²Ëµ¥ÂÒÂë
-""ĞèÒªÏÈÉè¶¨encodingºÍfileencodingµÈ
+""è§£å†³èœå•ä¹±ç 
+""éœ€è¦å…ˆè®¾å®šencodingå’Œfileencodingç­‰
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-set guifont=Monaco:h11	""Ó¢ÎÄ×ÖÌå
-set guifontwide=YaHei_Consolas_Hybrid:h11	""ÖĞÎÄ×ÖÌå¡£×ÜËãÓĞ¸öÄÜÓÃµÄ
+set guifont=Monaco:h11	""è‹±æ–‡å­—ä½“
+set guifontwide=YaHei_Consolas_Hybrid:h11	""ä¸­æ–‡å­—ä½“ã€‚æ€»ç®—æœ‰ä¸ªèƒ½ç”¨çš„
 
-""""""""""""""""""""""""""""¸öÈË½àñ±""""""""""""""""""""
-set gcr=a:block-blinkon0  " ½ûÖ¹¹â±êÉÁË¸¡£ÌÖÑá¹â±êÉÁ£¬ÉÁÊÇ×°±Æ¡£
-set nocp " nocompatible vimÄ¬ÈÏ¼æÈİviµÄ°´¼üÕæÊÇ²»Êæ·ş
+""""""""""""""""""""""""""""ä¸ªäººæ´ç™–""""""""""""""""""""
+set gcr=a:block-blinkon0  " ç¦æ­¢å…‰æ ‡é—ªçƒã€‚è®¨åŒå…‰æ ‡é—ªï¼Œé—ªæ˜¯è£…é€¼ã€‚
+set nocp " nocompatible vimé»˜è®¤å…¼å®¹viçš„æŒ‰é”®çœŸæ˜¯ä¸èˆ’æœ
 
-"""""""""""""""""""""""""""ÏÔÊ¾¸ñÊ½Ïà¹Ø"""""""""""""""""""""""""""""""
-set nu "ĞĞºÅ£¬number
-set ai  "auto indent ×Ô¶¯Ëõ½ø
+"""""""""""""""""""""""""""æ˜¾ç¤ºæ ¼å¼ç›¸å…³"""""""""""""""""""""""""""""""
+set nu "è¡Œå·ï¼Œnumber
+set ai  "auto indent è‡ªåŠ¨ç¼©è¿›
 set history=1000
 set ruler	"always show cursor
 set showcmd	"always display command
 set backspace=indent,eol,start	"make <BS>(backspace> available
-""set relativenumber  Ïà¶ÔĞĞºÅ£¬ÓÃÆğÀ´²»ÊÇºÜÊæ·ş¡£
+""set relativenumber  ç›¸å¯¹è¡Œå·ï¼Œç”¨èµ·æ¥ä¸æ˜¯å¾ˆèˆ’æœã€‚
 syntax on
 set novisualbell
-set cursorline	"¸ßÁÁµ±Ç°ĞĞ
+set cursorline	"é«˜äº®å½“å‰è¡Œ
 
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set showmode
 
-""""""""""""""""""""""ctagsÅäÖÃ"""""""""""""""""""""""
+""""""""""""""""""""""ctagsé…ç½®"""""""""""""""""""""""
 set tags=tags;
 set autochdir
 
-""""""""""""""""""""""ÎÄ¼şÍ·ÅäÖÃ""""""""""""""""""""""
-"ĞÂ½¨.c,.h,.sh,.javaÎÄ¼ş£¬×Ô¶¯²åÈëÎÄ¼şÍ· 
+""""""""""""""""""""""æ–‡ä»¶å¤´é…ç½®""""""""""""""""""""""
+"æ–°å»º.c,.h,.sh,.javaæ–‡ä»¶ï¼Œè‡ªåŠ¨æ’å…¥æ–‡ä»¶å¤´ 
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
-""¶¨Òåº¯ÊıSetTitle£¬×Ô¶¯²åÈëÎÄ¼şÍ· 
+""å®šä¹‰å‡½æ•°SetTitleï¼Œè‡ªåŠ¨æ’å…¥æ–‡ä»¶å¤´ 
 func SetTitle() 
-	"Èç¹ûÎÄ¼şÀàĞÍÎª.shÎÄ¼ş 
+	"å¦‚æœæ–‡ä»¶ç±»å‹ä¸º.shæ–‡ä»¶ 
 	if &filetype == 'sh'
 		call setline(1,"\##################################################")
 		call append(line("."), "\# Filename: ".expand("%")) 
@@ -120,33 +121,33 @@ func SetTitle()
 		call append(line(".")+17, "    return 0;")
 		call append(line(".")+18, "}")
 	endif
-	"ĞÂ½¨ÎÄ¼şºó£¬×Ô¶¯¶¨Î»µ½ÎÄ¼şÄ©Î²
+	"æ–°å»ºæ–‡ä»¶åï¼Œè‡ªåŠ¨å®šä½åˆ°æ–‡ä»¶æœ«å°¾
 	autocmd BufNewFile * normal G
 
 endfunc
-"ËÑË÷
-set showmatch  "À¨ºÅÅä¶Ô
+"æœç´¢
+set showmatch  "æ‹¬å·é…å¯¹
 set hlsearch
 set incsearch
 
 
-""""""""""""""""""ÑÕÉ«ÅäÖÃ  color config""""""""""""""""""""""
+""""""""""""""""""é¢œè‰²é…ç½®  color config""""""""""""""""""""""
 ""colo elflord
 
 ""set t_Co=256
 ""colo molokai
 ""colo desert
-if $TERM =~ "^xterm"	"Í¼ĞÎ»¯terminal£¬Ê¹ÓÃmolokai
+if $TERM =~ "^xterm"	"å›¾å½¢åŒ–terminalï¼Œä½¿ç”¨molokai
 	set background=dark
 	colo molokai 
-else					"ttyÏÂ£¬Ê¹ÓÃdesert
+else					"ttyä¸‹ï¼Œä½¿ç”¨desert
 	colo desert
 endif
 
 set showmatch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ÓïÑÔµÄ±àÒëºÍÔËĞĞ           
-" Ö§³ÖµÄÓïÑÔ£ºjava	     F5±àÒë(±£´æ+±àÒë)  F6ÔËĞĞ
+" è¯­è¨€çš„ç¼–è¯‘å’Œè¿è¡Œ           
+" æ”¯æŒçš„è¯­è¨€ï¼šjava	     F5ç¼–è¯‘(ä¿å­˜+ç¼–è¯‘)  F6è¿è¡Œ
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 func! CompileCode()
 	exec "w"
@@ -166,17 +167,17 @@ func! RunCode()
 	endif
 endfunc
 
-" F7 ±£´æ+±àÒë
+" F7 ä¿å­˜+ç¼–è¯‘
 map <F7> :call CompileCode()<CR>
 
-" F6 ÔËĞĞ
+" F6 è¿è¡Œ
 map <F6> :call RunCode()<CR>
 
-" F3 ÇĞ»»NERDTreeToggleÄ£Ê½
+" F3 åˆ‡æ¢NERDTreeToggleæ¨¡å¼
 map <F3> :NERDTreeToggle<CR>
 map <F3> :NERDTreeToggle<CR>
 
-" F4 CommandT¹¤¾ß£¬for ¿ìËÙä¯ÀÀÎÄ¼ş
+" F4 CommandTå·¥å…·ï¼Œfor å¿«é€Ÿæµè§ˆæ–‡ä»¶
 map <F4> :CommandT<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -185,26 +186,26 @@ map <F4> :CommandT<CR>
 "map <F7> :!ruby % <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""latexÅäÖÃ
-""Õâ²¿·ÖÊÇcopyÀ´µÄ¡£¿ÉÊÇÓÃvimĞ©latexÏÔÈ»ÊÇ¸ö´íÎó£¬¹û¶Ï×¢ÊÍµô¡£
-""ÏÔÈ»£¬latexÊÇÒªºÍemacsÅäºÏÊ¹ÓÃµÄ¡£
+""latexé…ç½®
+""è¿™éƒ¨åˆ†æ˜¯copyæ¥çš„ã€‚å¯æ˜¯ç”¨vimäº›latexæ˜¾ç„¶æ˜¯ä¸ªé”™è¯¯ï¼Œæœæ–­æ³¨é‡Šæ‰ã€‚
+""æ˜¾ç„¶ï¼Œlatexæ˜¯è¦å’Œemacsé…åˆä½¿ç”¨çš„ã€‚
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""let g:tex_flavor='latex'
 
 ""let g:pydiction_menu_height=20
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ÊµÓÃ¹¦ÄÜ
+" å®ç”¨åŠŸèƒ½
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"--------ÒıºÅ && À¨ºÅ×Ô¶¯Æ¥Åä
+"--------å¼•å· && æ‹¬å·è‡ªåŠ¨åŒ¹é…
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
 ""inoremap { {}<ESC>i
 ""inoremap } <c-r>=ClosePair('}')<CR>
-"²åÈë{ÔòÎª¶àĞĞµÄÅä¶Ô·½Ê½£¬²åÈë}Îªµ¥ĞĞµÄÅä¶Ô
+"æ’å…¥{åˆ™ä¸ºå¤šè¡Œçš„é…å¯¹æ–¹å¼ï¼Œæ’å…¥}ä¸ºå•è¡Œçš„é…å¯¹
 ""imap { {}<ESC>i<CR><ESC>O
 "":inoremap } {}<ESC>i  
-"²åÈë´óÀ¨ºÅ ¾ÍÊÇÂ¼ÖÆÒ»¸öºê
+"æ’å…¥å¤§æ‹¬å· å°±æ˜¯å½•åˆ¶ä¸€ä¸ªå®
 :inoremap [ []<ESC>i
 :inoremap ] <c-r>=ClosePair(']')<CR>
 ":inoremap < <><ESC>i
@@ -219,52 +220,52 @@ function ClosePair(char)
 		return a:char
 	endif
 endf
-"--------ÆôÓÃ´úÂëÕÛµş£¬ÓÃ¿Õ¸ñ¼üÀ´¿ª¹ØÕÛµş 
-set foldenable		     " ´ò¿ª´úÂëÕÛµş
-set foldmethod=syntax        " Ñ¡Ôñ´úÂëÕÛµşÀàĞÍ
-set foldlevel=100            " ½ûÖ¹×Ô¶¯ÕÛµş
+"--------å¯ç”¨ä»£ç æŠ˜å ï¼Œç”¨ç©ºæ ¼é”®æ¥å¼€å…³æŠ˜å  
+set foldenable		     " æ‰“å¼€ä»£ç æŠ˜å 
+set foldmethod=syntax        " é€‰æ‹©ä»£ç æŠ˜å ç±»å‹
+set foldlevel=100            " ç¦æ­¢è‡ªåŠ¨æŠ˜å 
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR> 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
-" ÎÄ±¾¸ñÊ½ºÍÅÅ°æ 
+" æ–‡æœ¬æ ¼å¼å’Œæ’ç‰ˆ 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
-set list                        " ÏÔÊ¾Tab·û£¬->
-set listchars=tab:\|\ ,         " Ê¹ÓÃÒ»¸ßÁÁÊúÏß´úÌæ
-set tabstop=4			" ÖÆ±í·ûÎª4
-set autoindent			" ×Ô¶¯¶ÔÆë£¨¼Ì³ĞÇ°Ò»ĞĞµÄËõ½ø·½Ê½£©
-set smartindent			" ÖÇÄÜ×Ô¶¯Ëõ½ø£¨ÒÔc³ÌĞòµÄ·½Ê½£©
+set list                        " æ˜¾ç¤ºTabç¬¦ï¼Œ->
+set listchars=tab:\|\ ,         " ä½¿ç”¨ä¸€é«˜äº®ç«–çº¿ä»£æ›¿
+set tabstop=4			" åˆ¶è¡¨ç¬¦ä¸º4
+set autoindent			" è‡ªåŠ¨å¯¹é½ï¼ˆç»§æ‰¿å‰ä¸€è¡Œçš„ç¼©è¿›æ–¹å¼ï¼‰
+set smartindent			" æ™ºèƒ½è‡ªåŠ¨ç¼©è¿›ï¼ˆä»¥cç¨‹åºçš„æ–¹å¼ï¼‰
 set softtabstop=4 
-set shiftwidth=4		" »»ĞĞÊ±ĞĞ¼ä½»´íÊ¹ÓÃ4¸ö¿Õ¸ñ
-set noexpandtab			" ²»ÒªÓÃ¿Õ¸ñ´úÌæÖÆ±í·û
+set shiftwidth=4		" æ¢è¡Œæ—¶è¡Œé—´äº¤é”™ä½¿ç”¨4ä¸ªç©ºæ ¼
+set noexpandtab			" ä¸è¦ç”¨ç©ºæ ¼ä»£æ›¿åˆ¶è¡¨ç¬¦
 ""set expandtab
-set cindent			" Ê¹ÓÃCÑùÊ½µÄËõ½ø
-set smarttab			" ÔÚĞĞºÍ¶Î¿ªÊ¼´¦Ê¹ÓÃÖÆ±í·û
-set nowrap			" ²»Òª»»ĞĞÏÔÊ¾Ò»ĞĞ 
+set cindent			" ä½¿ç”¨Cæ ·å¼çš„ç¼©è¿›
+set smarttab			" åœ¨è¡Œå’Œæ®µå¼€å§‹å¤„ä½¿ç”¨åˆ¶è¡¨ç¬¦
+set nowrap			" ä¸è¦æ¢è¡Œæ˜¾ç¤ºä¸€è¡Œ 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ×´Ì¬ĞĞ(ÃüÁîĞĞ)µÄÏÔÊ¾
+" çŠ¶æ€è¡Œ(å‘½ä»¤è¡Œ)çš„æ˜¾ç¤º
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set cmdheight=2		     " ÃüÁîĞĞ£¨ÔÚ×´Ì¬ĞĞÏÂ£©µÄ¸ß¶È£¬Ä¬ÈÏÎª1£¬ÕâÀïÊÇ2
-set ruler				 " ÓÒÏÂ½ÇÏÔÊ¾¹â±êÎ»ÖÃµÄ×´Ì¬ĞĞ
-set laststatus=2		 " ¿ªÆô×´Ì¬À¸ĞÅÏ¢ 
-set wildmenu		     " ÔöÇ¿Ä£Ê½ÖĞµÄÃüÁîĞĞ×Ô¶¯Íê³É²Ù×÷ 
+set cmdheight=2		     " å‘½ä»¤è¡Œï¼ˆåœ¨çŠ¶æ€è¡Œä¸‹ï¼‰çš„é«˜åº¦ï¼Œé»˜è®¤ä¸º1ï¼Œè¿™é‡Œæ˜¯2
+set ruler				 " å³ä¸‹è§’æ˜¾ç¤ºå…‰æ ‡ä½ç½®çš„çŠ¶æ€è¡Œ
+set laststatus=2		 " å¼€å¯çŠ¶æ€æ ä¿¡æ¯ 
+set wildmenu		     " å¢å¼ºæ¨¡å¼ä¸­çš„å‘½ä»¤è¡Œè‡ªåŠ¨å®Œæˆæ“ä½œ 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ÎÄ¼şÏà¹Ø
+" æ–‡ä»¶ç›¸å…³
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""set fenc=utf-8
-""set encoding=utf-8		" ÉèÖÃvimµÄ¹¤×÷±àÂëÎªutf-8£¬Èç¹ûÔ´ÎÄ¼ş²»ÊÇ´Ë±àÂë£¬vim»á½øĞĞ×ª»»ºóÏÔÊ¾
-""""""set fileencoding=utf-8		" ÈÃvimĞÂ½¨ÎÄ¼şºÍ±£´æÎÄ¼şÊ¹ÓÃutf-8±àÂë
+""set encoding=utf-8		" è®¾ç½®vimçš„å·¥ä½œç¼–ç ä¸ºutf-8ï¼Œå¦‚æœæºæ–‡ä»¶ä¸æ˜¯æ­¤ç¼–ç ï¼Œvimä¼šè¿›è¡Œè½¬æ¢åæ˜¾ç¤º
+""""""set fileencoding=utf-8		" è®©vimæ–°å»ºæ–‡ä»¶å’Œä¿å­˜æ–‡ä»¶ä½¿ç”¨utf-8ç¼–ç 
 """"""set fileencodings=utf-8,gbk,cp936,latin-1
-filetype on				     " Õì²âÎÄ¼şÀàĞÍ
-filetype indent on			     " Õë¶Ô²»Í¬µÄÎÄ¼şÀàĞÍ²ÉÓÃ²»Í¬µÄËõ½ø¸ñÊ½
-filetype plugin on			     " Õë¶Ô²»Í¬µÄÎÄ¼şÀàĞÍ¼ÓÔØ¶ÔÓ¦µÄ²å¼ş
-syntax on				     " Óï·¨¸ßÁÁ
-filetype plugin indent on    " ÆôÓÃ×Ô¶¯²¹È«
+filetype on				     " ä¾¦æµ‹æ–‡ä»¶ç±»å‹
+filetype indent on			     " é’ˆå¯¹ä¸åŒçš„æ–‡ä»¶ç±»å‹é‡‡ç”¨ä¸åŒçš„ç¼©è¿›æ ¼å¼
+filetype plugin on			     " é’ˆå¯¹ä¸åŒçš„æ–‡ä»¶ç±»å‹åŠ è½½å¯¹åº”çš„æ’ä»¶
+syntax on				     " è¯­æ³•é«˜äº®
+filetype plugin indent on    " å¯ç”¨è‡ªåŠ¨è¡¥å…¨
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ²éÕÒ
+" æŸ¥æ‰¾
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set hlsearch                 " ¿ªÆô¸ßÁÁÏÔÊ¾½á¹û
-set nowrapscan               " ËÑË÷µ½ÎÄ¼şÁ½¶ËÊ±²»ÖØĞÂËÑË÷
-set incsearch                " ¿ªÆôÊµÊ±ËÑË÷¹¦ÄÜ
+set hlsearch                 " å¼€å¯é«˜äº®æ˜¾ç¤ºç»“æœ
+set nowrapscan               " æœç´¢åˆ°æ–‡ä»¶ä¸¤ç«¯æ—¶ä¸é‡æ–°æœç´¢
+set incsearch                " å¼€å¯å®æ—¶æœç´¢åŠŸèƒ½
