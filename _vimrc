@@ -1,56 +1,65 @@
 "C:\Users\Chris\_vimrc
 "gvim配置for win7
 
-set go= " 隐藏工具栏
-set guioptions-=m " 隐藏菜单栏 
-set guioptions-=T " 隐藏工具栏 
-"set guioptions-=L " 隐藏左侧滚动条 
-set guioptions-=r " 隐藏右侧滚动条 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocp "nocompatible
-
+""""""""""""""""""""""启用win快捷键"""""""""""""""""""""
+"""""包括ctrl+c,ctrl+v等
 source $VIMRUNTIME/mswin.vim
 behave mswin   " 兼容windows下的快捷键
 
-set nu "line number
-set ai  "auto indent
+"""""""""""""""""""""""隐藏GUI的没用组件""""""""""""""""""""
+set go= " 隐藏工具栏
+set guioptions-=m " 隐藏菜单栏 
+set guioptions-=T " 隐藏工具栏 
+""set guioptions-=L " 隐藏左侧滚动条 
+set guioptions-=r " 隐藏右侧滚动条 
+
+""以下是通用配置""
+
+""""""""""""""""""""编码相关""""""""""""""""""""""""""""""""
+set encoding=utf-8 
+""靠，win7下默认是cp936，这不是深深的坑么！
+""可是，如果仅仅设定encoding为utf8，那么菜单和各种信息提示，都乱码了！
+
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+""注意这个顺序是经过考虑的
+
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+
+""解决菜单乱码
+""需要先设定encoding和fileencoding等
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+set guifont=Monaco:h11	""英文字体
+set guifontwide=YaHei_Consolas_Hybrid:h11	""中文字体。总算有个能用的
+
+""""""""""""""""""""""""""""个人洁癖""""""""""""""""""""
+set gcr=a:block-blinkon0  " 禁止光标闪烁。讨厌光标闪，闪是装逼。
+set nocp " nocompatible vim默认兼容vi的按键真是不舒服
+
+"""""""""""""""""""""""""""显示格式相关"""""""""""""""""""""""""""""""
+set nu "行号，number
+set ai  "auto indent 自动缩进
 set history=1000
 set ruler	"always show cursor
-set novisualbell
 set showcmd	"always display command
 set backspace=indent,eol,start	"make <BS>(backspace> available
 ""set relativenumber  相对行号，用起来不是很舒服。
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"my own configuration
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nu
-set guifont=consolas\ 16
 syntax on
 set novisualbell
-set helplang=cn
-""set encoding=utf-8
-""set fileencoding=utf-8
-""set cursorline
-"set cursorcolumn
-set cursorline
-""set cursorcolumn
-"hi CursorLine gui=underline
+set cursorline	"高亮当前行
 
 set smartindent
 set tabstop=4
 set shiftwidth=4
 set showmode
 
-"""""""""""""""""""""""""""""""""""""""""""""
-"my ctags-setting:auto"
-"""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""ctags配置"""""""""""""""""""""""
 set tags=tags;
 set autochdir
 
-
+""""""""""""""""""""""文件头配置""""""""""""""""""""""
 "新建.c,.h,.sh,.java文件，自动插入文件头 
 autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
 ""定义函数SetTitle，自动插入文件头 
@@ -116,17 +125,12 @@ func SetTitle()
 
 endfunc
 "搜索
-"set incsearch
-"set hlsearch
 set showmatch  "括号配对
 set hlsearch
 set incsearch
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""颜色配置  color config
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+""""""""""""""""""颜色配置  color config""""""""""""""""""""""
 ""colo elflord
 
 ""set t_Co=256
@@ -182,10 +186,12 @@ map <F4> :CommandT<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""latex配置
+""这部分是copy来的。可是用vim些latex显然是个错误，果断注释掉。
+""显然，latex是要和emacs配合使用的。
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_flavor='latex'
+""let g:tex_flavor='latex'
 
-let g:pydiction_menu_height=20
+""let g:pydiction_menu_height=20
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 实用功能
@@ -246,10 +252,10 @@ set wildmenu		     " 增强模式中的命令行自动完成操作
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 文件相关
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set fenc=utf-8
+""""""set fenc=utf-8
 ""set encoding=utf-8		" 设置vim的工作编码为utf-8，如果源文件不是此编码，vim会进行转换后显示
-set fileencoding=utf-8		" 让vim新建文件和保存文件使用utf-8编码
-set fileencodings=utf-8,gbk,cp936,latin-1
+""""""set fileencoding=utf-8		" 让vim新建文件和保存文件使用utf-8编码
+""""""set fileencodings=utf-8,gbk,cp936,latin-1
 filetype on				     " 侦测文件类型
 filetype indent on			     " 针对不同的文件类型采用不同的缩进格式
 filetype plugin on			     " 针对不同的文件类型加载对应的插件
