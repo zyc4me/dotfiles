@@ -4,6 +4,8 @@ set foldcolumn=0
 set tags=tags;
 set autochdir
 
+let g:go_version_warning = 0
+
 set cursorline
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
