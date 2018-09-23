@@ -10,6 +10,37 @@ set cursorline
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 
+set gcr=a:block-blinkon0 "禁止光标闪烁。讨厌光标闪，闪是装逼。
+set nocp " nocompatible vim默认兼容vi的按键真是不舒服
+
+let g:is_windows = 0
+let g:is_linux = 0
+if(has("win32") || has("win64") || has("win95") || has("win16"))
+    let g:is_windows = 1
+else
+    let g:is_linux = 1
+endif
+
+if (g:is_windows)
+    "" 启用win下的快捷键，包括ctrl+c, ctrl+v, shift+insert等
+    "" note: 需要vim8.1或更高版本，才能在PowerShell/cmd中开启的vim中正确显示中文
+    source $VIMRUNTIME/mswin.vim
+    behave mswin
+
+    "" 
+    set encoding=utf-8
+    set fileencoding=utf-8
+    set fileencodings=utf-8,ucs-bom,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+    set langmenu=zh_CN.UTF-8
+    language message zh_CN.UTF-8
+
+    "" 解决菜单中文乱码
+    "" 需要先设定encoding和fileencoding等
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
+endif
+
+
 autocmd BufNewFile *.py,*.sh exec ":call SetTitle()"
 func SetTitle()
     if &filetype == 'sh'
