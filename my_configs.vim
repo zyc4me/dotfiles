@@ -21,11 +21,22 @@ else
     let g:is_linux = 1
 endif
 
+"" 判断是终端还是gvim
+if has("gui_running")
+    let g:is_gui=1
+else
+    let g:is_gui=0
+endif
+
 if (g:is_windows)
-    "" 启用win下的快捷键，包括ctrl+c, ctrl+v, shift+insert等
-    "" note: 需要vim8.1或更高版本，才能在PowerShell/cmd中开启的vim中正确显示中文
-    source $VIMRUNTIME/mswin.vim
-    behave mswin
+    if (g:is_gui)
+        "" 启用win下的快捷键，包括ctrl+c, ctrl+v, shift+insert等
+        "" note: 需要vim8.1或更高版本，才能在PowerShell/cmd中开启的vim中正确显示中文
+        "" 终端(cmd/powershell)里的vim不需要这些快捷键。否则v命令键无法使用。
+        source $VIMRUNTIME/mswin.vim
+        behave mswin
+    endif
+
 
     "" 
     set encoding=utf-8
@@ -34,10 +45,12 @@ if (g:is_windows)
     set langmenu=zh_CN.UTF-8
     language message zh_CN.UTF-8
 
-    "" 解决菜单中文乱码
-    "" 需要先设定encoding和fileencoding等
-    source $VIMRUNTIME/delmenu.vim
-    source $VIMRUNTIME/menu.vim
+    if (g:is_gui)
+        "" 解决菜单中文乱码
+        "" 需要先设定encoding和fileencoding等
+        source $VIMRUNTIME/delmenu.vim
+        source $VIMRUNTIME/menu.vim
+    endif
 endif
 
 
