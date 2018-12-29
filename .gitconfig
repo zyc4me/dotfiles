@@ -1,0 +1,19 @@
+[http]
+[https]
+[user]
+	email = imzhuo@foxmail.com
+	name = ChrisZZ
+[core]
+	editor = vim
+[https]
+[http]
+[https]
+	proxy = socks5://127.0.0.1:44387
+[http]
+	proxy = socks5://127.0.0.1:44387
+
+# when do git difftool with vimdiff, exit with :cq
+[difftool]
+	trustExitCode = true
+[mergetool]
+	trustExitCode = true
