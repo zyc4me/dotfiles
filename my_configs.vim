@@ -67,3 +67,16 @@ func SetTitle()
     endif
 endfunc
 autocmd BufNewFile * normal G
+
+
+"""""""""""""""""""
+"
+" ale config, for c/c++ syntax checking
+"
+"   sudo apt install cppcheck
+"
+let g:ale_linters = {
+\	'c': ['gcc', 'cppcheck'],
+\	'cpp': ['gcc', 'cppcheck'],
+}
+
