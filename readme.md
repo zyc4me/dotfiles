@@ -39,6 +39,32 @@ Note: this is from [GDB 从裸奔到穿戴整齐](http://www.skywind.me/blog/arc
 ## emacs
 `.emacs`
 
+**Install emacs26.1 (on ubuntu) with GUI support**
+```bash
+cd /tmp
+wget http://mirrors.nju.edu.cn/gnu/emacs/emacs-26.1.tar.gz
+tar -zxvf emacs-26.1.tar.gz
+cd emacs-26.1
+
+sudo apt install -y libxpm-dev libgif-dev libtiff5-dev
+
+sudo apt install -y libjpeg62-dev
+
+sudo apt install -y libxaw7-dev libpng-dev libtiff5-dev libgnutls-dev libncurses5-dev
+
+
+sudo apt install -y libgtk-3-dev libwebkitgtk-3.0-dev texinfo libx11-dev libxpm-dev 
+
+
+sudo apt install -y libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev  libncurses-dev gnutls-dev libgtk-3-dev
+
+
+./configure --prefix=$HOME/soft/emacs-26.1 --with-x-toolkit=gtk3
+make -j6
+make install
+```
+
+
 ## deprecated configs
 
 ### amix/vimrc + my tweak
