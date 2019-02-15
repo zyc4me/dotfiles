@@ -20,6 +20,16 @@ git clone https://github.com/zchrissirhcz/dotvim ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
 ```
 
+## cgdb
+I use cgdb for terminal-based-gui debug.
+install cgdb first
+```bash
+sudo apt install cgdb
+```
+then load config file (`~/.cgdb/cgdbrc`)
+
+Note: this is from [GDB 从裸奔到穿戴整齐](http://www.skywind.me/blog/archives/2036)
+
 ## bazel
 `.zsh/completion/_bazel`
 
