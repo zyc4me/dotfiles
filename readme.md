@@ -132,3 +132,18 @@ bind | splitw -h # horizontal split (prefix |)
 ```
 
 You can also copy from `configs/.tmux.conf` in this repo.
+
+## vim
+vim can be used on Linux, MacOS and Windows(git bash).
+
+Config with the following command
+
+```bash
+git clone https://github.com/zchrissirhcz/dotvim ~/.vim_runtime
+sh ~/.vim_runtime/install_awesome_vimrc.sh
+```
+
+which, will create the entry point of vim in:
+- /home/xx/.vimrc (Linux)
+- /Users/xx/.vimrc
+- C:/Users/xx/.vimrc
