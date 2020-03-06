@@ -1,16 +1,30 @@
 # dotfiles
 Zhuo's Personal dotfiles for environtment settings.
 
+## bashrc/zshrc
+Current user's config file: `~/.bashrc` for bash, `~/.zshrc` for zsh.
+
+System level (pre-load before each user's own) config file: `/etc/profile` for bash, `/etc/zsh/zshrc` for zsh.
+
+- Change `PATH`: affect executable files' finding path order.
+    - prepend: `export PATH=/some/path:$PATH`
+    - append: `export PATH=$PATH:/some`
+
+- Change `LD_LIBRARY_PATH`: affect shared library's finding path order.
+    - prepend: `export LD_LIBRARY_PATH=/some/path:$LD_LIBRARY_PATH`
+    - append: `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/some/path`
+
+- Chage `PYTHONPATH`: affect python library finding path order.
+
+For multiple version of same software tool (e.g. nvcc/cuda/cmake/ctags/vim, or python package), we can switching them via change `PATH`(for executables) and `LD_LIBRARY_PATH`(for dynamic libraries). Remember to source config file, or re-login a new shell.
+
+
 ## terminator
 
-On Ubuntu, use **terminator** when you miss iterm2 of MacOS. It's for window spliting.
-
-### Install
+On Ubuntu, use **terminator** when you miss iterm2 of MacOS. It's for window spliting. To install:
 ```bash
 sudo apt install terminator
 ```
-
-### Config
 
 Its default looking is wired to me, to make it the same looking as gnome-terminal, edit file `~/.config/terminator/config` and fill in with:
 ```config
@@ -44,8 +58,6 @@ You can also copy from `configs/.config/terminator/config` in this repo.
 ## git
 
 git is for flexibly source code version control. Can be use on Windows/Linux/MacOS.
-
-### Config
 
 Let's use git with customed config:
 
@@ -86,13 +98,11 @@ tmux is for
 - window spliting
 - can re-connected session
 
-### Install
-We can use tmux on both Linux & MacOS. On Ubuntu:
+
+We can use tmux on both Linux & MacOS. Install it on Ubuntu:
 ```bash
 sudo apt install tmux
 ```
-
-### Config
 
 The default tmux Ctrl-B binding, the not enabled mouse scrooling, the wired window spliting keys, and more settings, all can be re-configured by editing `~/.tmux.conf` file:
 
