@@ -1,0 +1,31 @@
+[http]
+[https]
+[user]
+	email = imzhuo@foxmail.com
+	name = zz-1080Ti
+[core]
+	editor = vim
+[https]
+    #proxy = http://127.0.0.1:44099
+[http]
+    #proxy = http://127.0.0.1:44099
+
+# when do git difftool with vimdiff, exit with :cq
+[difftool]
+	trustExitCode = true
+[mergetool]
+	trustExitCode = true
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+
+[commit]
+    template = ~/.gitmessage
+[diff]
+	tool = meld

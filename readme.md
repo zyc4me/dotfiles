@@ -1,90 +1,124 @@
-# Zhuo's personal dotfiles
+# dotfiles
+Zhuo's Personal dotfiles for environtment settings.
 
-## Prequesties
-- linux/mac
+## terminator
 
-- zsh
+On Ubuntu, use **terminator** when you miss iterm2 of MacOS. It's for window spliting.
+
+### Install
 ```bash
-sudo apt install zsh
+sudo apt install terminator
 ```
 
-- oh-my-zsh
-```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+### Config
+
+Its default looking is wired to me, to make it the same looking as gnome-terminal, edit file `~/.config/terminator/config` and fill in with:
+```config
+[global_config]
+  title_font = Ubuntu Mono 11[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_darkness = 0.91
+    background_image = None
+    background_type = transparent
+    cursor_blink = False
+    cursor_shape = ibeam
+    font = Ubuntu Mono 11
+    foreground_color = "#e0f0f1"
+    use_system_font = False
+    show_titlebar = False
 ```
 
-## vim
-My latest vim configuration is **NOT** in this repo. Get it separately:
-```bash
-git clone https://github.com/zchrissirhcz/dotvim ~/.vim_runtime
-sh ~/.vim_runtime/install_awesome_vimrc.sh
+You can also copy from `configs/.config/terminator/config` in this repo.
+
+## git
+
+git is for flexibly source code version control. Can be use on Windows/Linux/MacOS.
+
+### Config
+
+Let's use git with customed config:
+
+```
+#--- proxy
+[http]
+    #proxy = http://127.0.0.1:44099
+
+#--- diff & merge
+# when do git difftool with vimdiff, exit with :cq
+[difftool]
+	trustExitCode = true
+[mergetool]
+	trustExitCode = true
+[diff]
+	tool = meld
+
+#--- aliases
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+
+#--- commit hint message
+[commit]
+    template = ~/.gitmessage
 ```
 
-## cgdb
-I use cgdb for terminal-based-gui debug.
-install cgdb first
-```bash
-sudo apt install cgdb
-```
-then load config file (`~/.cgdb/cgdbrc`)
+You can also copy from `configs/.gitconfig` and `configs/.gitmessage` in this repo.
 
-Note: this is from [GDB 从裸奔到穿戴整齐](http://www.skywind.me/blog/archives/2036)
-
-## bazel
-`.zsh/completion/_bazel`
 
 ## tmux
-`.tmux.conf`
+tmux is for
+- window spliting
+- can re-connected session
 
-## emacs
-`.emacs`
-
-**Install emacs26.1 (on ubuntu) with GUI support**
+### Install
+We can use tmux on both Linux & MacOS. On Ubuntu:
 ```bash
-cd /tmp
-wget http://mirrors.nju.edu.cn/gnu/emacs/emacs-26.1.tar.gz
-tar -zxvf emacs-26.1.tar.gz
-cd emacs-26.1
-
-sudo apt install -y libxpm-dev libgif-dev libtiff5-dev
-
-sudo apt install -y libjpeg62-dev
-
-sudo apt install -y libxaw7-dev libpng-dev libtiff5-dev libgnutls-dev libncurses5-dev
-
-
-sudo apt install -y libgtk-3-dev libwebkitgtk-3.0-dev texinfo libx11-dev libxpm-dev 
-
-
-sudo apt install -y libjpeg-dev libpng-dev libgif-dev libtiff-dev libgtk2.0-dev  libncurses-dev gnutls-dev libgtk-3-dev
-
-
-./configure --prefix=$HOME/soft/emacs-26.1 --with-x-toolkit=gtk3
-make -j6
-make install
+sudo apt install tmux
 ```
 
+### Config
 
-## deprecated configs
+The default tmux Ctrl-B binding, the not enabled mouse scrooling, the wired window spliting keys, and more settings, all can be re-configured by editing `~/.tmux.conf` file:
 
-### amix/vimrc + my tweak
-**base on amix/vimrc**
-First, clone amix/vimrc:
-```bash
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-sh ~/.vim_runtime/install_awesome_vimrc.sh
+```
+set -g prefix C-v
+
+#########################
+#
+# turn on mouse
+#
+#########################
+# if tmux version < 2.1
+#setw -g mouse-resize-pane on
+#setw -g mouse-select-pane on
+#setw -g mouse-select-window on
+#setw -g mode-mouse on
+
+# if tmux version >= 2.1
+set -g mouse on
+
+# split window
+unbind '"'
+# vertical split (prefix -)
+bind - splitw -v
+unbind '%'
+bind | splitw -h # horizontal split (prefix |)
 ```
 
-Then copy `my_configs.vim` to `~/.vim_runtime/`:
-```bash
-git clone https://github.com/zchrissirhcz/dotfiles
-cp dotfiles/deprecated/my_configs.vim ~/.vim_runtime/
-```
-
-### very old vim configuration
-copy `.vimrc` to $HOME:
-```bash
-git clone https://github.com/zchrissirhcz/dotfiles
-cp dotfiles/deprecated/.vimrc ~/.vimrc
-```
-
+You can also copy from `configs/.tmux.conf` in this repo.
