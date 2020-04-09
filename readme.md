@@ -147,3 +147,15 @@ which, will create the entry point of vim in:
 - /home/xx/.vimrc (Linux)
 - /Users/xx/.vimrc
 - C:/Users/xx/.vimrc
+
+## ag
+`ag` is the silver-searcher, a replacement for `grep`.
+
+- Windows:
+downlowd from [here](https://github.com/k-takata/the_silver_searcher-win32/releases) and put `ag.exe` in folder that in `PATH` env variable. I recommend `e:/soft/Git/usr/bin` folder.
+
+- Linux:
+```bash
+sudo apt install silversearcher_ag
+```
+
