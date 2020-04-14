@@ -123,3 +123,6 @@ source /opt/ros/kinetic/setup.zsh
 
 # VIM's lightline
 export TERM=xterm-256color
+
+# Python: add the folder where invoke python as sys.path[1]
+export PYTHONPATH=:

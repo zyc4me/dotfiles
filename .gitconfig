@@ -12,6 +12,10 @@
 [http]
     #proxy = socks5://127.0.0.1:44387
 
+[core]
+    #autocrlf = true  #Windows
+    #autocrlf = input #Linux/MacOSX
+
 # when do git difftool with vimdiff, exit with :cq
 [difftool]
 	trustExitCode = true
