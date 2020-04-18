@@ -15,6 +15,10 @@ System level (pre-load before each user's own) config file: `/etc/profile` for b
     - append: `export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/some/path`
 
 - Chage `PYTHONPATH`: affect python library finding path order.
+    - recommended: set `PYTHONPATH` begin/ends with seperator
+      - Win: `;`
+      - Linux/MacOS: `:`
+    - the begin-with / end-with seperator makes "the folder where we invoke python" `sys.path[1]`, make life easier (e.g. VSCode Python debug a DeepLearing project)
 
 For multiple version of same software tool (e.g. nvcc/cuda/cmake/ctags/vim, or python package), we can switching them via change `PATH`(for executables) and `LD_LIBRARY_PATH`(for dynamic libraries). Remember to source config file, or re-login a new shell.
 
@@ -159,3 +163,62 @@ downlowd from [here](https://github.com/k-takata/the_silver_searcher-win32/relea
 sudo apt install silversearcher_ag
 ```
 
+## binary/hex view
+- Ubuntu
+```bash
+sudo apt install hexedit
+```
+
+- Windows GitBash
+Download [HxD](https://mh-nexus.de/downloads/HxDchs.zip) and remember add its bin dir to `PATH` variable.
+
+- Vim
+```vimscript
+:%!xxd
+```
+
+## tree
+- Ubuntu
+```bash
+sudo apt install tree
+```
+
+- Windows GitBash
+  - Install [GitBash Dev](https://github.com/git-for-windows/build-extra/releases/download/git-sdk-1.0.7/git-sdk-installer-1.0.7-64.7z.exe) and run `Pacman -S tree`
+  - Or, download [prebuilt tree.exe](https://sourceforge.net/projects/gnuwin32/files/tree/1.5.2.2/tree-1.5.2.2-bin.zip/download) and put it to `d:/soft/Git/bin/`
+
+## EditorConfig
+Based on OpenCV's editorconfig setting, with minor change. Just copy them and saved as `.editorconfig` in root directory of your project:
+
+```bash
+# https://editorconfig.org/
+
+root = true
+
+[*]
+##end_of_line = lf
+charset = utf-8
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+
+[{CMakeLists.*,*.cmake}]
+indent_style = space
+indent_size = 2
+
+[Makefile]
+indent_style = tab
+
+[*.{bat,cmd,cmd.*}]
+end_of_line = crlf
+indent_style = space
+indent_size = 2
+
+[*.{ps1,ps1.*}]
+end_of_line = crlf
+indent_style = space
+indent_size = 4
+
+[*.{md,markdown}]
+indent_size = 2
+```
