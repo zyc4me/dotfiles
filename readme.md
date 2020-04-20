@@ -222,3 +222,17 @@ indent_size = 4
 [*.{md,markdown}]
 indent_size = 2
 ```
+
+
+## Doxygen Dark Theme
+
+Documentation like OpenCV are on default theme, i.e. white background.
+
+To make eyes more comfortable, just replace `stylesheet.css` file under root dir of doxygen generated doc.
+
+See [stylesheet.css](config/doxygen/stylesheet.css).
+
+[ref](https://userstyles.org/styles/128500/doxygen-dark)
+
+
+
