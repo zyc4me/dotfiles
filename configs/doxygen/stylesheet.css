@@ -8,7 +8,8 @@ body
 {
   background-color: #333333;
  /** for docs **/
-  color: #a1a1a1;
+  /*color: #a1a1a1;*/
+  color: #ccc;
   font: 400 14px/22px Helvetica, 'Segoe UI', Arial, freesans, sans-serif;
   word-wrap: break-word;
   margin: 0 auto;
@@ -20,7 +21,7 @@ code {
     white-space: pre-wrap;
     padding: 1px 5px;
     padding: 0;
-    background-color: #ddd;
+    background-color: #222;
     vertical-align: baseline;
 }
 
@@ -35,6 +36,10 @@ div.contents {
 div.line {
 	font-family: Consolas, Monospace, fixed;
     margin: 10px;	
+}
+
+.directory .levels span {
+    color: #456EC1;
 }
 
 #page-content
@@ -272,7 +277,8 @@ a
 
 a.el, a.el:visited
 {
-  color: #6f8b4c;
+  /*color: #6f8b4c;*/
+  color: #8ba842;
  /* #6d7c5d; */;
 }
 
@@ -304,7 +310,21 @@ img.formulaInl
 /* Template box headers */
 .memtemplate
 {
-  color: #607fbb;
+  /*color: #607fbb;*/
+    color: #5d88db;
+ /* from orignial #4665A2; */;
+}
+
+.memTemplParams
+{
+     color: #5d88db;
+ /* from orignial #4665A2; */;
+}
+
+.contents a:visited {
+     /*color: #5d88db;*/
+    color: #c8b031;
+    /*color: #79913d*/
  /* from orignial #4665A2; */;
 }
 
@@ -320,7 +340,8 @@ span.mlabel
 /* Header */
 h2.groupheader
 {
-  color: #4c6db0;
+  /*color: #4c6db0;*/
+    color: #6b95ea;
  /* from orig. #354C7B; */
   border-bottom-color: #333333;
 }
