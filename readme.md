@@ -225,14 +225,9 @@ indent_size = 2
 
 
 ## Doxygen Dark Theme
+For doxygen docs (e.g. OpenCV), backup root folder's `stylesheet.css` and replace with [stylesheet.css](config/doxygen/stylesheet.css), inspired and modified by [ref](https://userstyles.org/styles/128500/doxygen-dark).
 
-Documentation like OpenCV are on default theme, i.e. white background.
-
-To make eyes more comfortable, just replace `stylesheet.css` file under root dir of doxygen generated doc.
-
-See [stylesheet.css](config/doxygen/stylesheet.css).
-
-[ref](https://userstyles.org/styles/128500/doxygen-dark)
+![ScreenShot](configs/doxygen/opencv-doxygen-dark-theme.png)
 
 
 

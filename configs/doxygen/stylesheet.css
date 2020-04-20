@@ -9,6 +9,32 @@ body
   background-color: #333333;
  /** for docs **/
   color: #a1a1a1;
+  font: 400 14px/22px Helvetica, 'Segoe UI', Arial, freesans, sans-serif;
+  word-wrap: break-word;
+  margin: 0 auto;
+}
+
+code {
+    font: 12px Consolas, "Liberation Mono", Courier, monospace;
+    font-size: 85%;
+    white-space: pre-wrap;
+    padding: 1px 5px;
+    padding: 0;
+    background-color: #ddd;
+    vertical-align: baseline;
+}
+
+div.contents {
+    width: 980px;
+    margin: 0 auto;
+    padding: 15px 15px;
+    border: 1px solid rgb(10, 80, 122);
+    /*background-color: #888;*/
+}
+
+div.line {
+	font-family: Consolas, Monospace, fixed;
+    margin: 10px;	
 }
 
 #page-content
