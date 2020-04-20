@@ -57,7 +57,7 @@ Its default looking is wired to me, to make it the same looking as gnome-termina
     show_titlebar = False
 ```
 
-You can also copy from `configs/.config/terminator/config` in this repo.
+You can also copy from [config](configs/.config/terminator/config) in this repo.
 
 ## git
 
@@ -94,7 +94,7 @@ Let's use git with customed config:
     template = ~/.gitmessage
 ```
 
-You can also copy from `configs/.gitconfig` and `configs/.gitmessage` in this repo.
+You can also copy from [.gitmessage](configs/.gitconfig) and [.gitmessage](configs/.gitmessage) in this repo.
 
 
 ## tmux
@@ -135,7 +135,7 @@ unbind '%'
 bind | splitw -h # horizontal split (prefix |)
 ```
 
-You can also copy from `configs/.tmux.conf` in this repo.
+You can also copy from [.tmux.conf](configs/.tmux.conf) in this repo.
 
 ## vim
 vim can be used on Linux, MacOS and Windows(git bash).
@@ -148,9 +148,9 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
 ```
 
 which, will create the entry point of vim in:
-- /home/xx/.vimrc (Linux)
-- /Users/xx/.vimrc
-- C:/Users/xx/.vimrc
+- `/home/xx/.vimrc` for Linux
+- `/Users/xx/.vimrc` for MacOSX
+- `C:/Users/xx/.vimrc` for Windows
 
 ## ag
 `ag` is the silver-searcher, a replacement for `grep`.
@@ -164,24 +164,25 @@ sudo apt install silversearcher_ag
 ```
 
 ## binary/hex view
+- Vim
+  ```vimscript
+  :%!xxd
+  ```
+
 - Ubuntu
-```bash
-sudo apt install hexedit
-```
+  ```bash
+  sudo apt install hexedit
+  ```
 
 - Windows GitBash
-Download [HxD](https://mh-nexus.de/downloads/HxDchs.zip) and remember add its bin dir to `PATH` variable.
+  Download [HxD](https://mh-nexus.de/downloads/HxDchs.zip) and add to `PATH`.
 
-- Vim
-```vimscript
-:%!xxd
-```
 
 ## tree
 - Ubuntu
-```bash
-sudo apt install tree
-```
+  ```bash
+  sudo apt install tree
+  ```
 
 - Windows GitBash
   - Install [GitBash Dev](https://github.com/git-for-windows/build-extra/releases/download/git-sdk-1.0.7/git-sdk-installer-1.0.7-64.7z.exe) and run `Pacman -S tree`
