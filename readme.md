@@ -237,6 +237,22 @@ Config it in file `~/.gdbinit`. Mine is [here](home/.gdbinit).
 ## cgdb
 Using gdb with terminal GUI, displaying the corresponding code line.
 
+Until 0.7.0, cgdb support split window vertically. Built it from scratch, in Ubuntu16.04:
+```bash
+sudo apt install autoconf automake gcc g++
+sudo apt-get install libncurses5-dev flex texinfo libreadline-dev
+
+cd ~/work
+git clone https://github.com/cgdb/cgdb
+cd cgdb
+./autogen.sh
+mkdir build
+cd build
+../configure --prefix=/usr/local/cgdb
+make -j2
+sudo make install
+```
+
 Usage:
 ```bash
 gcc -g main.c
