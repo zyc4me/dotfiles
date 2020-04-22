@@ -57,7 +57,7 @@ Its default looking is wired to me, to make it the same looking as gnome-termina
     show_titlebar = False
 ```
 
-You can also copy from [config](configs/.config/terminator/config) in this repo.
+You can also copy from [mine](home/.config/terminator/config) in this repo.
 
 ## git
 
@@ -65,7 +65,7 @@ git is for flexibly source code version control. Can be use on Windows/Linux/Mac
 
 Let's use git with customed config:
 
-```
+```bash
 #--- proxy
 [http]
     #proxy = http://127.0.0.1:44099
@@ -94,7 +94,7 @@ Let's use git with customed config:
     template = ~/.gitmessage
 ```
 
-You can also copy from [.gitmessage](configs/.gitconfig) and [.gitmessage](configs/.gitmessage) in this repo.
+You can also copy from [.gitmessage](home/.gitconfig) and [.gitmessage](configs/.gitmessage) in this repo.
 
 
 ## tmux
@@ -110,7 +110,7 @@ sudo apt install tmux
 
 The default tmux Ctrl-B binding, the not enabled mouse scrooling, the wired window spliting keys, and more settings, all can be re-configured by editing `~/.tmux.conf` file:
 
-```
+```bash
 set -g prefix C-v
 
 #########################
@@ -135,7 +135,7 @@ unbind '%'
 bind | splitw -h # horizontal split (prefix |)
 ```
 
-You can also copy from [.tmux.conf](configs/.tmux.conf) in this repo.
+You can also copy from [.tmux.conf](mine/.tmux.conf) in this repo.
 
 ## vim
 vim can be used on Linux, MacOS and Windows(git bash).
@@ -226,11 +226,13 @@ indent_size = 2
 
 
 ## Doxygen Dark Theme
-For doxygen docs (e.g. OpenCV), backup root folder's `stylesheet.css` and replace with [stylesheet.css](config/doxygen/stylesheet.css), inspired and modified by [ref](https://userstyles.org/styles/128500/doxygen-dark).
+For doxygen docs (e.g. OpenCV), backup root folder's `stylesheet.css` and replace with [stylesheet.css](home/doxygen/stylesheet.css), inspired and modified by [ref](https://userstyles.org/styles/128500/doxygen-dark).
 
 ![ScreenShot](./screenshot/opencv-doxygen-dark-theme.png)
 
 
+## gdb
+Config it in file `~/.gdbinit`. Mine is [here](home/.gdbinit).
 
 ## cgdb
 Using gdb with terminal GUI, displaying the corresponding code line.
@@ -241,6 +243,11 @@ gcc -g main.c
 cgdb ./a.out
 ```
 
-cgdb can be customized `~/.cgdb/cgdbrc`, mine is [here](configs/.cgdb/cgdbrc)
+cgdb can be customized `~/.cgdb/cgdbrc`, mine is [here](home/.cgdb/cgdbrc)
 
 ![](./screenshot/cgdb.png)
+
+
+## References
+- https://github.com/MaskRay/Config
+
