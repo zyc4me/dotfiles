@@ -228,7 +228,19 @@ indent_size = 2
 ## Doxygen Dark Theme
 For doxygen docs (e.g. OpenCV), backup root folder's `stylesheet.css` and replace with [stylesheet.css](config/doxygen/stylesheet.css), inspired and modified by [ref](https://userstyles.org/styles/128500/doxygen-dark).
 
-![ScreenShot](configs/doxygen/opencv-doxygen-dark-theme.png)
+![ScreenShot](./screenshot/opencv-doxygen-dark-theme.png)
 
 
 
+## cgdb
+Using gdb with terminal GUI, displaying the corresponding code line.
+
+Usage:
+```bash
+gcc -g main.c
+cgdb ./a.out
+```
+
+cgdb can be customized `~/.cgdb/cgdbrc`, mine is [here](configs/.cgdb/cgdbrc)
+
+![](./screenshot/cgdb.png)
