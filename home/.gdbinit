@@ -29,6 +29,8 @@
 #            For more information, read it here http://reverse.put.as/2008/11/28/apples-gdb-bug/
 #
 # CHANGELOG: (older changes at the end of the file)
+#   Version 8.0.6.1 (2020.4.23) by ChrisZZ
+#     - set syxtax flavor at the very beginning instead of hook-stop
 #
 #   Version 8.0.6 (05/09/2013)
 #     - Add patch command to convert bytes to little-endian and patch memory
@@ -123,6 +125,16 @@ set $CONTEXTSIZE_CODE  = 8
 
 # __________________end gdb options_________________
 #
+
+
+# __________________syntax flavor___________________
+#
+if $X86FLAVOR == 0
+    set disassembly-flavor intel
+else
+    set disassembly-flavor att
+end
+
 
 # __________________color functions_________________
 #
