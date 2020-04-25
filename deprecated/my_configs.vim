@@ -10,7 +10,7 @@ set cursorline
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
 
-set gcr=a:block-blinkon0 "禁止光标闪烁。讨厌光标闪，闪是装逼。
+set gcr=a:block-blinkon0 "禁止光标闪烁。闪烁影响注意力
 set nocp " nocompatible vim默认兼容vi的按键真是不舒服
 
 let g:is_windows = 0
