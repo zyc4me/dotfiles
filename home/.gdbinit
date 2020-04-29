@@ -29,8 +29,12 @@
 #            For more information, read it here http://reverse.put.as/2008/11/28/apples-gdb-bug/
 #
 # CHANGELOG: (older changes at the end of the file)
+#   Version 8.0.6.2 (2020.4.29) by ChrisZZ
+#     - Add ASLR stuff, explanation purpose
+#     - Add saving & loading break point
+#
 #   Version 8.0.6.1 (2020.4.23) by ChrisZZ
-#     - set syxtax flavor at the very beginning instead of hook-stop
+#     - Set syxtax flavor at the very beginning instead of hook-stop
 #
 #   Version 8.0.6 (05/09/2013)
 #     - Add patch command to convert bytes to little-endian and patch memory
@@ -135,6 +139,37 @@ else
     set disassembly-flavor att
 end
 
+# __________________ASLR____________________________
+# disables ASLR(address space layout randomization)
+# Note: this is turned on in Linux by default
+# but MinGW not support and can't configure
+# ref:
+# https://stackoverflow.com/questions/61500799/does-variables-address-change-each-time-debugging
+#
+set disable-randomization
+
+#__________________break point______________________
+define qbp
+save breakpoints ./.gdb_bp
+quit
+end
+document qbp
+Exit and save the breakpoint
+end
+
+define downbp
+save breakpoints ./.gdb_bp
+end
+document downbp
+Save the historical work breakpoint
+end
+
+define loadbp
+source ./.gdb_bp
+end
+document loadbp
+Load the historical work breakpoint
+end
 
 # __________________color functions_________________
 #

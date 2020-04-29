@@ -232,7 +232,7 @@ For doxygen docs (e.g. OpenCV), backup root folder's `stylesheet.css` and replac
 
 
 ## gdb
-Config it in file `~/.gdbinit`. Mine is [here](home/.gdbinit).
+Config it in file `~/.gdbinit`. Mine is [here](home/.gdbinit), minor custom based on [Gdbinit](https://github.com/gdbinit/Gdbinit). You may also refer to excellent gdb config projects like [peda](https://github.com/longld/peda) and [gef](https://github.com/hugsy/gef).
 
 ## cgdb
 Using gdb with terminal GUI, displaying the corresponding code line.
