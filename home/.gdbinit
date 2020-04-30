@@ -3125,7 +3125,7 @@ define entry_point
 
 	set logging off
 
-	shell entry_point="$(/usr/bin/grep 'Entry point:' /tmp/gdb-entry_point | /usr/bin/awk '{ print $3 }')"; echo "$entry_point"; echo 'set $entry_point_address = '"$entry_point" > /tmp/gdb-entry_point
+	shell entry_point="$(grep 'Entry point:' /tmp/gdb-entry_point | /usr/bin/awk '{ print $3 }')"; echo "$entry_point"; echo 'set $entry_point_address = '"$entry_point" > /tmp/gdb-entry_point
 	source /tmp/gdb-entry_point
     shell /bin/rm -f /tmp/gdb-entry_point
 end
