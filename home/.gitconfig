@@ -29,3 +29,5 @@
     template = ~/.gitmessage
 [diff]
 	tool = meld
+[credential]
+	helper = store
