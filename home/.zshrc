@@ -96,7 +96,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cl=clear
+source ~/alias.zsh
+
 #alias emacs='emacs -nw'
 export GOPATH=/home/zz/.go
 #export PATH=/home/zz/soft/protobuf-3.6.1/bin:$PATH
