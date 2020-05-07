@@ -264,6 +264,18 @@ cgdb can be customized `~/.cgdb/cgdbrc`, mine is [here](home/.cgdb/cgdbrc)
 ![](./screenshot/cgdb.png)
 
 
+## LeetCode
+Awesome plugins that I'm using:
+- Markdown All in One
+    Gives completion for files when add links.
+- CMake; CMake Tools
+- C/C++
+- Python
+- LeetCode
+- Remove Development
+- vscode-icons
+- x86 and x86_64 Assembly
+
 ## References
 - https://github.com/MaskRay/Config
 
