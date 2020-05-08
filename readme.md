@@ -277,5 +277,5 @@ Awesome plugins that I'm using:
 - x86 and x86_64 Assembly
 
 ## References
-- https://github.com/MaskRay/Config
-
+- [MaskRay's Config](https://github.com/MaskRay/Config)
+- [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
