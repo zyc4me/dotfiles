@@ -5,6 +5,9 @@
 	name = zz-1080Ti
 [core]
 	editor = vim
+    quotepath = false
+    #autocrlf = input # linux/macosx
+    #autocrlf = true # windows
 [https]
     #proxy = http://127.0.0.1:44099
 [http]
