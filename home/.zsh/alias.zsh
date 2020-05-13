@@ -13,6 +13,7 @@ alias cl='clear'
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 alias gdb='gdb -q'
+alias cgdb='cgdb -q'
 
 alias weather='curl -s http://wttr.in/\?m | head -n-1'
 

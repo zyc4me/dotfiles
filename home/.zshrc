@@ -1,72 +1,136 @@
+#----------------------------------------------------------
+#
+# Z Shell's config file
+#
+#----------------------------------------------------------
+
+
+#----------
+# => location
+#----------
+
+# Put this file as ~/.zshrc
+# 
+# Or, export $ZDOTDIR as some directory, and
+# put this file in $ZDOTDIR/.zshrc
+# This is helpful when debugging and compare two zshrc files
+
+
+#----------
+# => Completion
+#----------
+
+fpath[1,0]=~/.zsh/completion/
+compinit
+
+
+#----------
+# => zplug
+#----------
+if [ ! -f "$HOME/.zplug/autoload/zplug" ]; then
+    echo 'zplug not exist. downloading...'
+    git clone https://github.com/zplug/zplug ~/.zplug --depth=1
+fi
+source ~/.zplug/init.zsh
+
+
+#----------
+# => plugins
+#----------
+# Put plugins here
+# zplug romkatv/powerlevel10k, as:theme, depth:1
+
+# Make listed plugins loaded
+zplug load
+
+#source ~/.zplug/repos/romkatv/powerlevel10k/powerlevel10k.zsh-theme
+
+#----------
+# => alias
+#----------
+
+# Load pre-defined aliases file here
+source ~/.zsh/alias.zsh
+
+# You can also put each single aliases here
+# e.g.
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+# alias emacs='emacs -nw'
+
+
+#----------
+# => Python
+#----------
+
+# Conda
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zz/soft/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zz/soft/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/zz/soft/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zz/soft/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# PYTHONPATH: add the folder where invoke python as sys.path[1]
+export PYTHONPATH=:/home/zz/work/caffe-BVLC/python:$PYTHONPATH
+
+
+#----------
+# => PATH
+#----------
+
+# This environment variable `PATH` is for finding executable paths
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-  export ZSH="/home/zz/.oh-my-zsh"
+#export GOPATH=/home/zz/.go
+#export PATH=/home/zz/soft/protobuf-3.6.1/bin:$PATH
+export ANDROID_SDK=/home/zz/soft/android-sdk-linux
+export ANDROID_NDK=/home/zz/soft/android-ndk-r17b
+export ANDROID_NDK_ROOT=$ANDROID_NDK
+#export SNPE_ROOT=$HOME/work/snpe-1.20.2
+export SNPE_ROOT=$HOME/work/snpe-1.23.1.245
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="josh"
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+CMAKE=/home/zz/soft/cmake-3.17.2/bin
+VIM=/home/zz/soft/vim8/bin
+EMACS=$HOME/soft/emacs-26.1/bin
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+CUDA=/usr/local/cuda10.2/bin
+CUDA_LIBDIR=/usr/local/cuda10.2/lib64
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+OPENCV_LIBDIR=/usr/local/opencv-3.4.5/lib
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+VALGRIND=/home/zz/soft/valgrind/bin
 
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+export PATH=$VIM:$CMAKE:$EMACS:$CUDA:$VALGRIND:$ANDROID_SDK/platform-tools:$PATH
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+#----------
+# => LD_LIBRARY_PATH, LD_PRELOAD
+#----------
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+# These env vars are for customized lib finding path
+#export LD_LIBRARY_PATH=/home/zz/soft/protobuf-3.6.x/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$CUDA_LIBDIR:$OPENCV_LIBDIR
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-)
 
-source $ZSH/oh-my-zsh.sh
+
+
+
+
 
 # User configuration
 
@@ -93,37 +157,14 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/alias.zsh
-
-#alias emacs='emacs -nw'
-export GOPATH=/home/zz/.go
-#export PATH=/home/zz/soft/protobuf-3.6.1/bin:$PATH
-#export LD_LIBRARY_PATH=/home/zz/soft/protobuf-3.6.x/lib:$LD_LIBRARY_PATH
-export ANDROID_SDK=/home/zz/soft/android-sdk-linux
-export ANDROID_NDK=/home/zz/soft/android-ndk-r17b
-export ANDROID_NDK_ROOT=$ANDROID_NDK
-#export SNPE_ROOT=$HOME/work/snpe-1.20.2
-export SNPE_ROOT=$HOME/work/snpe-1.23.1.245
-export VIM8=/home/zz/soft/vim8/bin
-export CMAKE314=/usr/local/cmake-3.14.0-rc2-Linux-x86_64/bin
-export EMACS26=$HOME/soft/emacs-26.1/bin
-
-export PATH=$EMACS26:$CMAKE314:$VIM8:$PATH:$ANDROID_SDK/platform-tools:$HOME/soft/bin:/usr/local/cuda/bin:/home/zz/.please
 
 # please build system's complete config
-source <(plz --completion_script)
-
-fpath[1,0]=~/.zsh/completion/
-compinit
+# source <(plz --completion_script)
 
 # ROS
-source /opt/ros/kinetic/setup.zsh
+#source /opt/ros/kinetic/setup.zsh
 
 # VIM's lightline
 export TERM=xterm-256color
 
-# Python: add the folder where invoke python as sys.path[1]
-export PYTHONPATH=:
+
