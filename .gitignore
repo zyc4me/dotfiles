@@ -217,3 +217,11 @@ pip-log.txt
 #Zsh
 .zcompdump
 .zcompdump-*
+
+
+dotvim/temp_dirs/undodir/*
+dotvim/temp_dirs/yankring_history_v2.txt
+dotvim/plugged/
+tags
+.DS_Store
+
