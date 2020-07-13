@@ -1,0 +1,34 @@
+[user]
+	name = Zhuo Zhang
+	email = imzhuo@foxmail.com
+
+[credential]
+    helper = manager
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    hist = log --pretty=tformat:'%Cgreen%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset' --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+
+[core]
+	autocrlf = true
+	quotepath = false
+
+[commit]
+    template = ~/.gitmessage
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+
+# for git >= 2.19, we have to activate using builtin rebase/stash
+# for fast speed. ref: https://github.com/git-for-windows/build-extra/pull/203#issuecomment-420927710
+[rebase]
+	useBuiltin = true
+[stash]
+	useBuiltin = true
