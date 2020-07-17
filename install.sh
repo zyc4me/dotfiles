@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #----------------------------------------------
 # Init script for newly installed Ubuntu
