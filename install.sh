@@ -4,7 +4,7 @@
 # Init script for newly installed Ubuntu
 #---------------------------------------------
 
-git clone https://github.com/zchrissirhcz ~/.my_config
+git clone https://github.com/zchrissirhcz/dotfiles ~/.my_config
 
 # files
 ln -s ~/.my_config/home/.condarc ~/.condarc
