@@ -6,12 +6,12 @@ Zhuo's personal dotfiles.
 
 via wget:
 ```bash
-sh -c "$(wget https://raw.githubusercontent.com/zchrissirhcz/dotfiles/master/install.sh -O -)"
+sh -c "$(wget https://raw.github.com/zchrissirhcz/dotfiles/master/install.sh -O -)"
 ```
 
 via curl:
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zchrissirhcz/dotfiles/master/install.sh)"
+sh -c "$(curl -fsSL https://raw.github.com/zchrissirhcz/dotfiles/master/install.sh)"
 ```
 
 ## Manually install

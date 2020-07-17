@@ -4,6 +4,8 @@
 # Init script for newly installed Ubuntu
 #---------------------------------------------
 
+set -e
+
 function git_clone()
 {
     if [ ! -d ~/.my_config ]; then
