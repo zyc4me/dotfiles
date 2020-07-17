@@ -2,9 +2,17 @@
 
 Zhuo's personal dotfiles.
 
-## Easy Install
+## Easy Install, On Linux
 
-On Linux, open [home/install.sh](home/install.sh), copy and paste!
+via wget:
+```bash
+sh -c "$(wget https://raw.githubusercontent.com/zchrissirhcz/dotfiles/master/install.sh -O -)"
+```
+
+via curl:
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zchrissirhcz/dotfiles/master/install.sh)"
+```
 
 ## Manually install
 
