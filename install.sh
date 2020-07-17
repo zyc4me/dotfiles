@@ -6,7 +6,7 @@
 
 set -e
 
-function git_clone()
+git_clone()
 {
     if [ ! -d ~/.my_config ]; then
         git clone https://github.com/zchrissirhcz/dotfiles ~/.my_config
@@ -14,7 +14,7 @@ function git_clone()
     echo "-- git clone OK"
 }
 
-function link_file()
+link_file()
 {
     SRC_FILE=$1
     DST_FILE=$2
@@ -27,7 +27,7 @@ function link_file()
 
 
 # files
-function link_file_list()
+link_file_list()
 {
     link_file -s ~/.my_config/home/.condarc ~/.condarc
     link_file -s ~/.my_config/home/.gdbinit ~/.gdbinit
@@ -45,7 +45,7 @@ function link_file_list()
 # link_directory SRC_DIR DST_DIR
 # which makes DST_DIR -> SRC_DIR
 #--------------------
-function link_directory()
+link_directory()
 {
     SRC_DIR=$1
     DST_DIR=$2
@@ -57,7 +57,7 @@ function link_directory()
 }
 
 # folders
-function link_directory_list()
+link_directory_list()
 {
     link_directory ~/.my_config/home/.cgdb ~/.cgdb
     link_directory ~/.my_config/home/.pip ~/.pip
@@ -73,12 +73,12 @@ function link_directory_list()
 }
 
 # pathrc
-function remind_pathrc()
+remind_pathrc()
 {
     echo "Please create ~/.pathrc and put PATH related stuffs inside :-)"
 }
 
-function hello()
+hello()
 {
     echo "------------------------------------------"
     echo ""
@@ -87,7 +87,7 @@ function hello()
     echo "------------------------------------------"
 }
 
-function main()
+main()
 {
     hello
     git_clone
@@ -96,4 +96,4 @@ function main()
     remind_pathrc
 }
 
-main
+main "$@"
