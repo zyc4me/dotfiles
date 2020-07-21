@@ -29,14 +29,14 @@ link_file()
 # files
 link_file_list()
 {
-    link_file -s ~/.my_config/home/.condarc ~/.condarc
-    link_file -s ~/.my_config/home/.gdbinit ~/.gdbinit
-    link_file -s ~/.my_config/home/.gitconfig ~/.gitconfig
-    link_file -s ~/.my_config/home/.gitmessage ~/.gitmessage
-    link_file -s ~/.my_config/home/.tmux.conf ~/.tmux.conf
-    link_file -s ~/.my_config/home/.zshrc ~/.zshrc
-    link_file -s ~/.my_config/home/.emacs ~/.emacs
-    link_file -s ~/.my_config/home/.aliasrc ~/.aliasrc
+    link_file  ~/.my_config/home/.condarc ~/.condarc
+    link_file  ~/.my_config/home/.gdbinit ~/.gdbinit
+    link_file  ~/.my_config/home/.gitconfig ~/.gitconfig
+    link_file  ~/.my_config/home/.gitmessage ~/.gitmessage
+    link_file  ~/.my_config/home/.tmux.conf ~/.tmux.conf
+    link_file  ~/.my_config/home/.zshrc ~/.zshrc
+    link_file  ~/.my_config/home/.emacs ~/.emacs
+    link_file  ~/.my_config/home/.aliasrc ~/.aliasrc
     echo "-- link files OK"
 }
 
