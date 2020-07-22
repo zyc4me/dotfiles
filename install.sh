@@ -61,12 +61,12 @@ link_directory_list()
 {
     link_directory ~/.my_config/home/.cgdb ~/.cgdb
     link_directory ~/.my_config/home/.pip ~/.pip
-    link_directory -s ~/.my_config/home/.zsh ~/.zsh
-    link_directory -s ~/.my_config/home/.gradle ~/.gradle
-    link_directory -s ~/.my_config/home/.emacs.d ~/.emacs.d
-    link_directory -s ~/.my_config/home/.config/terminator ~/.config/terminator
+    link_directory ~/.my_config/home/.zsh ~/.zsh
+    link_directory ~/.my_config/home/.gradle ~/.gradle
+    link_directory ~/.my_config/home/.emacs.d ~/.emacs.d
+    link_directory ~/.my_config/home/.config/terminator ~/.config/terminator
 
-    link_directory -s ~/.my_config/dotvim ~/.vim_runtime
+    link_directory ~/.my_config/dotvim ~/.vim_runtime
     sh ~/.vim_runtime/install_awesome_vimrc.sh
 
     echo "-- link directories OK"
