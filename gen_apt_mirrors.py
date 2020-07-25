@@ -5,11 +5,14 @@
 #!/usr/bin/env python
 #coding: utf-8
 
-def get_mirror_site(dist_num_str='16.04', site_name='ustc'):
+def get_mirror_site(dist_num_str='16.04', site_name='aliyun'):
     site_mp = {
         'ustc': 'https://mirrors.ustc.edu.cn',
         'aliyun': 'http://mirrors.aliyun.com',
         'tuna': 'https://mirrors.tuna.tsinghua.edu.cn',
+        '163': 'http://mirrors.163.com',
+        'zju': 'http://mirrors.zju.edu.cn',
+        'huawei': 'http://mirrors.huaweicloud.com'
     }
 
     site_url = site_mp[site_name]
@@ -22,7 +25,8 @@ def get_mirror_site(dist_num_str='16.04', site_name='ustc'):
         '17.04': 'zesty',
         '17.10': 'artful',
         '18.04': 'bionic',
-	'20.04': 'focal'
+        '20.04': 'focal',
+		'20.10': 'groovy'    
     }
 
     dist_name = dist_mp[dist_num_str]
