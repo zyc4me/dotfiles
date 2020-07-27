@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 #coding: utf-8
 
-
-#!/usr/bin/env python
-#coding: utf-8
-
 def get_mirror_site(dist_num_str='16.04', site_name='ustc'):
     site_mp = {
         'ustc': 'https://mirrors.ustc.edu.cn',
@@ -22,7 +18,7 @@ def get_mirror_site(dist_num_str='16.04', site_name='ustc'):
         '17.04': 'zesty',
         '17.10': 'artful',
         '18.04': 'bionic',
-	'20.04': 'focal'
+        '20.04': 'focal'
     }
 
     dist_name = dist_mp[dist_num_str]
