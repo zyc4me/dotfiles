@@ -155,3 +155,6 @@ let g:clang_format#style_options = {
 
 map <C-K> :pyf <path-to-this-file>/clang-format.py<cr>        
 imap <C-K> <c-o>:pyf <path-to-this-file>/clang-format.py<cr>
+
+"\u21A6 is ⇥
+set listchars=eol:$,tab:⇥¬¬,trail:~,extends:>,precedes:<,space:·
