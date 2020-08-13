@@ -76,6 +76,7 @@ link_directory_list()
 remind_pathrc()
 {
     echo "Please create ~/.pathrc and put PATH related stuffs inside :-)"
+    echo "Please openv vim and call `:PlugInstall` to install plugins :-)"
 }
 
 hello()
