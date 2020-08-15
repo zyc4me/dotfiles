@@ -100,8 +100,9 @@ class CudnnInstaller(object):
         #print('g_version_major is', g_version_major)
 
         for lib_name in shared_libs:
-            src_lib_pth = os.path.join(src_lib_dir, lib_name)
-            dst_lib_pth = os.path.join(dst_lib_dir, lib_name)
+            lib_name_whole = lib_name + '.' + g_version_whole
+            src_lib_pth = os.path.join(src_lib_dir, lib_name_whole)
+            dst_lib_pth = os.path.join(dst_lib_dir, lib_name_whole)
             cmd = 'sudo cp {:s} {:s}'.format(src_lib_pth, dst_lib_pth)
             cmd_lst.append(cmd)
 
