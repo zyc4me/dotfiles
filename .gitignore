@@ -225,3 +225,11 @@ dotvim/plugged/
 tags
 .DS_Store
 
+
+#Gradle
+home/.gradle/caches/
+home/.gradle/daemon/
+home/.gradle/gradle.properties
+home/.gradle/native/
+home/.gradle/wrapper/
+
