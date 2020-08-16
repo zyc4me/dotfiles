@@ -38,6 +38,7 @@ Plug '~/.vim_runtime/sources_forked/vim-peepopen'
 
 " - github repos
 Plug 'mileszs/ack.vim'
+Plug 'editorconfig/editorconfig-vim'
 ""Plug 'w0rp/ale'  the original repo contains a large image. don't use it
 ""Plug 'zchrissirhcz/ale' " use my fork. still slow
 Plug 'https://gitee.com/aczz/ale.git'
