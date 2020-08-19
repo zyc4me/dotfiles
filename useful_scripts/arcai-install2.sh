@@ -1,11 +1,44 @@
-# -------------------------------------
-# => prefix key
-# -------------------------------------
+#!/bin/sh
+
+config_pip()
+{
+    if [ ! -f ~/.pip/pip.conf ]; then
+        mkdir -p ~/.pip
+        tee ~/.pip/pip.conf << EOF
+# Aliyun
+[global]
+index-url = http://mirrors.aliyun.com/pypi/simple/
+
+[install]
+trusted-host=mirrors.aliyun.com
+EOF
+    fi
+    pip install -U pip
+    echo "--- config python done"
+}
+
+install_mmdet()
+{
+    git clone https://gitee.com/mirrors/mmdetection
+    cd mmdetection
+    pip install -r requirements/build.txt
+    pip install -v -e .
+}
+
+install_font()
+{
+    apt-file update
+    apt install fonts-noto-cjk
+}
+
+config_tmux()
+{
+    if [ ! -f ~/.tmux.conf ]; then
+        touch ~/.tmux.conf
+        tee -a ~/.tmux.conf << EOF
+# prefix key
 set -g prefix C-v
-unbind C-b
-# if prefix conflict with terminal, press it twice
-# e.g. in nano, press C-x twice to exit
-bind C-v send-prefix
+
 
 #reload tmux conf with Prefix + r
 bind r source-file ~/.tmux.conf \; display "Reloaded tmux.conf"
@@ -36,16 +69,7 @@ bind - split-window -v
 bind | split-window -h
 
 
-# -------------------------------------
-# => kill pane/window
-# -------------------------------------
-bind x kill-pane
-bind X kill-window
-
-
-# -------------------------------------
-# => Start window numbering at
-# -------------------------------------
+# Start window numbering at
 set -g base-index 1
 setw -g base-index 1
 
@@ -108,3 +132,18 @@ set -g status-right '#[fg=white,bg=#444444] [#h] #[fg=white,bg=#666666] %Y-%m-%d
 setw -g window-status-current-format '#[bg=#ff0000, fg=#ffffff, bold]*[#I] #W*'
 # 未激活每个窗口占位的格式
 setw -g window-status-format '#[bg=#0000ff, fg=#ffffff] [#I] #W '
+EOF
+    fi
+}
+
+main()
+{
+    # config_pip
+    #pip install -r requirements.txt
+    #install_mmdet
+    #install_font
+    config_tmux
+}
+
+main
+

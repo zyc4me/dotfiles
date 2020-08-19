@@ -68,6 +68,7 @@ link_directory_list()
 
     link_directory ~/.my_config/dotvim ~/.vim_runtime
     sh ~/.vim_runtime/install_awesome_vimrc.sh
+    vim +PlugInstall +qall # https://github.com/borgwang/dotfiles/blob/master/linux-setup.sh
 
     echo "-- link directories OK"
 }
@@ -76,7 +77,6 @@ link_directory_list()
 remind_pathrc()
 {
     echo "Please create ~/.pathrc and put PATH related stuffs inside :-)"
-    echo "Please openv vim and call `:PlugInstall` to install plugins :-)"
 }
 
 hello()

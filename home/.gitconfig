@@ -31,6 +31,6 @@
 [commit]
     template = ~/.gitmessage
 [diff]
-	tool = meld
+	tool = vimdiff
 [credential]
 	helper = store

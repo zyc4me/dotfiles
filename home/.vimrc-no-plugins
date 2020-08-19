@@ -1,0 +1,85 @@
+" https://github.com/borgwang/dotfiles/blob/master/.vimrc-no-plugins
+
+" -----------
+" General Settings
+" -----------
+set nocompatible
+
+syntax enable
+
+set number  " show line number
+set ttyfast  " terminal axxeleration
+set enc=utf-8  " utf-8 by default
+set backspace=indent,eol,start  " backspace removes all
+set scrolloff=10  " 10 lines before/after cursor during scroll
+set showmatch
+
+set autoindent
+set smartindent
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0  " do not mix space with tab
+
+set path+=**
+
+set foldlevel=4
+set incsearch
+set hlsearch
+
+set colorcolumn=81
+highlight ColorColumn ctermbg=lightgray
+
+set ignorecase  " ignore case when search by default
+set smartcase  " use case if any caps used
+
+" natural ways to split vim windows
+set splitbelow splitright
+
+" show tab as --->
+" show trailing space as -
+set listchars=tab:>-,trail:-
+set list
+
+" save buffer whenever text is changed
+autocmd TextChanged,TextChangedI * silent write
+
+" -----------
+" Key Mapping 
+" -----------
+" Windows Navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" disable number increasing and decreasing
+map <C-a> <Nop>
+map <C-x> <Nop>
+
+map <C-b> <C-O>
+
+" map :tabp and :tabn
+nnoremap <silent> th :tabp<CR>
+nnoremap <silent> tl :tabn<CR>
+
+" map <leader> p to toggle paste m
+set pastetoggle=<leader>p
+
+" simple snippets
+iabbrev pdb import pdb; pdb.set_trace()
+
+" vimdiff highlighting
+highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
+highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
+highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
+highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=2
+
+
+" offline install gruvbox colorscheme 
+" 1. copy gruvbox.vim from https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim
+" 2. save to ~/.vim/colors/gruvbox.vim
+"
+" colorscheme gruvbox
+" set background=dark
