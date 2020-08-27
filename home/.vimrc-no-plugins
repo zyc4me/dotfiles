@@ -3,11 +3,44 @@
 " -----------
 " General Settings
 " -----------
-set nocompatible
+
+" turn off compatible
+set nocp
+
+" show line number
+set number
+
+" normal模式下，快速删除一行
+nnoremap - dd
+nnoremap <c-d> dd
+
+" normal模式下，快速选中当前单词
+nnoremap <space> viw
+
+" visual模式下，把当前选中区域里的小写字母转为大写 
+vnoremap \ U
+vnoremap <c-u> U
+
+
+" Persistent undo
+try
+    set undodir=~/.vim_runtime/temp_dirs/undodir
+    set undofile
+catch
+endtry
+
+" visualize blank symbols
+"\u21A6 is ⇥
+set listchars=eol:$,tab:⇥¬¬,trail:~,extends:>,precedes:<,space:·
+
+
+
+
+
+
 
 syntax enable
 
-set number  " show line number
 set ttyfast  " terminal axxeleration
 set enc=utf-8  " utf-8 by default
 set backspace=indent,eol,start  " backspace removes all
@@ -36,11 +69,6 @@ set smartcase  " use case if any caps used
 
 " natural ways to split vim windows
 set splitbelow splitright
-
-" show tab as --->
-" show trailing space as -
-set listchars=tab:>-,trail:-
-set list
 
 " save buffer whenever text is changed
 autocmd TextChanged,TextChangedI * silent write
