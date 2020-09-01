@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-void read_txt(const char* path)
+void read_txt_line_by_line(const char* path)
 {
     FILE* fin = fopen(path, "r");
     if(fin==NULL) {
@@ -29,6 +29,6 @@ void read_txt(const char* path)
 
 
 int main() {
-    read_txt("input.txt");
+    read_txt_line_by_line("input.txt");
     return 0;
 }
