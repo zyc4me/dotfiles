@@ -138,20 +138,20 @@ let g:ale_linters = {
 " vim-clang-format
 "
 ""
-let g:chang_format#AllowShortFunctionsOnASingleLine=1
-let g:clang_format#auto_format_on_insert_leave=1            
-let g:clang_format#AllowShortIfStatementsOnASingleLine=1
-let g:clang_format#AlignTrailingComments=1
-let g:clang_format#AlignConsecutiveAssignments=1
-let g:clang_format#IndentWrappedFunctionNames=1
-let g:clang_format#IndentWidth=4
-let g:AlignAfterOpenBracket=1
+let g:clang_format#command = 'clang-format-8'
 let g:clang_format#style_options = {
-            \ "Standard" : "C++11",
+            \ "Language" : "Cpp",
+            \ "BasedOnStyle" : "LLVM",
+            \ "Standard": "Auto",
             \ "IndentWidth" : 4,
-            \ "UseTab" : "false",
-            \ "AccessModifierOffset" : -2,
-            \ "ColumnLimit" : 99}
+            \ "UseTab" : 'false',
+            \ "AccessModifierOffset": -4,
+            \ "AllowShortFunctionsOnASingleLine": "Empty",
+            \ "PointerAlignment": "Left",
+            \ "DerivePointerAlignment": "false",
+            \"ReflowComments":  "true",
+            \"SpacesBeforeTrailingComments": '2',
+            \ "ColumnLimit" : 100}
 
 map <C-K> :pyf <path-to-this-file>/clang-format.py<cr>        
 imap <C-K> <c-o>:pyf <path-to-this-file>/clang-format.py<cr>

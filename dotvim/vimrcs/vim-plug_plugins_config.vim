@@ -86,7 +86,7 @@ Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'amix/vim-zenroom2'
 ""Plug 'Valloric/YouCompleteMe', { 'do': './install.py'  }
 
-""Plug 'https://github.com/rhysd/vim-clang-format.git'
+Plug 'https://github.com/rhysd/vim-clang-format.git'
 
 " List ends here. Remember to call :PlugInstall
 call plug#end()
