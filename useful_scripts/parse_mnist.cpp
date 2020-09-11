@@ -17,13 +17,13 @@ using namespace cv;
 
 // 日常用的PC CPU是Intel处理器，用小端格式
 // 把大端数据转换为我们常用的小端数据
-uint32_t swap_endian(uint32_t val)
+static uint32_t swap_endian(uint32_t val)
 {
     val = ((val << 8) & 0xFF00FF00) | ((val >> 8) & 0xFF00FF);
     return (val << 16) | (val >> 16);
 }
 
-void read_and_save(const string& mnist_img_path, const string& mnist_label_path, const string& save_dir)
+static void read_and_save(const string& mnist_img_path, const string& mnist_label_path, const string& save_dir)
 {
     // 以二进制格式读取mnist数据库中的图像文件和标签文件
     ifstream mnist_image(mnist_img_path, ios::in | ios::binary);
