@@ -158,3 +158,9 @@ imap <C-K> <c-o>:pyf <path-to-this-file>/clang-format.py<cr>
 
 "\u21A6 is ⇥
 set listchars=eol:$,tab:⇥¬¬,trail:~,extends:>,precedes:<,space:·
+
+"""""""""""""""""""""""""""""""""""""""""""
+" don't add newline if found [noeol]
+" i.e. disalbe [noeol][converted]
+"""""""""""""""""""""""""""""""""""""""""""
+set nofixendofline
