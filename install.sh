@@ -64,6 +64,8 @@ link_directory_list()
     link_directory ~/.my_config/home/.zsh ~/.zsh
     link_directory ~/.my_config/home/.gradle ~/.gradle
     link_directory ~/.my_config/home/.emacs.d ~/.emacs.d
+
+    mkdir -p ~/.config
     link_directory ~/.my_config/home/.config/terminator ~/.config/terminator
 
     link_directory ~/.my_config/dotvim ~/.vim_runtime
