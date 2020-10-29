@@ -150,3 +150,7 @@ if [ -f ~/.pathrc ]; then
     . ~/.pathrc
 fi
 
+#---------
+# => Jump Directory (z)
+#---------
+source ~/.my_config/home/z.sh
