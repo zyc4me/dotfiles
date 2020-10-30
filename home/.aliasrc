@@ -3,7 +3,9 @@ alias cd=' cd'
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -al'
-alias ls=' ls --color=auto'
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    alias ls=' ls --color=auto'
+fi
 alias lsdir='ls -d */' # only list directories
 
 # List only directories
