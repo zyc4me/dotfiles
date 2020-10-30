@@ -22,7 +22,7 @@
 #utoload -Uz promptinit
 #promptinit
 #prompt adam1 # this removes conda environment name.
-PROMPT="%F{green}%n@%m%f%# "
+PROMPT="%F{green}%n@%m%#%f "
 #%n: username(name)
 #%m: hostname(machine)
 
