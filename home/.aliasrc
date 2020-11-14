@@ -5,6 +5,7 @@ alias la='ls -A'
 alias ll='ls -al'
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     alias ls=' ls --color=auto'
+    alias open='xdg-open'
 fi
 alias lsdir='ls -d */' # only list directories
 
