@@ -5,6 +5,7 @@
 	name = Zhuo Zhang
 [core]
 	editor = vim
+    #editor = subl -n w # sublime
     quotepath = false
     #autocrlf = input # linux/macosx
     #autocrlf = true # windows
