@@ -6,6 +6,7 @@
 [core]
 	editor = vim
     #editor = subl -n w # sublime
+    #editor = notepad++ -multiInst -nosession # notepad++
     quotepath = false
     #autocrlf = input # linux/macosx
     #autocrlf = true # windows
