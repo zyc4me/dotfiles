@@ -5,6 +5,8 @@
     editor = vim
     #editor = subl -n w # sublime
     #editor = notepad++ -multiInst -nosession # notepad++
+    #editor = 'C:\\Program Files (x86)\\Microsoft VS Code\\code.exe' -w  # vscode
+    #editor = 'E:\\soft\\VSCode-Insider\\Code - Insiders.exe' -w  # vscode-insiders
     quotepath = false
     #autocrlf = input # linux/macosx
     #autocrlf = true # windows
