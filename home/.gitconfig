@@ -1,5 +1,3 @@
-[http]
-[https]
 [user]
     email = imzhuo@foxmail.com
     name = Zhuo Zhang
@@ -38,3 +36,11 @@
     helper = store
 [push]
     default = simple
+
+# for git >= 2.19, we have to activate using builtin rebase/stash
+# for fast speed. ref: https://github.com/git-for-windows/build-extra/pull/203#issuecomment-420927710
+#[rebase]
+#    useBuiltin = true
+#[stash]
+#    useBuiltin = true
+
