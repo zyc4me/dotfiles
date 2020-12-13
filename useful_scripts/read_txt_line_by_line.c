@@ -19,8 +19,10 @@ void read_txt_line_by_line(const char* path)
         if(line[strlen(line)-1]=='\n' || line[strlen(line)-1]=='\r') {
             line[strlen(line) - 1] = '\0';
         }
-        if(line[strlen(line)-1]=='\r' || line[strlen(line)-1]=='\n') {
-            line[strlen(line) - 1] = '\0';
+        if (strlen(line)>0) {
+            if(line[strlen(line)-1]=='\r' || line[strlen(line)-1]=='\n') {
+                line[strlen(line) - 1] = '\0';
+            }
         }
         printf("%s\n", line);
     }
