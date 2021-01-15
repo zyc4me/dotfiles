@@ -46,3 +46,8 @@
 #[stash]
 #    useBuiltin = true
 
+# since Git 2.27, we have to set git pull's default strategy ourselves
+# this helps people don't create merge commits, or let them know they are creating merge commits
+# ref: https://stackoverflow.com/a/62653694/2999096
+[pull]
+    rebase = true
