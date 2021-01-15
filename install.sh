@@ -36,7 +36,7 @@ link_file_list()
     link_file  ~/.my_config/home/.tmux.conf ~/.tmux.conf
     link_file  ~/.my_config/home/.zshrc ~/.zshrc
     link_file  ~/.my_config/home/.npmrc ~/.npmrc
-    link_file  ~/.my_config/home/.emacs ~/.emacs
+    #link_file  ~/.my_config/home/.emacs ~/.emacs
     link_file  ~/.my_config/home/.aliasrc ~/.aliasrc
     echo "-- link files OK"
 }
