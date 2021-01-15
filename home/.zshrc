@@ -159,3 +159,8 @@ fi
 source ~/.my_config/home/z.sh
 
 [[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
+
+#---------
+# => GPG Key
+#---------
+export GPG_TTY=$(tty)
