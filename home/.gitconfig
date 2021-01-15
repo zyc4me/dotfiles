@@ -1,6 +1,7 @@
 [user]
     email = imzhuo@foxmail.com
     name = Zhuo Zhang
+	signingkey = 0961A0300B14A36D
 [core]
     editor = vim
     #editor = subl -n w # sublime
@@ -32,6 +33,7 @@
 
 [commit]
     template = ~/.gitmessage
+	gpgsign = true
 [diff]
     tool = vimdiff
 [credential]
