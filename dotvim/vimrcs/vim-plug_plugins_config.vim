@@ -56,7 +56,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'chr4/nginx.vim'
 Plug 'amix/open_file_under_cursor.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'scrooloose/snipmate-snippets'
+"Plug 'scrooloose/snipmate-snippets'
 Plug 'godlygeek/tabular'
 Plug 'vim-scripts/tlib'
 Plug 'tpope/tpope-vim-abolish'
@@ -79,7 +79,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'digitaltoad/vim-pug'
 Plug 'therubymug/vim-pyte'
 Plug 'tpope/vim-repeat'
-Plug 'garbas/vim-snipmate'
+"Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
 Plug 'maxbrunsfeld/vim-yankstack'
@@ -140,8 +140,8 @@ let g:user_zen_mode='a'
 """"""""""""""""""""""""""""""
 " => snipMate (beside <TAB> support <CTRL-j>)
 """"""""""""""""""""""""""""""
-ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
-snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
+"ino <c-j> <c-r>=snipMate#TriggerSnippet()<cr>
+"snor <c-j> <esc>i<right><c-r>=snipMate#TriggerSnippet()<cr>
 
 
 """"""""""""""""""""""""""""""
