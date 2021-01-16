@@ -31,62 +31,171 @@ call plug#begin('~/.vim_runtime/plugged')
 
 " Declare the list of plugins
 " - local folder: sources forked
-Plug '~/.vim_runtime/sources_forked/peaksea'
 Plug '~/.vim_runtime/sources_forked/set_tabline'
 Plug '~/.vim_runtime/sources_forked/vim-irblack-forked'
 Plug '~/.vim_runtime/sources_forked/vim-peepopen'
 
 " - github repos
-Plug 'mileszs/ack.vim'
+
+" editorconfig
 Plug 'editorconfig/editorconfig-vim'
+
+" file explorer by nerdtree
+Plug 'scrooloose/nerdtree'
+
+" Git wrapper, use :Git add :Git commit :Git diff  in vim
+Plug 'tpope/vim-fugitive'
+
+" a git plugin that show git diff markers in the sign column
+" Run :GitGutterEnable or :GitGutterToggle
+"Plug 'airblade/vim-gitgutter'
+
+" vim-signify serves as an alternative to vim-gitgutter
+" Run :SignifyDiff for comparison in two columns
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+
+" git blame plugin
+" Run :GitBlame for detail
+Plug 'zivyangll/git-blame.vim'
+
+" ale
 ""Plug 'w0rp/ale'  the original repo contains a large image. don't use it
 ""Plug 'zchrissirhcz/ale' " use my fork. still slow
-Plug 'https://gitee.com/aczz/ale.git'
-Plug 'jiangmiao/auto-pairs'
-Plug 'corntrace/bufexplorer'
-Plug 'yuttie/comfortable-motion.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'morhetz/gruvbox'
+Plug 'https://gitee.com/aczz/ale', {'branch': 'fallback'}
+
+" lightline and lightline support for ale
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
-Plug 'vim-scripts/mayansmoke'
-Plug 'vim-scripts/mru.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'chr4/nginx.vim'
-Plug 'amix/open_file_under_cursor.vim'
-Plug 'rust-lang/rust.vim'
-"Plug 'scrooloose/snipmate-snippets'
-Plug 'godlygeek/tabular'
-Plug 'vim-scripts/tlib'
-Plug 'tpope/tpope-vim-abolish'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'sophacles/vim-bundle-mako'
-Plug 'kchmck/vim-coffee-script'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-commentary'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'terryma/vim-expand-region'
-Plug 'nvie/vim-flake8'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'fisadev/vim-isort'
-Plug 'groenewege/vim-less'
-Plug 'tpope/vim-markdown'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'digitaltoad/vim-pug'
-Plug 'therubymug/vim-pyte'
-Plug 'tpope/vim-repeat'
-"Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-surround'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'amix/vim-zenroom2'
-""Plug 'Valloric/YouCompleteMe', { 'do': './install.py'  }
 
-Plug 'https://github.com/rhysd/vim-clang-format.git'
+" autopairs
+Plug 'jiangmiao/auto-pairs'
+
+" run :Goyo to into Distraction-free writing mode
+Plug 'junegunn/goyo.vim'
+Plug 'amix/vim-zenroom2'
+
+" YouCompleteMe, for path completion and function/variable/class completions
+" Note: this repo contains a bunch of submodules, time consuming when clone.
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py'  }
+
+" color schemes
+Plug '~/.vim_runtime/sources_forked/peaksea'
+Plug 'morhetz/gruvbox'
+Plug 'vim-scripts/mayansmoke'
+
+" c++ related
+Plug 'rhysd/vim-clang-format'
+Plug 'octol/vim-cpp-enhanced-highlight'
+
+"Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+" Run :CtrlP for simple usage
+Plug 'ctrlpvim/ctrlp.vim'
+
+" for compatibility, install this plugin
+Plug 'tpope/vim-markdown'
+
+" mark current line or a region of code as comment
+" Run :commentary to comment current line
+" Use visual mode to select region, then use `gcc` to comment this region
+Plug 'tpope/vim-commentary'
+
+" some utility functions, required by other plugins
+Plug 'vim-scripts/tlib'
+
+" Vim plugin to sort python imports using isort
+" Run :Isort
+Plug 'fisadev/vim-isort'
+
+" First in visual mode select code region (multiple lines)
+" Then run :Tab /= 
+" It will generate aliged code
+" for example:
+"   one = 1
+"   two = 2
+"   three = 3
+"   four = 4
+" becomes
+"   one   = 1
+"   two   = 2
+"   three = 3
+"   four  = 4
+Plug 'godlygeek/tabular'
+
+" Brings physics-based smooth scrolling to the Vim world!
+Plug 'yuttie/comfortable-motion.vim'
+
+
+" Vim plugin for the Perl module / CLI script 'ack'
+Plug 'mileszs/ack.vim'
+
+
+
+" Rainbow Parentheses Improved, slightly highlight for parenthese
+Plug 'luochen1990/rainbow'
+
+Plug 'tpope/vim-surround'
+
+"""""""""""""" 
+"language server protocol (lsp) related
+""""""""""""""""
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
+
+" auto-completion
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+
+Plug 'corntrace/bufexplorer'
+
+Plug 'vim-scripts/mru.vim'
+Plug 'amix/open_file_under_cursor.vim'
+
+
+Plug 'MarcWeber/vim-addon-mw-utils'
+
+Plug 'terryma/vim-expand-region'
+
+Plug 'michaeljsmith/vim-indent-object'
+
+Plug 'terryma/vim-multiple-cursors'
+
+Plug 'honza/vim-snippets'
+
+
+
+" Unused plugins now
+"Plug 'rust-lang/rust.vim'
+"Plug 'scrooloose/snipmate-snippets'
+"Plug 'chr4/nginx.vim'
+"Plug 'kchmck/vim-coffee-script'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'nvie/vim-flake8'
+"Plug 'fatih/vim-go'
+"Plug 'garbas/vim-snipmate'
+
+"easily search for, substitute, and abbreviate multiple variants of a word
+"don't know how to use. ignore now
+"Plug 'tpope/tpope-vim-abolish'
+
+" syntax highlighting, indenting and autocompletion for the dynamic stylesheet language LESS
+"Plug 'groenewege/vim-less'
+
+"Plug 'tpope/vim-repeat'
+
+" A lightweight implementation of emacs's kill-ring for vim
+" Plug 'maxbrunsfeld/vim-yankstack'
+
+" Vim syntax highlighting for Pug (formerly Jade) templates.
+"Plug 'digitaltoad/vim-pug'
+
+" A collection of vim scripts for the mako templating engine
+" https://www.makotemplates.org/
+"Plug 'sophacles/vim-bundle-mako'
 
 " List ends here. Remember to call :PlugInstall
 call plug#end()
@@ -150,6 +259,10 @@ let g:user_zen_mode='a'
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated'
 set grepprg=/bin/grep\ -nH
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
@@ -192,10 +305,6 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
       \ 'colorscheme': 'wombat',
-      \ }
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
       \             ['fugitive', 'readonly', 'filename', 'modified'] ],
@@ -216,18 +325,13 @@ let g:lightline = {
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vimroom
+" => Goyo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-go
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_fmt_command = "goimports"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -249,16 +353,11 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
 
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Git gutter (Git diff)
+" => YouCompleteMe (YCM)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_enabled=0
-nnoremap <silent> <leader>d :GitGutterToggle<cr>
-
-
-
-" YCM
-"YouCompleteMe
 set completeopt=longest,menu
 let g:ycm_error_symbol='>>'
 let g:ycm_warning_symbol='>*'
@@ -282,4 +381,24 @@ let g:ycm_rust_src_path = '/usr/local/rustc-1.6.0/src'
 let g:ycm_filetype_blacklist = {'tagbar' : 1, 'nerdtree' : 1}
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+
+" markdown highlight code regions
+let g:markdown_fenced_languages = ['python', 'bash=sh', 'c', 'cpp', 'cmake', 'groovy', 'html', 'css', 'javascript']
+
+"--------------------------------------------------------------
+" unused plugins configuration
+" some may be used in the future, some just deprecated
+"--------------------------------------------------------------
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_fmt_command = "goimports"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Git gutter (Git diff)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gitgutter_enabled=1
+nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
 
