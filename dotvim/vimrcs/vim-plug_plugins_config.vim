@@ -474,6 +474,8 @@ let g:go_fmt_command = "goimports"
 let g:gitgutter_enabled=1
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
+" rainbow
+let g:rainbow_active = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => LeTex
