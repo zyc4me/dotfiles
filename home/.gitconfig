@@ -55,3 +55,9 @@
     rebase = true
 [status]
     submodulesummary = 1
+
+# for git >= 2.30, when we do `git init`
+# we can config the default name of the created branch
+# otherwise it will show error message
+[init]
+    defaultBranch = master
