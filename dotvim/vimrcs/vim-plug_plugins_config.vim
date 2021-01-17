@@ -37,6 +37,9 @@ Plug '~/.vim_runtime/sources_forked/vim-peepopen'
 
 " - github repos
 
+" a universal set of defaults that (hopefully) everyone can agree on.
+Plug 'tpope/vim-sensible'
+
 " editorconfig
 Plug 'editorconfig/editorconfig-vim'
 
@@ -90,6 +93,8 @@ Plug 'vim-scripts/mayansmoke'
 " c++ related
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
+" gray out inactive code region
+Plug 'mphe/grayout.vim'
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 " Run :CtrlP for simple usage
@@ -485,3 +490,24 @@ let g:vimtex_viiew_method='zathurra'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Grayout
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <F5> :GrayoutUpdate<CR>
+
+" This can cause lag in more complex files.
+autocmd CursorHold,CursorHoldI * if &ft == 'c' || &ft == 'cpp' || &ft == 'objc' | exec 'GrayoutUpdate' | endif
+
+if has("mac") || has("macunix")
+    let g:grayout_libclang_path="/Library/Developer/CommandLineTools/usr/lib"
+endif
+
+" Enable to print debug messages inside vim.
+let g:grayout_debug = 0
+
+" Enable to write debug messages to `grayout.log`.
+let g:grayout_debug_logfile = 0
+

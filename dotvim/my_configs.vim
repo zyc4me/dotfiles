@@ -121,17 +121,6 @@ function! AutoSetFileHead()
 endfunc
 
 
-"""""""""""""""""""
-"
-" ale config, for c/c++ syntax checking
-"
-"   sudo apt install cppcheck
-"
-let g:ale_linters = {
-\	'c': ['gcc', 'cppcheck', 'cpplint', 'clangd'],
-\	'cpp': ['gcc', 'cppcheck', 'cpplint', 'clangd'],
-\}
-
 " 开启解析 compile_commands 的功能
 let g:ale_c_parse_compile_commands = 1
 
