@@ -75,12 +75,12 @@ Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 
 " run :Goyo to into Distraction-free writing mode
-Plug 'junegunn/goyo.vim'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'amix/vim-zenroom2'
 
 " YouCompleteMe, for path completion and function/variable/class completions
 " Note: this repo contains a bunch of submodules, time consuming when clone.
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py'  }
+" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py'  }
 
 " color schemes
 Plug '~/.vim_runtime/sources_forked/peaksea'
@@ -103,7 +103,10 @@ Plug 'tpope/vim-markdown'
 " Use visual mode to select region, then use `gcc` to comment this region
 Plug 'tpope/vim-commentary'
 
-" some utility functions, required by other plugins
+" LaTex
+Plug 'lervag/vimtex'
+
+"some utility functions, required by other plugins
 Plug 'vim-scripts/tlib'
 
 " Vim plugin to sort python imports using isort
@@ -332,12 +335,31 @@ let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
 nnoremap <silent> <leader>z :Goyo<cr>
 
+autocmd! User goyo.vim echom 'Goyo is now loaded!'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic (syntax checker)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'component': {
+    \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
+    \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+    \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+    \ },
+    \ 'component_visible_condition': {
+    \   'readonly': '(&filetype!="help"&& &readonly)',
+    \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+    \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+    \ },
+    \ 'separator': { 'left': ' ', 'right': ' ' },
+    \ 'subseparator': { 'left': ' ', 'right': ' ' }
+    \ }
+
 let g:ale_linters = {
+\   'c': ['cppcheck', 'clang-format', 'clangd'],
+\   'cpp': ['cppcheck', 'clang-format', 'clangd'],
 \   'javascript': ['jshint'],
 \   'python': ['flake8'],
 \   'go': ['go', 'golint', 'errcheck']
@@ -353,6 +375,57 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lightline-ale config
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" register the component
+let g:lightline.component_expand = {
+      \  'linter_checking': 'lightline#ale#checking',
+      \  'linter_infos': 'lightline#ale#infos',
+      \  'linter_warnings': 'lightline#ale#warnings',
+      \  'linter_errors': 'lightline#ale#errors',
+      \  'linter_ok': 'lightline#ale#ok',
+      \ }
+
+" set color to the component
+let g:lightline.component_type = {
+      \     'linter_checking': 'right',
+      \     'linter_infos': 'right',
+      \     'linter_warnings': 'warning',
+      \     'linter_errors': 'error',
+      \     'linter_ok': 'right',
+      \ }
+
+" add the component to the lightline  (right side)
+let g:lightline.active = {
+    \   'left': [ ['mode', 'paste'],
+    \             ['readonly', 'filename', 'modified', 'charvaluehex'] ],
+    \   'right': [ ['linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+    \              [ 'lineinfo' ], ['percent'], ['fileformat', 'fileencoding', 'filetype'] ]
+    \}
+
+
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+
+let g:ale_c_parse_compile_commands = 1
+
+" from daquexian/dot_files
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=White
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -402,3 +475,11 @@ let g:gitgutter_enabled=1
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LeTex
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor='latex'
+let g:vimtex_viiew_method='zathurra'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
