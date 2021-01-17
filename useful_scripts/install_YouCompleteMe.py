@@ -7,6 +7,9 @@ It clone all the dependent submodule repos into local directory, which can use m
 It requires git version >= 2.30.0 thus `git submodule update --init --depth 1` can be run correctly
 
 It use an iteractive way for installation: print out the commands to be executed, and you copy them to run, then re run this script, get newer content, re-rerun it.
+
+Note: the provided mirror sites of submodules, may not be the latest
+Remember to manually update them at https://gitee.com/ycm-core/xxx
 """
 
 import os
