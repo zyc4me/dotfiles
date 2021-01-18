@@ -89,12 +89,17 @@ Plug 'amix/vim-zenroom2'
 Plug '~/.vim_runtime/sources_forked/peaksea'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/mayansmoke'
+Plug 'tomasiser/vim-code-dark'
 
 " c++ related
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " gray out inactive code region
 Plug 'mphe/grayout.vim'
+
+" cmake syntax
+Plug 'pboettch/vim-cmake-syntax'
+
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 " Run :CtrlP for simple usage
@@ -463,34 +468,19 @@ nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 " markdown highlight code regions
 let g:markdown_fenced_languages = ['python', 'bash=sh', 'c', 'cpp', 'cmake', 'groovy', 'html', 'css', 'javascript']
 
-"--------------------------------------------------------------
-" unused plugins configuration
-" some may be used in the future, some just deprecated
-"--------------------------------------------------------------
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-go
+" => rainbow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:go_fmt_command = "goimports"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Git gutter (Git diff)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_enabled=1
-nnoremap <silent> <leader>d :GitGutterToggle<cr>
-
-" rainbow
 let g:rainbow_active = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => LeTex
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_flavor='latex'
-let g:vimtex_viiew_method='zathurra'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
+" rainbow mess up cmake syntax. turn it off
+" https://github.com/luochen1990/rainbow/issues/77
+let g:rainbow_conf = {
+\   'separately': {
+\       'cmake': 0,
+\   }
+\}
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -510,4 +500,32 @@ let g:grayout_debug = 0
 
 " Enable to write debug messages to `grayout.log`.
 let g:grayout_debug_logfile = 0
+
+
+
+"--------------------------------------------------------------
+" unused plugins configuration
+" some may be used in the future, some just deprecated
+"--------------------------------------------------------------
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_fmt_command = "goimports"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Git gutter (Git diff)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gitgutter_enabled=1
+nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LeTex
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor='latex'
+let g:vimtex_viiew_method='zathurra'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
 

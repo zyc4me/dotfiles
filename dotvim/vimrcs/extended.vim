@@ -29,8 +29,8 @@ set guioptions-=L
 
 " Colorscheme
 set background=dark
-colorscheme gruvbox
-
+"colorscheme gruvbox
+colorscheme codedark
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of vimrc configs
