@@ -74,8 +74,19 @@ Plug 'https://gitee.com/aczz/ale', {'branch': 'fallback'}
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
-" autopairs
+" Parenntheses related
 Plug 'jiangmiao/auto-pairs'
+"Plug 'tpope/vim-unimpaired'
+
+" Rainbow Parentheses Improved, slightly highlight for parenthese
+Plug 'luochen1990/rainbow'
+
+" provides insert mode auto-completion for quotes, parens, brackets, etc
+"Plug 'raimondi/delimitmate'
+
+"A collection of language packs for Vim.
+"Plug 'sheerun/vim-polyglot'
+Plug 'https://gitee.com/mirrors/Polyglot'
 
 " run :Goyo to into Distraction-free writing mode
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
@@ -88,17 +99,18 @@ Plug 'amix/vim-zenroom2'
 " color schemes
 Plug '~/.vim_runtime/sources_forked/peaksea'
 Plug 'morhetz/gruvbox'
-Plug 'vim-scripts/mayansmoke'
+"Plug 'vim-scripts/mayansmoke'
 Plug 'tomasiser/vim-code-dark'
 
 " c++ related
 Plug 'rhysd/vim-clang-format'
 Plug 'octol/vim-cpp-enhanced-highlight'
 " gray out inactive code region
-Plug 'mphe/grayout.vim'
+"Plug 'mphe/grayout.vim'
 
 " cmake syntax
-Plug 'pboettch/vim-cmake-syntax'
+" Turn off since codedark color theme renders correctly
+"Plug 'pboettch/vim-cmake-syntax'
 
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
@@ -114,14 +126,16 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-commentary'
 
 " LaTex
-Plug 'lervag/vimtex'
+"Plug 'lervag/vimtex'
+" Too slow to download. Use a mirror.
+Plug 'https://gitee.com/zgpio/vimtex'
 
 "some utility functions, required by other plugins
 Plug 'vim-scripts/tlib'
 
 " Vim plugin to sort python imports using isort
 " Run :Isort
-Plug 'fisadev/vim-isort'
+" Plug 'fisadev/vim-isort'
 
 " First in visual mode select code region (multiple lines)
 " Then run :Tab /= 
@@ -145,12 +159,6 @@ Plug 'yuttie/comfortable-motion.vim'
 " Vim plugin for the Perl module / CLI script 'ack'
 Plug 'mileszs/ack.vim'
 
-
-
-" Rainbow Parentheses Improved, slightly highlight for parenthese
-Plug 'luochen1990/rainbow'
-
-Plug 'tpope/vim-surround'
 
 """""""""""""" 
 "language server protocol (lsp) related
@@ -209,6 +217,10 @@ Plug 'honza/vim-snippets'
 " A collection of vim scripts for the mako templating engine
 " https://www.makotemplates.org/
 "Plug 'sophacles/vim-bundle-mako'
+
+" quoting/parenthesizing made simple
+"Plug 'tpope/vim-surround'
+
 
 " List ends here. Remember to call :PlugInstall
 call plug#end()
@@ -483,23 +495,30 @@ let g:rainbow_conf = {
 \}
 
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => AutoPairs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:AutoPairsMultilineClose=0
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Grayout
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <F5> :GrayoutUpdate<CR>
+" nnoremap <F5> :GrayoutUpdate<CR>
 
-" This can cause lag in more complex files.
-autocmd CursorHold,CursorHoldI * if &ft == 'c' || &ft == 'cpp' || &ft == 'objc' | exec 'GrayoutUpdate' | endif
+" " This can cause lag in more complex files.
+" autocmd CursorHold,CursorHoldI * if &ft == 'c' || &ft == 'cpp' || &ft == 'objc' | exec 'GrayoutUpdate' | endif
 
-if has("mac") || has("macunix")
-    let g:grayout_libclang_path="/Library/Developer/CommandLineTools/usr/lib"
-endif
+" if has("mac") || has("macunix")
+"     let g:grayout_libclang_path="/Library/Developer/CommandLineTools/usr/lib"
+" endif
 
-" Enable to print debug messages inside vim.
-let g:grayout_debug = 0
+" " Enable to print debug messages inside vim.
+" let g:grayout_debug = 0
 
-" Enable to write debug messages to `grayout.log`.
-let g:grayout_debug_logfile = 0
+" " Enable to write debug messages to `grayout.log`.
+" let g:grayout_debug_logfile = 0
 
 
 
