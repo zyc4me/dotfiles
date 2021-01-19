@@ -89,12 +89,12 @@ Plug 'luochen1990/rainbow'
 Plug 'https://gitee.com/mirrors/Polyglot'
 
 " run :Goyo to into Distraction-free writing mode
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim'
 Plug 'amix/vim-zenroom2'
 
 " YouCompleteMe, for path completion and function/variable/class completions
 " Note: this repo contains a bunch of submodules, time consuming when clone.
-" Plug 'ycm-core/YouCompleteMe', { 'do': './install.py'  }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py'  }
 
 " color schemes
 Plug '~/.vim_runtime/sources_forked/peaksea'
