@@ -53,3 +53,7 @@ Settings中搜索 `renderWhitespace`，勾选
 
 Settings中搜索`cursor`，设定为`solid`
 
+**注释里TODO/NOTE/FIXME高亮**
+
+Comment Anchors 插件
+
