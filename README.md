@@ -40,20 +40,12 @@ pip install gitlint
 ```
 Then puth .gitlint in repo root directory and call `gitlint install-hook`
 
-**commitlint**
 
-Relies on **nodejs**(apt provides is too old) and npm.
+## zsh启动慢怎么办？
+- 去掉 conda 的启动，改为添加conda/bin到PATH
+- https://zhuanlan.zhihu.com/p/68303393
+- https://zhuanlan.zhihu.com/p/98450570
 
-```bash
-npm install -g --save-dev @commitlint/{config-conventional,cli}
-```
-usage: 
-
-```bash
-echo "some commit message" | commitlint
-```
-
-Or, create `.husky` or `package.json` and config with husky (npm module)
 
 ## TODO
 
