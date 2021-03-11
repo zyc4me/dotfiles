@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
+//TODO: first use fread, then read from buffer
 void read_txt_line_by_line(const char* path)
 {
     FILE* fin = fopen(path, "r");
