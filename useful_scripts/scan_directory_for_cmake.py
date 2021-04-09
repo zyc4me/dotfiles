@@ -21,13 +21,33 @@ def dirlist(directory, allfile):
     return allfile
 
 
-def scan_directory(directory):
+def scan_directory(directory, prefix=''):
+    """
+    替换\\为/
+    为每个文件路径增加前缀
+    """
     allfile = []
     dirlist(directory, allfile)
-    result = '\n'.join(allfile)
-    result = result.replace('\\', '/')
-    print(result)
+    result = []
+    for item in allfile:
+        item = prefix + item
+        item = item.replace('\\', '/')
+        result.append(item)
+    return result
 
+
+def scan_directory_and_save_cmake(directory, save_file, cmake_var, prefix=''):
+    result = scan_directory(directory, prefix)
+    fout = open(save_file, 'w', encoding='utf-8')
+    fout.write('set({:s}\n'.format(cmake_var))
+    for item in result:
+        fout.write(item+'\n')
+    fout.write(')' + '\n')
+    fout.close()
 
 if __name__ == '__main__':
-    scan_directory('eigen')
+    directory = 'eigen/Eigen'
+    save_file = 'eigen_list.cmake'
+    cmake_var = 'eigen_srcs'
+    prefix = '  ${CMAKE_CURRENT_SOURCE_DIR}/'
+    scan_directory_and_save_cmake(directory, save_file, cmake_var, prefix)
