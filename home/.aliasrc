@@ -29,4 +29,11 @@ alias weather='curl -s http://wttr.in/\?m | head -n-1'
 
 alias cmakeclean='rm CMakeCache.txt; rm -rf CMakeFiles'
 
-function mkcd() { mkdir "$1" && cd "$1" && echo "Hi! you've cd to $1"; }
+function mkcd() {
+    old_dir=`pwd`
+    echo "Prev dir: $old_dir";
+    new_dir=$1
+    new_dir_abs=$old_dir/$new_dir
+    mkdir "$1" && cd "$new_dir";
+    echo "Current dir: $new_dir_abs";
+}
