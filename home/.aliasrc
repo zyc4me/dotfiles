@@ -28,3 +28,5 @@ alias cgdb='cgdb -q'
 alias weather='curl -s http://wttr.in/\?m | head -n-1'
 
 alias cmakeclean='rm CMakeCache.txt; rm -rf CMakeFiles'
+
+function mkcd() { mkdir "$1" && cd "$1" && echo "Hi! you've cd to $1"; }
