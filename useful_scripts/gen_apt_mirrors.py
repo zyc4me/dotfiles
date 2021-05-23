@@ -47,5 +47,5 @@ def get_mirror_site(dist_num_str='16.04', site_name='aliyun'):
         print(mirror_url)
 
 if __name__ == '__main__':
-    get_mirror_site(dist_num_str='20.04', site_name='aliyun')
+    get_mirror_site(dist_num_str='20.04', site_name='tuna')
 
