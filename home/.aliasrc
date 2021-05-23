@@ -37,3 +37,5 @@ function mkcd() {
     mkdir "$1" && cd "$new_dir";
     echo "Current dir: $new_dir_abs";
 }
+
+alias bat='batcat'
