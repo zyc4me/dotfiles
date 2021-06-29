@@ -2250,5 +2250,14 @@ python Dashboard.start()
 # mode: python
 # End:
 
+# Pernonal cusomizations ------------------------------------------------------
+# https://github.com/cyrus-and/gdb-dashboard/wiki
 
-dashboard -layout stack assembly source !variables
+#dashboard -layout assembly source !variables stack
+dashboard -layout source !variables stack
+
+dashboard -output /dev/pts/1
+dashboard assembly -output /dev/pts/3
+dashboard source -output /dev/pts/2
+
+dashboard source -style height 0
