@@ -38,6 +38,8 @@ link_file_list()
     link_file  ~/.my_config/home/.npmrc ~/.npmrc
     #link_file  ~/.my_config/home/.emacs ~/.emacs
     link_file  ~/.my_config/home/.aliasrc ~/.aliasrc
+    mkdir -p ~/.cargo
+    link_file ~/.my_config/home/.cargo/config ~/.cargo/config
     echo "-- link files OK"
 }
 
