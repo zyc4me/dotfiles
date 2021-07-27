@@ -27,8 +27,6 @@ alias cgdb='cgdb -q'
 
 alias weather='curl -s http://wttr.in/\?m | head -n-1'
 
-alias cmakeclean='rm CMakeCache.txt; rm -rf CMakeFiles'
-
 function mkcd() {
     old_dir=`pwd`
     echo "Prev dir: $old_dir";
@@ -36,6 +34,26 @@ function mkcd() {
     new_dir_abs=$old_dir/$new_dir
     mkdir "$1" && cd "$new_dir";
     echo "Current dir: $new_dir_abs";
+}
+
+# only remove cmake cache
+function cmakecleancache() {
+    if [ -f "CMakeCache.txt" ]; then
+        rm CMakeCache.txt
+    fi
+}
+
+# remove cmake cache, and run make/ninja clean
+function cmakecleanall() {
+    if [ -f "CMakeCache.txt" ]; then
+        rm CMakeCache.txt
+    fi
+    if [ -f "Makefile" ]; then
+        make clean
+    fi
+    if [ -f "build.ninja" ]; then
+        ninja clean
+    fi
 }
 
 alias bat='batcat'
