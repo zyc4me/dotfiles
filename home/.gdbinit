@@ -2253,11 +2253,17 @@ python Dashboard.start()
 # Pernonal cusomizations ------------------------------------------------------
 # https://github.com/cyrus-and/gdb-dashboard/wiki
 
-#dashboard -layout assembly source !variables stack
-dashboard -layout source !variables stack
+# Note: these personal multiple-tty configs, cause VSCode debug not working
+#dashboard -layout source !variables stack
 
-dashboard -output /dev/pts/1
-dashboard assembly -output /dev/pts/3
-dashboard source -output /dev/pts/2
+#dashboard -layout assembly source variables stack
+#dashboard -output /dev/pts/3
+#dashboard assembly -output /dev/pts/4
+#dashboard source -output /dev/pts/2
+#dashboard stack -output /dev/pts/5
 
-dashboard source -style height 0
+#dashboard source -style height 0
+
+set target-async 1
+set pagination off
+set non-stop on
