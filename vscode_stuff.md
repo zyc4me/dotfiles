@@ -30,6 +30,8 @@ x86 and x86_64 Assembly （x86汇编）
 
 <del>clang-format</del>
 
+Git Lens
+
 ## Settings
 
 File->Preference->Settings，搜索`xxx`即可查看和修改`xxx`。
