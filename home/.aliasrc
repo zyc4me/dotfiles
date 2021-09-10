@@ -57,3 +57,6 @@ function cmakecleanall() {
 }
 
 alias bat='batcat'
+
+# 获取本机IP地址
+alias ip="ifconfig | egrep '([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})' -o | egrep -v '\.255\$' | grep -v '127.0.0.1'"
