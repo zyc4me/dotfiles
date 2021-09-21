@@ -13,10 +13,23 @@
 #    feat     (new feature)
 #    fix      (bug fix)
 #    refactor (refactoring production code)
-#    style    (formatting, missing semi colons, etc; no code change)
+#    optimize (resource usage optimize, such as time cost, memory usage)
 #    docs     (changes to documentation)
 #    test     (adding or refactoring tests; no production code change)
-#    chore    (updating cmake scripts etc; no production code change)
+#    build    (build scripts such as cmake, dependency updates, CI)
+#    style    (formatting, missing semi colons, etc; no code change)
+#
+#                          feat       fix        refactor      optimize
+#    ----------------------------------------------------------------------
+#    Structure            Changes    Changes     Changes       -
+#    ----------------------------------------------------------------------
+#    New Functionality    Changes      -          -            -
+#    ----------------------------------------------------------------------
+#    Functionality         -         Changes      -            -
+#    ----------------------------------------------------------------------
+#    Resource Usage        -           -          -            Changes
+#    ----------------------------------------------------------------------
+#
 # --------------------
 # Remember to
 #    Capitalize the subject line
@@ -28,3 +41,4 @@
 # --------------------
 # For more information about this template, check out
 # https://gist.github.com/adeekshith/cd4c95a064977cdc6c50
+# "Working Effectively with Legacy Code" Chapter1

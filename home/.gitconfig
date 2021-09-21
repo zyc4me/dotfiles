@@ -8,6 +8,7 @@
     #editor = notepad++ -multiInst -nosession # notepad++
     #editor = 'C:\\Program Files (x86)\\Microsoft VS Code\\code.exe' -w  # vscode
     #editor = 'E:\\soft\\VSCode-Insider\\Code - Insiders.exe' -w  # vscode-insiders
+    editor = code-insiders -w # recommend VSCode with GitLens especially rebase -i moment
     quotepath = false
     #autocrlf = input # linux/macosx
     #autocrlf = true # windows
