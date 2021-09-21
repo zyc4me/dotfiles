@@ -22,7 +22,9 @@ def get_mirror_site(dist_num_str='16.04', site_name='aliyun'):
         '17.10': 'artful',
         '18.04': 'bionic',
         '20.04': 'focal',
-        '20.10': 'groovy'
+        '20.10': 'groovy',
+        '21.04': 'hirsute',
+        '21.10': 'impish',
     }
 
     dist_name = dist_mp[dist_num_str]
