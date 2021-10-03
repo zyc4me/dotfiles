@@ -239,7 +239,7 @@ class MyTestRunner:
 
         failed, errored = map(len, (result.failures, result.errors))
 
-        self.stream.green("[  PASSED  ] %d tests" % (run - failed - errored))
+        self.stream.green("[  PASSED  ]  %d tests" % (run - failed - errored))
         self.stream.writeln()
 
         if not result.wasSuccessful():
