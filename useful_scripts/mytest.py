@@ -230,14 +230,6 @@ class MyTestRunner:
         startTime = time.time()
         test(result)
 
-        self.stream.green(result.separator1)
-        self.stream.writeln()
-
-        self.stream.writeln()
-
-        self.stream.green(result.separator1)
-        self.stream.writeln("Global test environment tear-down(TODO)")
-
         stopTime = time.time()
         timeTaken = stopTime - startTime
         self.stream.green(result.separator2)
