@@ -492,6 +492,7 @@ nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_markdown_fenced_languages = ['python', 'bash=sh', 'c', 'cpp', 'cmake', 'groovy', 'html', 'css', 'javascript']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
