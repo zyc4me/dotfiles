@@ -74,7 +74,7 @@ Plug 'https://gitee.com/aczz/ale', {'branch': 'fallback'}
 Plug 'maximbaz/lightline-ale'
 Plug 'itchyny/lightline.vim'
 
-" Parenntheses related
+" Parentheses related
 Plug 'jiangmiao/auto-pairs'
 "Plug 'tpope/vim-unimpaired'
 
@@ -111,6 +111,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 " cmake syntax
 " Turn off since codedark color theme renders correctly
 "Plug 'pboettch/vim-cmake-syntax'
+
+" opencl highlight
+Plug 'petRUShka/vim-opencl'
 
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
