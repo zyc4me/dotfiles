@@ -162,3 +162,6 @@ set nofixendofline
 
 " default updatetime 4000ms is not good for async update
 set updatetime=100
+
+" turn on doxygen syntax highlight for .h/.hpp/.c/.cpp files
+autocmd BufNewFile,BufReadPost *.h,*.hpp,*.c,*.cpp set syntax=cpp.doxygen
