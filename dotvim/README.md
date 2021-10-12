@@ -28,3 +28,24 @@ Note: plugins are git-cloned from github, please ensure network.
 ## Known issue
 
 Please go to [config-issues.md](dot-vim/tree/master/config-issues.md) for details.
+
+## 一些快捷键
+
+参照 [CW大神](https://github.com/theniceboy/nvim/blob/master/README_cn.md) 的配置， 抄了几个好用的：
+
+
+### 1. 切换 nerdtree： `tt`
+
+### 2. 标签页管理：
+| 快捷键  | 行为 |
+| ------  | ------ |
+| `t` `u` | 新建一个标签页 |
+| `t` `n` | 移至左侧标签页 |
+| `t` `i` | 移至右侧标签页 |
+| `t` `m` `n` | 将当前标签页向左移动一格 |
+| `t` `m` `i` | 将当前标签页向右移动一格 |
+
+实际上默认可以用的：
+- Ctrl + PageUp  切换到左边一个标签页
+- Ctrl + PageDown 切换到右边一个标签页
+

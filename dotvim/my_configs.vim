@@ -165,3 +165,18 @@ set updatetime=100
 
 " turn on doxygen syntax highlight for .h/.hpp/.c/.cpp files
 autocmd BufNewFile,BufReadPost *.h,*.hpp,*.c,*.cpp set syntax=cpp.doxygen
+
+
+
+" ===
+" === Tab management 标签页管理
+" ===
+" Create a new tab with tu
+noremap tu :tabe<CR>
+noremap tU :tab split<CR>
+" Move around tabs with tn and ti
+noremap tn :-tabnext<CR>
+noremap ti :+tabnext<CR>
+" Move the tabs with tmn and tmi
+noremap tmn :-tabmove<CR>
+noremap tmi :+tabmove<CR>
