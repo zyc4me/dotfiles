@@ -118,7 +118,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " for compatibility, install this plugin
-Plug 'tpope/vim-markdown'
+"Plug 'tpope/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " mark current line or a region of code as comment
 " Run :commentary to comment current line
@@ -477,9 +479,20 @@ let g:ycm_filetype_blacklist = {'tagbar' : 1, 'nerdtree' : 1}
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 
-" markdown highlight code regions
-let g:markdown_fenced_languages = ['python', 'bash=sh', 'c', 'cpp', 'cmake', 'groovy', 'html', 'css', 'javascript']
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" tpope/markdown config
+" markdown highlight code regions
+"let g:markdown_fenced_languages = ['python', 'bash=sh', 'c', 'cpp', 'cmake', 'groovy', 'html', 'css', 'javascript']
+
+" plasticboy/vim-markdown config
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_fenced_languages = ['python', 'bash=sh', 'c', 'cpp', 'cmake', 'groovy', 'html', 'css', 'javascript']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => rainbow
