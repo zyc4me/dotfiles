@@ -112,9 +112,11 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 " Turn off since codedark color theme renders correctly
 "Plug 'pboettch/vim-cmake-syntax'
 
-" opencl highlight
+" opencl(.cl) highlight
 Plug 'petRUShka/vim-opencl'
 
+" compute shader (.comp / .vert / .tesc / .tese / .geom / .frag) highlight
+Plug 'tikhomirov/vim-glsl'
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 " Run :CtrlP for simple usage
