@@ -50,6 +50,12 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Git wrapper, use :Git add :Git commit :Git diff  in vim
 Plug 'tpope/vim-fugitive'
 
+" A git-lens like plugin
+" Plug 'APZelos/blamer.nvim'
+
+Plug 'zivyangll/git-blame.vim'
+
+
 " a git plugin that show git diff markers in the sign column
 " Run :GitGutterEnable or :GitGutterToggle
 "Plug 'airblade/vim-gitgutter'
@@ -613,6 +619,11 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => git-blame
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 
 
