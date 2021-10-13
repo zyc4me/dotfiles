@@ -126,7 +126,8 @@ Plug 'petRUShka/vim-opencl'
 Plug 'tikhomirov/vim-glsl'
 
 " terminal helper
-Plug 'skywind3000/vim-terminal-help'
+" 由于污染了 Home 和 End 键， 先不用它了。
+"Plug 'skywind3000/vim-terminal-help'
 
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
@@ -633,7 +634,7 @@ nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 " => terminal helper
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " switch to same as VSCode
-let g:terminal_key = '<C-j>'
+"let g:terminal_key = '<C-j>'
 
 
 " LSP configurations
