@@ -34,7 +34,10 @@ Please go to [config-issues.md](dot-vim/tree/master/config-issues.md) for detail
 参照 [CW大神](https://github.com/theniceboy/nvim/blob/master/README_cn.md) 的配置， 抄了几个好用的：
 
 
-### 1. 切换 nerdtree： `tt`
+### 1. nerdtree
+- 切换 nerdtree： `tt` 键
+- 在NERDTree 里，选择文件并打开： `<CR>`
+- 在NERDTree 里，选择文件、并在现有标签页中，split，再显示： `s`
 
 ### 2. 标签页管理：
 | 快捷键  | 行为 |
@@ -49,3 +52,9 @@ Please go to [config-issues.md](dot-vim/tree/master/config-issues.md) for detail
 - Ctrl + PageUp  切换到左边一个标签页
 - Ctrl + PageDown 切换到右边一个标签页
 
+### 3. 类似 gitlens 查看 git blame
+目前是手动触发每一行的查看，
+
+`<leader>,`
+
+其中 `<leader>` 键，我的配置下是 `,`
