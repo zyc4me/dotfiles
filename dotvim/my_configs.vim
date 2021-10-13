@@ -180,3 +180,10 @@ noremap ti :+tabnext<CR>
 " Move the tabs with tmn and tmi
 noremap tmn :-tabmove<CR>
 noremap tmi :+tabmove<CR>
+
+"===
+"=== Terminal Behaviors
+"===
+"autocmd TermOpen term://* startinsert
+" 使用 Ctrl + j 召唤出terminal， 就像 VSCode 一样
+noremap <C-j> :terminal<CR>

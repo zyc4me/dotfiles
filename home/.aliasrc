@@ -63,4 +63,5 @@ alias ip="ifconfig | egrep '([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})' -o
 
 # 显示系统信息
 # sudo apt install screenfetch
-alias s='screenfetch'
+#alias s='screenfetch' # run slow
+alias s='neofetch'  # run fast

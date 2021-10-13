@@ -29,6 +29,17 @@ Note: plugins are git-cloned from github, please ensure network.
 
 Please go to [config-issues.md](dot-vim/tree/master/config-issues.md) for details.
 
+
+## 一些依赖包的安装
+看了 CW 大神的配置后发现， VIM 的流畅使用， 还需要 VIM 之外的工具的搭配。
+
+### 1. ranger 终端文件浏览器
+```bash
+pip install ueberzug
+sudo apt install ranger
+```
+然后打开 ranger 这一工具。
+
 ## 一些快捷键
 
 参照 [CW大神](https://github.com/theniceboy/nvim/blob/master/README_cn.md) 的配置， 抄了几个好用的：
@@ -60,7 +71,8 @@ Please go to [config-issues.md](dot-vim/tree/master/config-issues.md) for detail
 其中 `<leader>` 键，我的配置下是 `,`
 
 ### 4. 召唤终端
-用了 skywind3000/Terminal-helper
+<del>用了 skywind3000/Terminal-helper</del>
 
 目前配置了 切换terminal的快捷键： `Ctrl+j`
-terminal 的位置固定在窗口下方； 需要 Esc :q 退出terminal而不能exit退出
+terminal 的位置目前还不能固定在窗口下方； 在新开terminal内按exit退出；还不知道怎么隐藏
+
