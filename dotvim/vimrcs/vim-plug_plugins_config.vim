@@ -125,6 +125,10 @@ Plug 'petRUShka/vim-opencl'
 " compute shader (.comp / .vert / .tesc / .tese / .geom / .frag) highlight
 Plug 'tikhomirov/vim-glsl'
 
+" terminal helper
+Plug 'skywind3000/vim-terminal-help'
+
+
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 " Run :CtrlP for simple usage
 Plug 'ctrlpvim/ctrlp.vim'
@@ -625,6 +629,11 @@ let g:tex_conceal='abdmg'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => terminal helper
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" switch to same as VSCode
+let g:terminal_key = '<C-j>'
 
 
 " LSP configurations

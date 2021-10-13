@@ -58,3 +58,9 @@ Please go to [config-issues.md](dot-vim/tree/master/config-issues.md) for detail
 `<leader>,`
 
 其中 `<leader>` 键，我的配置下是 `,`
+
+### 4. 召唤终端
+用了 skywind3000/Terminal-helper
+
+目前配置了 切换terminal的快捷键： `Ctrl+j`
+terminal 的位置固定在窗口下方； 需要 Esc :q 退出terminal而不能exit退出
