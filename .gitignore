@@ -233,3 +233,4 @@ home/.gradle/gradle.properties
 home/.gradle/native/
 home/.gradle/wrapper/
 
+a.out
