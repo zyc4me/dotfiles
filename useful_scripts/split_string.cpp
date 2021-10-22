@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <ctype.h>
 
 /// @brief split a string with specified delimeter string
 /// @param str the string to be splited
