@@ -52,9 +52,31 @@ std::vector<std::string> split_string(const std::string& s)
     return ret;
 }
 
+/// @brief determine if a string starts with a specified string
+/// @param str The string to be inspected
+/// @param start The target string to be searched
+bool string_startswith(const std::string& str, const std::string& start)
+{
+    int pos = str.find(start);
+    return (pos!=-1);
+}
+
+
+/// @brief determine if a string ends with a specified extension
+/// @param str The string to be inspected
+/// @param ext The target string to be searched
+bool string_endswith(const std::string& str, const std::string& ext)
+{
+    int pos = str.rfind(ext);
+    return (pos!=-1);
+}
+
+//----------------------------------------------------------------------
+// Testing / Examples
+//----------------------------------------------------------------------
 #include <iostream>
 
-int main()
+void test_split_string()
 {
     std::string a = "hello  world! 233 Rust C++\n";
     std::vector<std::string> res = split_string(a);
@@ -62,5 +84,25 @@ int main()
         std::cout << res[i] << ", ";
     }
     std::cout << std::endl;
-    return 0;
+}
+
+void test_string_endswith()
+{
+    std::string path = "123/45.6/7890.jpg";
+    if (string_endswith(path, "jpg"))
+    {
+        std::cout << "yes" << std::endl;
+    }
+    else
+    {
+        std::cout << "no" << std::endl;
+    }
+}
+
+int main()
+{
+	test_split_string();
+	test_string_endswith();
+
+	return 0;
 }
