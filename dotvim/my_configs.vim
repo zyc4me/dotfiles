@@ -187,3 +187,9 @@ noremap tmi :+tabmove<CR>
 "autocmd TermOpen term://* startinsert
 " 使用 Ctrl + j 召唤出terminal， 就像 VSCode 一样
 noremap <C-j> :terminal<CR>
+
+"===
+"=== 有些按键从来不想用，但容易大小写弄错导致误用
+"=== 那就干脆干掉它们
+cnoreabbrev X x
+cnoreabbrev W w
