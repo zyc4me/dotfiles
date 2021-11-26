@@ -65,3 +65,7 @@ alias ip="ifconfig | egrep '([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})' -o
 # sudo apt install screenfetch
 #alias s='screenfetch' # run slow
 alias s='neofetch'  # run fast
+
+# ninja
+alias nj='ninja'
+alias clnj='clear; ninja'
