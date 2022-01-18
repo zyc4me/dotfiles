@@ -142,6 +142,8 @@ source ~/.aliasrc
 # VIM's lightline
 export TERM=xterm-256color
 
+# cmake database, since 3.17
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 #----------
 # => PATH
@@ -175,3 +177,19 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;33;44m'
 export LESS_TERMCAP_se=$'\E[0m'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zz/soft/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zz/soft/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/zz/soft/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zz/soft/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
