@@ -48,10 +48,11 @@ def batch_expand(folder, replace=False):
             # cmd1 = "ls {:s}".format(fullpath)
 
 def test():
-    folder = '/home/zz/work/mobileCV2-git/src/arm'
+    folder = '/home/zz/work/mobileCV2-git/src/ocl'
     batch_expand(folder, True)
 
 if __name__ == '__main__':
+    #test()
     if len(sys.argv) != 2:
         print("Usage: " + sys.argv[0] + " directory")
         print("If would replace original file, please modify source, pass replace=True")
@@ -59,3 +60,4 @@ if __name__ == '__main__':
 
     folder = sys.argv[1:]
     batch_expand(folder)
+
