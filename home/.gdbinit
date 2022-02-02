@@ -1,3 +1,6 @@
+set disassembly-flavor intel
+set breakpoint pending on
+
 python
 
 # GDB dashboard - Modular visual interface for GDB in Python.
@@ -2236,12 +2239,12 @@ set history save
 set verbose off
 set print pretty on
 set print array off
-set print array-indexes on
-set python print-stack full
+set print array-indexes off
+#set python print-stack off
 
 # Start ------------------------------------------------------------------------
 
-python Dashboard.start()
+#python Dashboard.start()
 
 # File variables ---------------------------------------------------------------
 
@@ -2264,6 +2267,10 @@ python Dashboard.start()
 
 #dashboard source -style height 0
 
+set disable-randomization on
+
 set target-async 1
 set pagination off
 set non-stop on
+
+
