@@ -31,6 +31,7 @@ link_file_list()
 {
     link_file  ~/.my_config/home/.condarc ~/.condarc
     link_file  ~/.my_config/home/.gdbinit ~/.gdbinit
+    link_file  ~/.my_config/home/.lldbinit ~/.lldbinit
     link_file  ~/.my_config/home/.gitconfig ~/.gitconfig
     link_file  ~/.my_config/home/.gitmessage ~/.gitmessage
     link_file  ~/.my_config/home/.tmux.conf ~/.tmux.conf
