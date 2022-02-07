@@ -2240,7 +2240,11 @@ set verbose off
 set print pretty on
 set print array off
 set print array-indexes off
+<<<<<<< Updated upstream
 #set python print-stack off
+=======
+set python print-stack off
+>>>>>>> Stashed changes
 
 # Start ------------------------------------------------------------------------
 
@@ -2272,5 +2276,4 @@ set disable-randomization on
 set target-async 1
 set pagination off
 set non-stop on
-
 
