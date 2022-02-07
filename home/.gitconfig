@@ -3,7 +3,7 @@
     name = Zhuo Zhang
     signingkey = 0961A0300B14A36D
 [core]
-    #editor = vim
+    editor = vim
     #editor = subl -n w # sublime
     #editor = notepad++ -multiInst -nosession # notepad++
     #editor = 'C:\\Program Files (x86)\\Microsoft VS Code\\code.exe' -w  # vscode
@@ -20,7 +20,7 @@
     # if current is not from VSCode / VSCode Insiders, then use vim
     # TODO: the VSCode insider determination is ugly. but the regular expression determination seems not working
     #editor = "if [[ $TERM_PROGRAM_VERSION == *-insider ]]; then ED='code-insiders -w'; elif [ $TERM_PROGRAM = vscode ]; then ED='code -w'; else ED='vim'; fi; $ED" # fail
-    editor = "if [ $TERM_PROGRAM_VERSION = 1.62.0-insider -o $TERM_PROGRAM_VERSION = 1.59.0-insider ]; then ED='code-insiders -w'; elif [ $TERM_PROGRAM = vscode ]; then ED='code -w'; else ED='vim'; fi; $ED"
+    #editor = "if [ $TERM_PROGRAM_VERSION = 1.62.0-insider -o $TERM_PROGRAM_VERSION = 1.59.0-insider ]; then ED='code-insiders -w'; elif [ $TERM_PROGRAM = vscode ]; then ED='code -w'; else ED='vim'; fi; $ED"
     quotepath = false
     #autocrlf = input # linux/macosx
     #autocrlf = true # windows
@@ -47,6 +47,7 @@
         --sort=taggerdate \
         --format '%(tag)_,,,_%(taggerdate:raw)_,,,_%(taggername)_,,,_%(subject)' refs/tags \
         | awk 'BEGIN { FS = \"_,,,_\"  } ; { t=strftime(\"%Y-%m-%d  %H:%M\",$2); printf \"%-20s %-18s %-25s %s\\n\", t, $1, $4, $3  }'"
+    forget = rm --cached
 
 [commit]
     template = ~/.gitmessage
@@ -83,3 +84,5 @@
 # https://stackoverflow.com/questions/18571741/multiple-git-editors
 # [sequence]
 #   editor = code -w
+[gpg]
+	program = gpg2
