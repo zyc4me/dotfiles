@@ -69,3 +69,4 @@ alias s='neofetch'  # run fast
 # ninja
 alias nj='ninja'
 alias clnj='clear; ninja'
+alias nake='ninja'
