@@ -1,0 +1,54 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.cursorBlinking": "solid",
+    "explorer.confirmDelete": true,
+    "tabnine.experimentalAutoImports": true,
+    "editor.fontFamily": "'Consolas', 'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "update.mode": "manual",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "workbench.statusBar.visible": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "workbench.colorTheme": "Default Dark+",
+    "window.titleBarStyle": "custom",
+    "git.confirmSync": false,
+    "cppRecolored.libclangPath": "/usr/lib/llvm-14/lib/libclang.so.1",
+    "extensions.ignoreRecommendations": true,
+    "dotnetAcquisitionExtension.installTimeoutValue": 30000,
+    "terminal.integrated.gpuAcceleration": "off",
+    "remote.SSH.remotePlatform": {
+        "157": "linux"
+    },
+    "settingsSync.ignoredExtensions": [
+        "ms-ceintl.vscode-language-pack-zh-hans",
+        "llvm-vs-code-extensions.vscode-clangd"
+    ],
+    "remote.SSH.useLocalServer": false,
+    "terminal.integrated.inheritEnv": false,
+    "latex-workshop.latex.clean.command": "pdflatex",
+    "cmakeExplorer.buildDir": "build/linux-x64",
+    "gitlens.codeLens.enabled": false,
+    "clangd.path": "/usr/lib/llvm-14/bin/clangd",
+    "clangd.arguments": [
+        "-compile-commands-dir=build/linux-x64"
+    ],
+    //"lldb.library": "/home/zz/soft/llvm13/lib", //works, 但是和用的clang版本不一致
+    //"lldb.library": "/usr/lib/llvm-14/lib/liblldb.so.1",
+    //"lldb.libpython": "/home/zz/soft/miniconda3/lib/libpython3.so",
+    "lldb.adapterEnv": {
+        "LLDB_DEBUGSERVER_PATH": "/usr/lib/llvm-14/bin/lldb-server-14.0.0"
+    },
+    "lldb.launch.initCommands": ["command source ${env:HOME}/.lldbinit"], // 加载用户的 ~/.lldbinit
+    "lldb.verboseLogging": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.minimap.enabled": false,
+    "editor.inlayHints.enabled": false,
+    "cSpell.userWords": [
+        "vdupq"
+    ],
+    "cSpell.enabled": false
+}
