@@ -68,6 +68,7 @@ link_directory_list()
     link_directory ~/.my_config/home/.zsh ~/.zsh
     link_directory ~/.my_config/home/.gradle ~/.gradle
     link_directory ~/.my_config/home/.emacs.d ~/.emacs.d
+    link_directory ~/.my_config/home/.lldbcfg ~/.lldbcfg
 
     mkdir -p ~/.config
     link_directory ~/.my_config/home/.config/terminator ~/.config/terminator
