@@ -1,2 +1,4 @@
 settings set target.x86-disassembly-flavor intel
 command script import ~/.lldbcfg/CvMatForLLDB/cvmat.py
+#command script import ~/.lldbcfg/debugvis.py
+command script import ~/.lldbcfg/hello.py

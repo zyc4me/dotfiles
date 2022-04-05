@@ -27,9 +27,9 @@ except ImportError as e:
     print("Import cv2 module error : {}".format(e))
     print("imshow module will not work")
 
+#sys.path = sys.path + ["/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Resources/Python"]
 iw_visualizer_cmd = """
 import sys
-#sys.path = sys.path + ["/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Resources/Python"]
 
 import cv2
 import numpy as np
@@ -121,6 +121,7 @@ def imshow(debugger, command, result, internal_dict):
     # Print cvMat attributes.
     printMatInfo(matInfo)
     mat = getMat(debugger, root, command)
+    print("hoho!!") # 从这里开始有问题。 mat 并没有被显示出来。为什么呢？
     # Show the image.
     showImage(mat, matInfo)
 
@@ -247,6 +248,8 @@ def getMat(debugger, root, command):
         elem_size = 4
     elif matInfo['data_symbol'] == 'd':
         elem_size = 8
+    else:
+        print("matInfo encounter error!")
     padding = line_step - width * n_channel * elem_size
 
     # Format memory data to load into the image.
