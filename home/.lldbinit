@@ -1,4 +1,10 @@
 settings set target.x86-disassembly-flavor intel
-command script import ~/.lldbcfg/CvMatForLLDB/cvmat.py
 #command script import ~/.lldbcfg/debugvis.py
 command script import ~/.lldbcfg/hello.py
+#command script import ~/.lldbcfg/print_named_array.py
+
+# cvmat.py 有问题，表现为：用 VSCode 调试时，hello.py 里定义的命令 yay 无法执行
+# 但奇怪的是，新开命令行的 lldb 则可以用 yay
+#command script import ~/.lldbcfg/CvMatForLLDB/cvmat.py
+
+#command script import ~/.my_config/home/.lldbcfg/OpenImageDebugger/oid.py
