@@ -18,11 +18,205 @@ def print_int8x8_t(valobj, internal_dict):
     res += ')'
     return res
 
+def print_int16x4_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(4):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+    res += ')'
+    return res
+
+def print_int32x2_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(2):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+    res += ')'
+    return res
+
+def print_int64x1_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(1):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+    res += ')'
+    return res
+
+
+def print_uint8x8_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(8):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+    res += ')'
+    return res
+
+def print_uint16x4_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(4):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+    res += ')'
+    return res
+
+def print_uint32x2_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(2):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+    res += ')'
+    return res
+
+def print_uint64x1_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(1):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+    res += ')'
+    return res
+
+
+# def print_float16x4_t(valobj, internal_dict):
+#     val = valobj.GetChildMemberWithName("val")
+#     res = '('
+#     for i in range(4):
+#         if(i>0): res += ', '
+#         res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+#     res += ')'
+#     return res
+
+# def print_float32x2_t(valobj, internal_dict):
+#     val = valobj.GetChildMemberWithName("val")
+#     res = '('
+#     for i in range(2):
+#         if(i>0): res += ', '
+#         res += str(val.GetChildAtIndex(i).GetValueAsFloat(0)) # not working
+#     res += ')'
+#     return res
+
+# def print_float64x1_t(valobj, internal_dict):
+#     val = valobj.GetChildMemberWithName("val")
+#     res = '('
+#     for i in range(1):
+#         if(i>0): res += ', '
+#         res += str(val.GetChildAtIndex(i).GetValueAsDouble(0))
+#     res += ')'
+#     return res
+
+# Q Vector Registers. 128 bit long
+def print_int8x16_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(16):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+    res += ')'
+    return res
+
+def print_int16x8_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(8):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+    res += ')'
+    return res
+
+def print_int32x4_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(4):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+    res += ')'
+    return res
+
+def print_int64x2_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(2):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+    res += ')'
+    return res
+
+
+def print_uint8x16_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(16):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+    res += ')'
+    return res
+
+def print_uint16x8_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(8):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+    res += ')'
+    return res
+
+def print_uint32x4_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(4):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+    res += ')'
+    return res
+
+def print_uint64x2_t(valobj, internal_dict):
+    val = valobj.GetChildMemberWithName("val")
+    res = '('
+    for i in range(2):
+        if(i>0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+    res += ')'
+    return res
+
+
 # 
 def __lldb_init_module(debugger, internal_dict):
+    # D Vector Registers. 64 bit long
     debugger.HandleCommand('command script add -f hello.your_first_command yay')
-    debugger.HandleCommand('type summary add -P int8x8_t -F ' + __name__ + '.print_int8x8_t')
+    debugger.HandleCommand('type summary add -P int8x8_t -F {:s}.print_int8x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int16x4_t -F {:s}.print_int16x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int32x2_t -F {:s}.print_int32x2_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int64x1_t -F {:s}.print_int64x1_t'.format(__name__))
 
+    debugger.HandleCommand('type summary add -P uint8x8_t -F {:s}.print_uint8x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint16x4_t -F {:s}.print_uint16x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint32x2_t -F {:s}.print_uint32x2_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint64x1_t -F {:s}.print_uint64x1_t'.format(__name__))
+
+    # debugger.HandleCommand('type summary add -P float16x4_t -F {:s}.print_float16x4_t'.format(__name__))
+    # debugger.HandleCommand('type summary add -P float32x2_t -F {:s}.print_float32x2_t'.format(__name__))
+    # debugger.HandleCommand('type summary add -P float64x1_t -F {:s}.print_float64x1_t'.format(__name__))
+
+    # Q Vector Registers. 128 bit long
+    debugger.HandleCommand('type summary add -P int8x16_t -F {:s}.print_int8x16_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int16x8_t -F {:s}.print_int16x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int32x4_t -F {:s}.print_int32x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int64x2_t -F {:s}.print_int64x2_t'.format(__name__))
+
+    debugger.HandleCommand('type summary add -P uint8x16_t -F {:s}.print_uint8x16_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint16x8_t -F {:s}.print_uint16x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint32x4_t -F {:s}.print_uint32x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint64x2_t -F {:s}.print_uint64x2_t'.format(__name__))
+
+    # debugger.HandleCommand('type summary add -P float16x8_t -F {:s}.print_float16x8_t'.format(__name__))
+    # debugger.HandleCommand('type summary add -P float32x4_t -F {:s}.print_float32x4_t'.format(__name__))
+    # debugger.HandleCommand('type summary add -P float64x2_t -F {:s}.print_float64x2_t'.format(__name__))
 
 def MyRectSummary(value, internal_dict):
     top = value.GetChildMemberWithName("top").GetValueAsSigned()
