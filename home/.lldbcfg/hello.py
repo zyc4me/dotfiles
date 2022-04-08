@@ -11,8 +11,28 @@ def your_first_command(debugger, command, result, internal_dict):
 
 def print_int8x8_t(valobj, internal_dict):
     val = valobj.GetChildMemberWithName("val")
+    # val 是 SBValue 类型
+    
+    #res = 'N = ' + str(val.GetChildMemberWithName("N")) # None
+    #res = str(val.EvaluateExpression("1 + 3"))
+    
+    #res = str(val.GetType())
+    #res = str(val.CreateValueFromExpression("val", "what()")) # ok. what()是一个普通函数
+    #res = str(val.CreateValueFromExpression("N", "what()")) # ok. what()是一个普通函数
+    #res = str(val.CreateValueFromExpression("N", "this->size()")) # 失败。 could not result type
+    #res = str(valobj.CreateValueFromExpression("N", "this->size()")) # 失败。 could not result type
+    #res = str(valobj.CreateValueFromExpression("N", ".size()")) # 失败。 could not result type
+    #res = str(valobj.CreateValueFromExpression("N", "self.size()")) # 失败。 could not result type
+    #N = valobj.CreateValueFromExpression("N", valobj.name + ".size()") # SBValue
+    #N = valobj.CreateValueFromExpression("N", valobj.name + ".size()").GetValueAsSigned(0) # int
+    #N = valobj.EvaluateExpression(valobj.name + ".size()").GetValue() # OK
+    # N = valobj.EvaluateExpression("size()").GetValue() # str
+    # N = valobj.EvaluateExpression("size()").GetValueAsUnsigned() # int
+    #res = str(N)
+
+    N = valobj.EvaluateExpression("size()").GetValueAsUnsigned()
     res = '('
-    for i in range(8):
+    for i in range(N):
         if(i>0): res += ', '
         res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
     res += ')'
@@ -30,6 +50,8 @@ def print_int16x4_t(valobj, internal_dict):
 def print_int32x2_t(valobj, internal_dict):
     val = valobj.GetChildMemberWithName("val")
     res = '('
+    #x = valobj.EvaluateExpression("size()") # 奇怪了，为什么只能 print_int8x8_t 函数中能够成功获取N，其他函数都无法获取？？
+    #res = str(type(x))
     for i in range(2):
         if(i>0): res += ', '
         res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
