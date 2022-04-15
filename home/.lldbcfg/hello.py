@@ -7,23 +7,25 @@ def your_first_command(debugger, command, result, internal_dict):
     print("hello world!")
 
 def get_arch():
-    return lldb.debugger.GetSelectedTarget().triple.split('-')[0];
+    if (lldb.debugger is not None and lldb.debugger.GetSelectedTarget().triple is not None):
+        return lldb.debugger.GetSelectedTarget().triple.split('-')[0]
+    return None
 
 def is_i386():
     arch = get_arch()
-    if arch[0:1] == "i":
+    if arch is not None and arch[0:1] == "i":
         return True
     return False
 
 def is_x64():
     arch = get_arch()
-    if arch == "x86_64":
+    if arch is not None and arch == "x86_64":
         return True
     return False
 
 def is_arm():
     arch = get_arch()
-    if "arm" in arch:
+    if arch is not None and "arm" in arch:
         return True
     return False
 
