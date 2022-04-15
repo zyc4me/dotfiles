@@ -155,6 +155,11 @@ if [ -f ~/.pathrc ]; then
     . ~/.pathrc
 fi
 
+# Xmake
+if [ -f ~/.xmake/profile ]; then
+    . ~/.xmake/profile
+fi
+
 #---------
 # => Jump Directory (z)
 #---------
