@@ -24,21 +24,21 @@
 
 ; 设置 C/C++ 风格， 覆盖默认风格。
 ; [emacs使用google-c-style](https://blog.csdn.net/csfreebird/article/details/9250989)
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/cpp"))
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+;(add-to-list 'load-path (expand-file-name "~/.emacs.d/cpp"))
+;(require 'google-c-style)
+;(add-hook 'c-mode-common-hook 'google-set-c-style)
+;(add-hook 'c-mode-common-hook 'google-make-newline-indent)
 
 ; 设置回车键的功能。不做全局设置，仅对 C/C++ 模式起作用。
 ; (global-set-key (kbd "C-<return>") "\C-j \M-x indent-relative")
 ; (add-hook 'c++-mode-hook (kbd "<return>") 'newline)
 
-(defun my-run-some-commands ()
-  "Run `some-command' and `some-other-command' in sequence."
-  (interactive)
-  (newline)
-  ;(indent-rigidly-left)
-  (indent-relative))
+;(defun my-run-some-commands ()
+;  "Run `some-command' and `some-other-command' in sequence."
+;  (interactive)
+;  (newline)
+;  ;(indent-rigidly-left)
+;  (indent-relative))
 
 ;(global-set-key (kbd "C-c") 'my-run-some-commands)
 ;(add-hook 'c++-mode-hook (kbd "<return>") 'my-run-some-commands)
@@ -79,3 +79,26 @@
 ; https://wilkesley.org/~ian/xah/emacs/emacs_set_backup_into_a_directory.html
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
+
+
+;;;;;;;;;; C/C++ 代码缩进。 感觉一时半会儿配置不好了， 和现代编辑器的风格就完全不一样
+; 缩进的全局配置。  TODO： makefile 文件怎么办？
+(setq-default  tab-width 4) ;; 表示一个 tab 4个字符宽
+(setq-default indent-tabs-mode nil) ;; nil 表示将 tab 替换成空格
+
+
+; C++ 代码缩进， 自行定制版
+; https://xhcoding.cn/post/20211222180104-emacs%E7%BC%A9%E8%BF%9B%E8%AE%BE%E7%BD%AE/
+(c-add-style "my-style"
+             ;'("stroustrup"
+             '("awk"
+               (indent-tabs-mode . nil)
+               (c-basic-offset . 4)
+               (c-offsets-alist
+                (innamespace . -))
+               ))
+
+;(add-to-list 'c-default-style '(c++-mode . "my-style"))
+;(add-to-list 'c-default-style '(c-mode . "my-style"))
+
+(add-hook 'c-mode-common-hook 'my-style)
