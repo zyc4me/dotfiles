@@ -1,3 +1,5 @@
+(load "~/.emacs.d/init_package.el")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -6,12 +8,12 @@
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(current-language-environment "UTF-8")
- '(custom-enabled-themes nil)
+ ;'(custom-enabled-themes nil)
  '(display-time-mode t)
- '(fringe-mode (quote (nil . 0)) nil (fringe))
+ '(fringe-mode '(nil . 0) nil (fringe))
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
- '(package-selected-packages (quote (xr magit)))
+ '(package-selected-packages '(vscode-dark-plus-theme xr magit))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -53,23 +55,27 @@
 
 ; 自动补全结束的括号、引号
 ; https://codeantenna.com/a/QE1PAzWlBF
+; 感觉不太好用。。
 ;;             C  mode
-(add-hook 'c-mode-hook 'hs-minor-mode)
-(add-hook 'c++-mode-hook 'hs-minor-mode)
-(defun my-c-mode-auto-pair ()
-  (interactive)
-  (make-local-variable 'skeleton-pair-alist)
-  (setq skeleton-pair-alist  '(
-    (?` ?` _ "''")
-    (?\( ?  _ ")")
-    (?\[ ?  _ "]")
-    (?{ \n > _ \n ?} >)))
-  (setq skeleton-pair t)
-  (local-set-key (kbd "(") 'skeleton-pair-insert-maybe)
-  (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)
-  (local-set-key (kbd "`") 'skeleton-pair-insert-maybe)
-  (local-set-key (kbd "[") 'skeleton-pair-insert-maybe))
-(add-hook 'c-mode-hook 'my-c-mode-auto-pair)
-(add-hook 'c++-mode-hook 'my-c-mode-auto-pair)
+; (add-hook 'c-mode-hook 'hs-minor-mode)
+; (add-hook 'c++-mode-hook 'hs-minor-mode)
+; (defun my-c-mode-auto-pair ()
+;   (interactive)
+;   (make-local-variable 'skeleton-pair-alist)
+;   (setq skeleton-pair-alist  '(
+;     (?` ?` _ "''")
+;     (?\( ?  _ ")")
+;     (?\[ ?  _ "]")
+;     (?{ \n > _ \n ?} >)))
+;   (setq skeleton-pair t)
+;   (local-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+;   (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+;   (local-set-key (kbd "`") 'skeleton-pair-insert-maybe)
+;   (local-set-key (kbd "[") 'skeleton-pair-insert-maybe))
+; (add-hook 'c-mode-hook 'my-c-mode-auto-pair)
+; (add-hook 'c++-mode-hook 'my-c-mode-auto-pair)
 
-
+; 不要生成备份文件
+; https://wilkesley.org/~ian/xah/emacs/emacs_set_backup_into_a_directory.html
+(setq make-backup-files nil) ; stop creating backup~ files
+(setq auto-save-default nil) ; stop creating #autosave# files

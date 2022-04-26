@@ -35,9 +35,9 @@ link_file_list()
     link_file  ~/.my_config/home/.gitconfig ~/.gitconfig
     link_file  ~/.my_config/home/.gitmessage ~/.gitmessage
     link_file  ~/.my_config/home/.tmux.conf ~/.tmux.conf
-    link_file  ~/.my_config/home/.zshrc ~/.zshrc
+    #link_file  ~/.my_config/home/.zshrc ~/.zshrc
     link_file  ~/.my_config/home/.npmrc ~/.npmrc
-    #link_file  ~/.my_config/home/.emacs ~/.emacs
+    link_file  ~/.my_config/home/.emacs ~/.emacs
     link_file  ~/.my_config/home/.aliasrc ~/.aliasrc
     mkdir -p ~/.cargo
     link_file ~/.my_config/home/.cargo/config ~/.cargo/config
@@ -65,7 +65,7 @@ link_directory_list()
 {
     link_directory ~/.my_config/home/.cgdb ~/.cgdb
     link_directory ~/.my_config/home/.pip ~/.pip
-    link_directory ~/.my_config/home/.zsh ~/.zsh
+    #link_directory ~/.my_config/home/.zsh ~/.zsh # TODO: if macOSX, don't use this. otherwise, use this.
     link_directory ~/.my_config/home/.gradle ~/.gradle
     link_directory ~/.my_config/home/.emacs.d ~/.emacs.d
     link_directory ~/.my_config/home/.lldbcfg ~/.lldbcfg
