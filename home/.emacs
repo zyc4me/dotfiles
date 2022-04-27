@@ -8,19 +8,37 @@
  '(blink-cursor-mode nil)
  '(column-number-mode t)
  '(current-language-environment "UTF-8")
- ;'(custom-enabled-themes nil)
  '(display-time-mode t)
  '(fringe-mode '(nil . 0) nil (fringe))
  '(global-display-line-numbers-mode t)
  '(inhibit-startup-screen t)
  '(package-selected-packages '(vscode-dark-plus-theme xr magit))
  '(show-paren-mode t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+
+;; 设置字体
+;;system-type is a variable defined in `C source code'.
+;; 判断系统的方法是读取 system-type 变量 (https://stackoverflow.com/questions/1817257/how-to-determine-operating-system-in-elisp)
+; Its value is darwin
+
+; Documentation:
+; Value is symbol indicating type of operating system you are using.
+; Special values:
+;   `gnu'         compiled for a GNU Hurd system.
+;   `gnu/linux'   compiled for a GNU/Linux system.
+;   `darwin'      compiled for Darwin (GNU-Darwin, Mac OS X, ...).
+;   `ms-dos'      compiled as an MS-DOS application.
+;   `windows-nt'  compiled as a native W32 application.
+;   `cygwin'      compiled using the Cygwin library.
+; Anything else indicates some sort of Unix system.
+(if (eq system-type 'gnu/linux)
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(default ((t (:family "YaHei Ubuntu Mono" :foundry "DAMA" :slant normal :weight normal :height 107 :width normal)))))
+)
 
 ; 设置 C/C++ 风格， 覆盖默认风格。
 ; [emacs使用google-c-style](https://blog.csdn.net/csfreebird/article/details/9250989)
