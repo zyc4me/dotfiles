@@ -48,7 +48,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Git wrapper, use :Git add :Git commit :Git diff  in vim
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 
 " A git-lens like plugin
 " Plug 'APZelos/blamer.nvim'
@@ -150,7 +150,7 @@ Plug 'tpope/vim-commentary'
 Plug 'https://gitee.com/zgpio/vimtex'
 
 "some utility functions, required by other plugins
-Plug 'vim-scripts/tlib'
+"Plug 'vim-scripts/tlib'
 
 " Vim plugin to sort python imports using isort
 " Run :Isort
