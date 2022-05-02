@@ -33,7 +33,8 @@ try
     colorscheme codedark
 catch
     try
-        colorscheme gruvbox
+        "colorscheme gruvbox
+        colorscheme desert
     catch
         colorscheme peaksea
     endtry

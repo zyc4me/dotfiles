@@ -38,22 +38,22 @@ Plug '~/.vim_runtime/sources_forked/vim-peepopen'
 " - github repos
 
 " a universal set of defaults that (hopefully) everyone can agree on.
-Plug 'tpope/vim-sensible'
+"Plug 'tpope/vim-sensible'
+Plug 'https://gitee.com/mirrors_tpope/vim-sensible'
 
 " editorconfig
-Plug 'editorconfig/editorconfig-vim'
+"Plug 'editorconfig/editorconfig-vim'
+Plug 'https://gitee.com/mirrors_editorconfig/editorconfig-vim'
 
 " file explorer by nerdtree
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'scrooloose/nerdtree'
+Plug 'https://gitee.com/mirrors/nerdtree'
+
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'https://gitee.com/mirrors_Xuyuanp/nerdtree-git-plugin'
 
 " Git wrapper, use :Git add :Git commit :Git diff  in vim
 "Plug 'tpope/vim-fugitive'
-
-" A git-lens like plugin
-" Plug 'APZelos/blamer.nvim'
-
-Plug 'zivyangll/git-blame.vim'
 
 
 " a git plugin that show git diff markers in the sign column
@@ -63,14 +63,19 @@ Plug 'zivyangll/git-blame.vim'
 " vim-signify serves as an alternative to vim-gitgutter
 " Run :SignifyDiff for comparison in two columns
 if has('nvim') || has('patch-8.0.902')
-  Plug 'mhinz/vim-signify'
+  "Plug 'mhinz/vim-signify'
+  Plug 'https://gitee.com/mirrors_mhinz/vim-signify'
 else
-  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+  "Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+  Plug 'https://gitee.com/mirrors_mhinz/vim-signify', {'branch': 'legacy'}
 endif
+
+" A git-lens like plugin
+" Plug 'APZelos/blamer.nvim'
 
 " git blame plugin
 " Run :GitBlame for detail
-Plug 'zivyangll/git-blame.vim'
+"Plug 'zivyangll/git-blame.vim'
 
 " ale
 ""Plug 'w0rp/ale'  the original repo contains a large image. don't use it
@@ -78,15 +83,19 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'https://gitee.com/aczz/ale', {'branch': 'fallback'}
 
 " lightline and lightline support for ale
-Plug 'maximbaz/lightline-ale'
-Plug 'itchyny/lightline.vim'
+"Plug 'maximbaz/lightline-ale'
+Plug 'https://gitee.com/samw/lightline-ale'
+"Plug 'itchyny/lightline.vim'
+Plug 'https://gitee.com/mirrors_itchyny/lightline.vim'
 
 " Parentheses related
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
+Plug 'https://gitee.com/mirrors_jiangmiao/auto-pairs'
 "Plug 'tpope/vim-unimpaired'
 
 " Rainbow Parentheses Improved, slightly highlight for parenthese
-Plug 'luochen1990/rainbow'
+"Plug 'luochen1990/rainbow'
+Plug 'https://gitee.com/mirrors_luochen1990/rainbow'
 
 " provides insert mode auto-completion for quotes, parens, brackets, etc
 "Plug 'raimondi/delimitmate'
@@ -96,22 +105,28 @@ Plug 'luochen1990/rainbow'
 Plug 'https://gitee.com/mirrors/Polyglot'
 
 " run :Goyo to into Distraction-free writing mode
-Plug 'junegunn/goyo.vim'
-Plug 'amix/vim-zenroom2'
+"Plug 'junegunn/goyo.vim'
+Plug 'https://gitee.com/mirrors_junegunn/goyo.vim'
+"Plug 'amix/vim-zenroom2'
+Plug 'https://gitee.com/mirrors_amix/vim-zenroom2'
 
 " YouCompleteMe, for path completion and function/variable/class completions
 " Note: this repo contains a bunch of submodules, time consuming when clone.
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py'  }
 
 " color schemes
-Plug '~/.vim_runtime/sources_forked/peaksea'
-Plug 'morhetz/gruvbox'
+"Plug '~/.vim_runtime/sources_forked/peaksea'
+"Plug 'morhetz/gruvbox'
 "Plug 'vim-scripts/mayansmoke'
-Plug 'tomasiser/vim-code-dark'
+"Plug 'tomasiser/vim-code-dark'
+Plug 'https://gitee.com/mirrors_tomasiser/vim-code-dark'
 
 " c++ related
-Plug 'rhysd/vim-clang-format'
-Plug 'octol/vim-cpp-enhanced-highlight'
+"Plug 'rhysd/vim-clang-format'
+Plug 'https://gitee.com/mirrors_rhysd/vim-clang-format'
+
+"Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'https://gitee.com/mirrors_octol/vim-cpp-enhanced-highlight'
 " gray out inactive code region
 "Plug 'mphe/grayout.vim'
 
@@ -120,10 +135,10 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 "Plug 'pboettch/vim-cmake-syntax'
 
 " opencl(.cl) highlight
-Plug 'petRUShka/vim-opencl'
+"Plug 'petRUShka/vim-opencl'
 
 " compute shader (.comp / .vert / .tesc / .tese / .geom / .frag) highlight
-Plug 'tikhomirov/vim-glsl'
+"Plug 'tikhomirov/vim-glsl'
 
 " terminal helper
 " 由于污染了 Home 和 End 键， 先不用它了。
@@ -132,22 +147,24 @@ Plug 'tikhomirov/vim-glsl'
 
 "Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 " Run :CtrlP for simple usage
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'https://gitee.com/xiaochengchuang/ctrlp.vim'
 
 " for compatibility, install this plugin
 "Plug 'tpope/vim-markdown'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
+Plug 'https://gitee.com/mirrors_plasticboy/vim-markdown'
 
 " mark current line or a region of code as comment
 " Run :commentary to comment current line
 " Use visual mode to select region, then use `gcc` to comment this region
-Plug 'tpope/vim-commentary'
+"Plug 'tpope/vim-commentary'
+Plug 'https://gitee.com/mirrors_tpope/vim-commentary'
 
 " LaTex
 "Plug 'lervag/vimtex'
 " Too slow to download. Use a mirror.
-Plug 'https://gitee.com/zgpio/vimtex'
+"Plug 'https://gitee.com/zgpio/vimtex'
 
 "some utility functions, required by other plugins
 "Plug 'vim-scripts/tlib'
@@ -169,14 +186,15 @@ Plug 'https://gitee.com/zgpio/vimtex'
 "   two   = 2
 "   three = 3
 "   four  = 4
-Plug 'godlygeek/tabular'
+"Plug 'godlygeek/tabular'
 
 " Brings physics-based smooth scrolling to the Vim world!
-Plug 'yuttie/comfortable-motion.vim'
+"Plug 'yuttie/comfortable-motion.vim'
+Plug 'https://gitee.com/mirrors_yuttie/comfortable-motion.vim'
 
 
 " Vim plugin for the Perl module / CLI script 'ack'
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 
 
 """""""""""""" 
@@ -190,22 +208,29 @@ Plug 'mileszs/ack.vim'
 "Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 
-Plug 'corntrace/bufexplorer'
+"Plug 'corntrace/bufexplorer'
+Plug 'https://gitee.com/vim_runtime_plugins/bufexplorer'
 
-Plug 'vim-scripts/mru.vim'
-Plug 'amix/open_file_under_cursor.vim'
+"Plug 'vim-scripts/mru.vim'
+Plug 'https://gitee.com/vim_runtime_plugins/mru.vim'
 
+"Plug 'amix/open_file_under_cursor.vim'
+Plug 'https://gitee.com/vim_runtime_plugins/open_file_under_cursor.vim'
 
-Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'https://gitee.com/snowindz/vim-addon-mw-utils'
 
-Plug 'terryma/vim-expand-region'
+"Plug 'terryma/vim-expand-region'
+Plug 'https://gitee.com/mirrors_terryma/vim-expand-region'
 
-Plug 'michaeljsmith/vim-indent-object'
+"Plug 'michaeljsmith/vim-indent-object'
+Plug 'https://gitee.com/mirrors_michaeljsmith/vim-indent-object'
 
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'https://gitee.com/brightmind/vim-multiple-cursors'
 
-Plug 'honza/vim-snippets'
-
+"Plug 'honza/vim-snippets'
+Plug 'https://gitee.com/HyperChao/vim-snippets'
 
 
 " Unused plugins now
@@ -640,8 +665,12 @@ nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 " LSP configurations
 " Note: there are still many knowns to know. Try them!
 " https://jonasdevlieghere.com/vim-lsp-clangd/
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+"Plug 'prabirshrestha/async.vim'
+Plug 'https://gitee.com/mirrors_prabirshrestha/async.vim'
+
+"Plug 'prabirshrestha/vim-lsp'
+Plug 'https://gitee.com/mirrors_prabirshrestha/vim-lsp'
+
 Plug 'ajh17/vimcompletesme'
 
 
