@@ -8,7 +8,9 @@ def get_mirror_site(dist_num_str='16.04', site_name='aliyun'):
         'tuna': 'https://mirrors.tuna.tsinghua.edu.cn',
         '163': 'http://mirrors.163.com',
         'zju': 'http://mirrors.zju.edu.cn',
-        'huawei': 'http://mirrors.huaweicloud.com'
+        'huawei': 'http://mirrors.huaweicloud.com',
+        'lzu': 'http://mirror.lzu.edu.cn',
+        'sjtu': 'https://mirrors.sjtug.sjtu.edu.cn'
     }
 
     site_url = site_mp[site_name]
@@ -25,6 +27,7 @@ def get_mirror_site(dist_num_str='16.04', site_name='aliyun'):
         '20.10': 'groovy',
         '21.04': 'hirsute',
         '21.10': 'impish',
+        '22.04': 'jammy'
     }
 
     dist_name = dist_mp[dist_num_str]
@@ -49,5 +52,7 @@ def get_mirror_site(dist_num_str='16.04', site_name='aliyun'):
         print(mirror_url)
 
 if __name__ == '__main__':
-    get_mirror_site(dist_num_str='20.04', site_name='huawei')
+    # Actually, the most simple method is to use vim's replace:
+    # :%s/archive.ubuntu.com/mirrors.huaweicloud.com/g
+    get_mirror_site(dist_num_str='22.04', site_name='huawei')
 
