@@ -1,7 +1,10 @@
 settings set target.x86-disassembly-flavor intel
 
-#type format add -f decimal int8_t
-#type format add -f unsigned decimal uint8_t
+# 用整数类型显示 int8_t, uint8_t， 替代默认的十六进制
+type format add -f decimal int8_t
+type format add -f unsigned decimal uint8_t
+
+# NEON 相关的数据类型打印
 command script import ~/.lldbcfg/my_print.py
 
 #command script import ~/.lldbcfg/debugvis.py

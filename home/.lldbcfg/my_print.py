@@ -1,15 +1,15 @@
 # coding: utf-8
-# 1. 打印 NEON 向量寄存器类型
-#   - 远程调试 android， 或在 Apple M1 等 ARM 芯片电脑上调试时： lldb 原生支持打印 neon 向量寄存器内容
-#   - neon_sim 模拟库?
-#   - NEON_2_SSE.h 模拟库?
 #
-# 2. 打印 NEON 向量寄存器相对应的 C数组类型
+# 1. 打印 NEON 向量寄存器相对应的 C数组类型
+#   (用于调试阶段打印 int8_t[8] 形式的数组， 替代代码中手动加 std::cout log 的繁琐方式)
 #   - [x] uint8_t[8], int8_t[8], uint8_t[16], int8_t[16]: 定制为按uint/int打印
 #   - [x] 其他类型： lldb 本身可以显示
 #
-# 用于调试阶段打印 int8_t[8] 形式的数组， 替代代码中手动加 std::cout log 的繁琐方式
-# parray w_a0
+# 2. 打印 NEON 向量寄存器类型
+#   - 远程调试 android， 或在 Apple M1 等 ARM 芯片电脑上调试时： lldb 原生支持打印 neon 向量寄存器内容
+#   - neon_sim 模拟库
+#   - NEON_2_SSE.h 模拟库？
+#
 
 import lldb
 
@@ -265,12 +265,13 @@ def print_float64x2_t(valobj, internal_dict):
     return res
 
 def __lldb_init_module(debugger, internal_dict):
-    # C array types. only 4 types required.
+    ### C array types. only 4 types required.
     debugger.HandleCommand('type summary add -P uint8_t[8] -F {:s}.print_uint8_array_len8'.format(__name__))
     debugger.HandleCommand('type summary add -P int8_t[8] -F {:s}.print_int8_array_len8'.format(__name__))
     debugger.HandleCommand('type summary add -P uint8_t[16] -F {:s}.print_uint8_array_len16'.format(__name__))
     debugger.HandleCommand('type summary add -P int8_t[16] -F {:s}.print_int8_array_len16'.format(__name__))
 
+    ### NEON Vector Registers
     # D Vector Registers. 64 bit long
     debugger.HandleCommand('type summary add -P int8x8_t -F {:s}.print_int8x8_t'.format(__name__))
     debugger.HandleCommand('type summary add -P int16x4_t -F {:s}.print_int16x4_t'.format(__name__))
