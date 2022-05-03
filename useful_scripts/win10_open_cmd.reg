@@ -2,7 +2,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here]
 
-@="打开cmd"
+@="open cmd"
 "Icon"="cmd.exe"
 
 
@@ -14,7 +14,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt]
 
-@="打开cmd"
+@="open cmd"
 
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt\command]
@@ -25,7 +25,7 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell\cmd_here]
 
-@="打开cmd"
+@="open cmd"
 "Icon"="cmd.exe"
 
 
