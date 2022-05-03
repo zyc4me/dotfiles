@@ -10,9 +10,10 @@ deb https://mirrors.aliyun.com/ubuntu/ xenial-security main restricted universe 
 EOF
 
     apt update -y
-
-    apt install -y sudo vim git curl aptitude apt-file apt-show-versions autoconf automake libtool openssh-server subversion tmux enca tig samba silversearcher-ag zsh ncdu tree dos2unix ninja-build
-    apt install libncurses5-dev htop iotop xorg openbox wget
+    
+    # basic edit
+    apt install -y sudo aptitude vim make autoconf automake libtool wget curl openssh-server gcc g++ ninja-build git apt-file apt-show-versions subversion tmux enca tig silversearcher-ag zsh tree dos2unix
+    apt install libncurses5-dev htop iotop xorg openbox ncdu samba
 
     echo "you may need this:"
     echo "rm /var/lib/dpkg/info/apt-show-versions.*"
