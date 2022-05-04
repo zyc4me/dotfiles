@@ -264,6 +264,60 @@ def print_float64x2_t(valobj, internal_dict):
     res += ')'
     return res
 
+def cv_mat_type_to_string(depth, channels):
+    CV_8U = 0
+    CV_8S = 1
+    CV_16U = 2
+    CV_16S = 3
+    CV_32S = 4
+    CV_32F = 5
+    CV_64F = 6
+    CV_16F = 7
+
+    r = ""
+    if (depth == CV_8U): r = "8U"
+    elif (depth == CV_8S): r = "8S"
+    elif (depth == CV_16U): r = "16U"
+    elif (depth == CV_16S): r = "16S"
+    elif (depth == CV_32S): r = "32S"
+    elif (depth == CV_32F): r = "32F"
+    elif (depth == CV_64F): r = "64F"
+    elif (depth == CV_16F): r = "16F"
+    else: r = "User"
+
+    r += "C{:d}".format(channels)
+
+    return r
+
+def print_cv_Mat(valobj, internal_dict):
+    rows = valobj.GetChildMemberWithName('rows').GetValueAsSigned(0)
+    cols = valobj.GetChildMemberWithName('cols').GetValueAsSigned(0)
+    channels = valobj.EvaluateExpression("channels()").GetValueAsSigned()
+    depth = valobj.EvaluateExpression("depth()").GetValueAsSigned()
+    typestr = cv_mat_type_to_string(depth, channels)
+    data = valobj.GetChildMemberWithName('data').GetValue()
+    datastart = valobj.GetChildMemberWithName('datastart').GetValue()
+    step1 = valobj.EvaluateExpression("step1(0)").GetValueAsSigned()
+    res = 'rows={:d}, cols={:d}, channels={:d}, typestr={:s}, data={:s}, datastart={:s}, step1={:d}'.format(
+       rows, cols, channels, typestr, str(data), str(datastart), step1
+    )
+    return res
+
+def print_cv_Matx(valobj, internal_dict):
+    # rows = valobj.GetChildMemberWithName('rows').GetValueAsSigned(0)
+    # cols = valobj.GetChildMemberWithName('cols').GetValueAsSigned(0)
+    # channels = valobj.GetChildMemberWithName('channels').GetValueAsSigned(0)
+
+    # rows = 2
+    # cols = 5
+    # channels = 7
+    #res = 'rows={:d}, cols={:d}, channels={:d}'.format(rows, cols, channels)
+    res = 'hohoho'
+    return res
+
+    # val = valobj.GetChildMemberWithName('val').GetValue()
+    # return str(val)
+
 def __lldb_init_module(debugger, internal_dict):
     ### C array types. only 4 types required.
     debugger.HandleCommand('type summary add -P uint8_t[8] -F {:s}.print_uint8_array_len8'.format(__name__))
@@ -301,3 +355,11 @@ def __lldb_init_module(debugger, internal_dict):
     # debugger.HandleCommand('type summary add -P float16x8_t -F {:s}.print_float16x8_t'.format(__name__))
     debugger.HandleCommand('type summary add -P float32x4_t -F {:s}.print_float32x4_t'.format(__name__))
     debugger.HandleCommand('type summary add -P float64x2_t -F {:s}.print_float64x2_t'.format(__name__))
+
+    # cv::Mat
+    debugger.HandleCommand('type summary add -P cv::Mat -F {:s}.print_cv_Mat'.format(__name__))
+
+    # cv::Matx, still buggy
+    # This binding can print 9 'hohoho' if the formatter returns 'hohoho', for the case `cv::Mat<int, 3, 3> mat = ...` is called.
+    # But when call `cv::Mat<float, 3, 3>`, the formatter is not called. Wierd.
+    #debugger.HandleCommand('type summary add -P template<typename _Tp, int m, int n> cv::Matx<_Tp, m, n> -F {:s}.print_cv_Matx'.format(__name__))
