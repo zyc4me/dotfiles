@@ -144,6 +144,15 @@ def print_uint32x2_t(valobj, internal_dict):
     res += ')'
     return res
 
+def print_int64x1_t(valobj, internal_dict):
+    val = get_val_from_valobj(valobj)
+    res = '('
+    for i in range(1):
+        if (i > 0): res += ', '
+        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+    res += ')'
+    return res
+
 def print_uint64x1_t(valobj, internal_dict):
     val = get_val_from_valobj(valobj)
     res = '('
