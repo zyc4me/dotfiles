@@ -382,6 +382,79 @@ def print_tv_Mat(valobj, internal_dict):
     )
     return res
 
+def get_asvl_fmt_str(fmt):
+    ASVL_PAF_RGB24_B8G8R8 = 0x201
+    ASVL_PAF_RGB24_R8G8B8 = 0x204
+
+    ASVL_PAF_GRAY = 0x701
+
+    ASVL_PAF_NV12 = 0x801
+    ASVL_PAF_NV21 = 0x802
+
+    # TODO: Add more types here
+
+    if (fmt == ASVL_PAF_RGB24_B8G8R8):
+        return 'ASVL_PAF_RGB24_B8G8R8'
+    elif (fmt == ASVL_PAF_RGB24_R8G8B8):
+        return 'ASVL_PAF_RGB24_R8G8B8'
+    elif (fmt == ASVL_PAF_GRAY):
+        return 'ASVL_PAF_GRAY'
+    elif (fmt == ASVL_PAF_NV12):
+        return 'ASVL_PAF_NV12'
+    elif (fmt == ASVL_PAF_NV21):
+        return 'ASVL_PAF_NV21'
+    else:
+        return 'not configured yet or unknown'
+
+def print_asvl(valobj, internal_dict):
+    fmt = valobj.GetChildMemberWithName('u32PixelArrayFormat').GetValueAsUnsigned(0)
+    width = valobj.GetChildMemberWithName('i32Width').GetValueAsSigned()
+    height = valobj.GetChildMemberWithName('i32Height').GetValueAsSigned()
+    planes = [
+        valobj.EvaluateExpression('ppu8Plane[0]').GetValueAsUnsigned(0),
+        valobj.EvaluateExpression('ppu8Plane[1]').GetValueAsUnsigned(0),
+        valobj.EvaluateExpression('ppu8Plane[2]').GetValueAsUnsigned(0),
+        valobj.EvaluateExpression('ppu8Plane[3]').GetValueAsUnsigned(0)
+    ]
+    pitches = [
+        valobj.EvaluateExpression('pi32Pitch[0]').GetValueAsSigned(-233),
+        valobj.EvaluateExpression('pi32Pitch[1]').GetValueAsSigned(-233),
+        valobj.EvaluateExpression('pi32Pitch[2]').GetValueAsSigned(-233),
+        valobj.EvaluateExpression('pi32Pitch[3]').GetValueAsSigned(-233)
+    ]
+    fmt_str = get_asvl_fmt_str(fmt)
+    res = 'fmt={:d}({:s}), width={:d}, height={:d}\nplanes=(0x{:x}, 0x{:x}, 0x{:x}, 0x{:x})\npitches=({:d}, {:d}, {:d}, {:d})'.format(
+        fmt, fmt_str, width, height,
+        planes[0], planes[1], planes[2], planes[3],
+        pitches[0], pitches[1], pitches[2], pitches[3]
+    )
+    return res
+
+def print_asvl_pointer(valobj, internal_dict):
+    valobj = valobj.Dereference()
+    fmt = valobj.GetChildMemberWithName('u32PixelArrayFormat').GetValueAsUnsigned(0)
+    width = valobj.GetChildMemberWithName('i32Width').GetValueAsSigned()
+    height = valobj.GetChildMemberWithName('i32Height').GetValueAsSigned()
+    planes = [
+        valobj.EvaluateExpression('ppu8Plane[0]').GetValueAsUnsigned(0),
+        valobj.EvaluateExpression('ppu8Plane[1]').GetValueAsUnsigned(0),
+        valobj.EvaluateExpression('ppu8Plane[2]').GetValueAsUnsigned(0),
+        valobj.EvaluateExpression('ppu8Plane[3]').GetValueAsUnsigned(0)
+    ]
+    pitches = [
+        valobj.EvaluateExpression('pi32Pitch[0]').GetValueAsSigned(-233),
+        valobj.EvaluateExpression('pi32Pitch[1]').GetValueAsSigned(-233),
+        valobj.EvaluateExpression('pi32Pitch[2]').GetValueAsSigned(-233),
+        valobj.EvaluateExpression('pi32Pitch[3]').GetValueAsSigned(-233)
+    ]
+    asvl_fmt_str = 'TODO'
+    res = 'fmt={:d}({:s}), width={:d}, height={:d}\nplanes=({:d}, {:d}, {:d}, {:d})\npitches=({:d}, {:d}, {:d}, {:d})'.format(
+        fmt, asvl_fmt_str, width, height,
+        planes[0], planes[1], planes[2], planes[3],
+        pitches[0], pitches[1], pitches[2], pitches[3]
+    )
+    return res
+
 def __lldb_init_module(debugger, internal_dict):
     ### C array types. only 4 types required.
     debugger.HandleCommand('type summary add -P uint8_t[8] -F {:s}.print_uint8_array_len8'.format(__name__))
@@ -436,3 +509,9 @@ def __lldb_init_module(debugger, internal_dict):
 
     # tv::Mat
     debugger.HandleCommand('type summary add -P tv::Mat -F {:s}.print_tv_Mat'.format(__name__))
+
+    # ASVLOFFSCREEN.  -p for --skip-pointers, -r for --skip-references
+    debugger.HandleCommand('type summary add -P ASVLOFFSCREEN -p -r -F {:s}.print_asvl'.format(__name__))
+    
+    # ASVLOFFSCREEN*
+    debugger.HandleCommand('type summary add -P ASVLOFFSCREEN* -F {:s}.print_asvl_pointer'.format(__name__))
