@@ -340,12 +340,33 @@ def print_tv_Point(valobj, internal_dict):
     # y = valobj.GetChildMemberWithName('y').GetValueAsSigned()
     # As work-around, we use `val`.
     #
-    x = valobj.EvaluateExpression("val[0]").GetValue()
-    y = valobj.EvaluateExpression("val[1]").GetValue()
-    res = '(x={:s}, y={:s})'.format(x, y)
+    # Not working
+    # val = valobj.GetChildMemberWithName('val')
+    # x = val.GetChildAtIndex(0).GetValueAsSigned(-233)
+    # y = val.GetChildAtIndex(1).GetValueAsSigned(-233)
+    #
+    # works. Wierd
+    x = valobj.EvaluateExpression("val[0]").GetValueAsSigned(-233)
+    y = valobj.EvaluateExpression("val[1]").GetValueAsSigned(-233)
+    res = '(x={:d}, y={:d})'.format(x, y)
     return res
 
 def print_tv_Size(valobj, internal_dict):
+    """
+    tv::Mat src(130, 250, TV_8UC3);
+    tv::Size ssize = src.size();
+    """
+
+    # val = valobj.GetChildMemberWithName('val')
+    # width = val.GetChildAtIndex(0).GetValueAsSigned(-233)
+    # height = val.GetChildAtIndex(1).GetValueAsSigned(-233)
+    """
+    (lldb) p ssize
+    (tv::Size) $10 = (width=-233, height=-233)
+    (lldb) p src.size()
+    (tv::Size) $15 = (width=-233, height=-233)
+    """
+    
     # # width = valobj.EvaluateExpression("val[0]").GetValueAsSigned(0)
     # # height = valobj.EvaluateExpression("val[1]").GetValueAsSigned(0)
     # width_val = valobj.GetChildMemberWithName('width')
@@ -356,12 +377,27 @@ def print_tv_Size(valobj, internal_dict):
     # # print("val[0]: ", valobj.EvaluateExpression("val[0]").GetValueAsSigned(0))
     # # print("val[1]: ", valobj.EvaluateExpression("val[1]").GetValueAsSigned(0))
 
-    # # width = valobj.GetChildMemberWithName('width').GetValueAsSigned()
-    # # height = valobj.GetChildMemberWithName('height').GetValueAsSigned()
-    width = valobj.EvaluateExpression("val[0]").GetValue()
-    height = valobj.EvaluateExpression("val[1]").GetValue()
-    res = '(width={:s}, height={:s})'.format(width, height)
-    #res = '(width=' + valobj.EvaluateExpression("val[0]").GetValue() + ', height=' + str(valobj.EvaluateExpression("val[1]").GetValue()) + ')'
+    """
+    p ssize
+    (tv::Size) $6 = (width=250, height=130)
+    p src.size()
+    (tv::Size) $9 = (width=0, height=0)
+    """
+    # width = valobj.EvaluateExpression('width').GetValueAsSigned()
+    # height = valobj.EvaluateExpression('height').GetValueAsSigned()
+
+    """
+    p ssize
+    (tv::Size) $6 = (width=250, height=130)
+    p src.size()
+    (tv::Size) $9 = (width=0, height=0)
+    """
+    # width = valobj.EvaluateExpression("val[0]").GetValueAsSigned()
+    # height = valobj.EvaluateExpression("val[1]").GetValueAsSigned()
+
+    #res = '(width={:d}, height={:d})'.format(width, height)
+
+    res = '(width=' + valobj.EvaluateExpression("val[0]").GetValue() + ', height=' + str(valobj.EvaluateExpression("val[1]").GetValue()) + ')'
     return res
 
 def print_tv_Mat(valobj, internal_dict):
@@ -410,52 +446,50 @@ def print_asvl(valobj, internal_dict):
     fmt = valobj.GetChildMemberWithName('u32PixelArrayFormat').GetValueAsUnsigned(0)
     width = valobj.GetChildMemberWithName('i32Width').GetValueAsSigned()
     height = valobj.GetChildMemberWithName('i32Height').GetValueAsSigned()
+    ppu8Plane = valobj.GetChildMemberWithName('ppu8Plane')
+    # NOTE: ASVLOFFSCREEN* asvl = ...; `parray 1 asvl` will give wrong result for ppu8Plane and pi32Pitch, if use `valobj.EvaluateExpression('ppu8Plane[0]').GetValueAsUnsigned(0)`
+    # Instead, use `ppu8Plane.GetChildAtIndex(0).GetValueAsUnsigned(0)` solved the problem.
     planes = [
-        valobj.EvaluateExpression('ppu8Plane[0]').GetValueAsUnsigned(0),
-        valobj.EvaluateExpression('ppu8Plane[1]').GetValueAsUnsigned(0),
-        valobj.EvaluateExpression('ppu8Plane[2]').GetValueAsUnsigned(0),
-        valobj.EvaluateExpression('ppu8Plane[3]').GetValueAsUnsigned(0)
+        # valobj.EvaluateExpression('ppu8Plane[0]').GetValueAsUnsigned(0),
+        # valobj.EvaluateExpression('ppu8Plane[1]').GetValueAsUnsigned(0),
+        # valobj.EvaluateExpression('ppu8Plane[2]').GetValueAsUnsigned(0),
+        # valobj.EvaluateExpression('ppu8Plane[3]').GetValueAsUnsigned(0)GetChildAtIndex
+        ppu8Plane.GetChildAtIndex(0).GetValueAsUnsigned(0),
+        ppu8Plane.GetChildAtIndex(1).GetValueAsUnsigned(0),
+        ppu8Plane.GetChildAtIndex(2).GetValueAsUnsigned(0),
+        ppu8Plane.GetChildAtIndex(3).GetValueAsUnsigned(0)
     ]
+    pi32Pitch = valobj.GetChildMemberWithName('pi32Pitch')
     pitches = [
-        valobj.EvaluateExpression('pi32Pitch[0]').GetValueAsSigned(-233),
-        valobj.EvaluateExpression('pi32Pitch[1]').GetValueAsSigned(-233),
-        valobj.EvaluateExpression('pi32Pitch[2]').GetValueAsSigned(-233),
-        valobj.EvaluateExpression('pi32Pitch[3]').GetValueAsSigned(-233)
+        # valobj.EvaluateExpression('pi32Pitch[0]').GetValueAsSigned(-233),
+        # valobj.EvaluateExpression('pi32Pitch[1]').GetValueAsSigned(-233),
+        # valobj.EvaluateExpression('pi32Pitch[2]').GetValueAsSigned(-233),
+        # valobj.EvaluateExpression('pi32Pitch[3]').GetValueAsSigned(-233)
+        pi32Pitch.GetChildAtIndex(0).GetValueAsSigned(-233),
+        pi32Pitch.GetChildAtIndex(1).GetValueAsSigned(-233),
+        pi32Pitch.GetChildAtIndex(2).GetValueAsSigned(-233),
+        pi32Pitch.GetChildAtIndex(3).GetValueAsSigned(-233)
     ]
     fmt_str = get_asvl_fmt_str(fmt)
-    res = 'fmt={:d}({:s}), width={:d}, height={:d}\nplanes=(0x{:x}, 0x{:x}, 0x{:x}, 0x{:x})\npitches=({:d}, {:d}, {:d}, {:d})'.format(
-        fmt, fmt_str, width, height,
-        planes[0], planes[1], planes[2], planes[3],
-        pitches[0], pitches[1], pitches[2], pitches[3]
-    )
+    contents = []
+    contents.append('{')
+    contents.append('  u32PixelArrayFormat = {:d}({:s})'.format(fmt, fmt_str))
+    contents.append('  i32Width = {:d}, i32Height = {:d}'.format(width, height))
+    contents.append('  ppu8Plane = ([0] = 0x{:x}, [1] = 0x{:x}, [2] = 0x{:x}, [3] = 0x{:x})'.format(planes[0], planes[1], planes[2], planes[3]))
+    contents.append('  pi32Pitch = ([0] = {:d}, [1] = {:d}, [2] = {:d}, [3] = {:d})'.format(pitches[0], pitches[1], pitches[2], pitches[3]))
+    contents.append('}')
+    res = '\n'.join(contents)
     return res
 
 def print_asvl_pointer(valobj, internal_dict):
-    valobj = valobj.Dereference()
-    fmt = valobj.GetChildMemberWithName('u32PixelArrayFormat').GetValueAsUnsigned(0)
-    width = valobj.GetChildMemberWithName('i32Width').GetValueAsSigned()
-    height = valobj.GetChildMemberWithName('i32Height').GetValueAsSigned()
-    planes = [
-        valobj.EvaluateExpression('ppu8Plane[0]').GetValueAsUnsigned(0),
-        valobj.EvaluateExpression('ppu8Plane[1]').GetValueAsUnsigned(0),
-        valobj.EvaluateExpression('ppu8Plane[2]').GetValueAsUnsigned(0),
-        valobj.EvaluateExpression('ppu8Plane[3]').GetValueAsUnsigned(0)
-    ]
-    pitches = [
-        valobj.EvaluateExpression('pi32Pitch[0]').GetValueAsSigned(-233),
-        valobj.EvaluateExpression('pi32Pitch[1]').GetValueAsSigned(-233),
-        valobj.EvaluateExpression('pi32Pitch[2]').GetValueAsSigned(-233),
-        valobj.EvaluateExpression('pi32Pitch[3]').GetValueAsSigned(-233)
-    ]
-    asvl_fmt_str = 'TODO'
-    res = 'fmt={:d}({:s}), width={:d}, height={:d}\nplanes=({:d}, {:d}, {:d}, {:d})\npitches=({:d}, {:d}, {:d}, {:d})'.format(
-        fmt, asvl_fmt_str, width, height,
-        planes[0], planes[1], planes[2], planes[3],
-        pitches[0], pitches[1], pitches[2], pitches[3]
-    )
+    res = '23333'
     return res
 
 def __lldb_init_module(debugger, internal_dict):
+    # Register type summary functions.
+    # NOTE: if you get wrong output, or dislike the output, disable it via:
+    #       type summary delete tv::Size
+
     ### C array types. only 4 types required.
     debugger.HandleCommand('type summary add -P uint8_t[8] -F {:s}.print_uint8_array_len8'.format(__name__))
     debugger.HandleCommand('type summary add -P int8_t[8] -F {:s}.print_int8_array_len8'.format(__name__))
@@ -502,16 +536,17 @@ def __lldb_init_module(debugger, internal_dict):
     #debugger.HandleCommand('type summary add -P template<typename _Tp, int m, int n> cv::Matx<_Tp, m, n> -F {:s}.print_cv_Matx'.format(__name__))
 
     # tv::Point
-    debugger.HandleCommand('type summary add -P tv::Point -F {:s}.print_tv_Point'.format(__name__))
-    
+    debugger.HandleCommand('type summary add -P tv::Point -C no -F {:s}.print_tv_Point'.format(__name__))
+
     # tv::Size.   NOTE: `p src.size()` won't work. Don't know why.
-    debugger.HandleCommand('type summary add -P tv::Size -F {:s}.print_tv_Size'.format(__name__))
+    debugger.HandleCommand('type summary add -P tv::Size -C no -F {:s}.print_tv_Size'.format(__name__))
 
     # tv::Mat
     debugger.HandleCommand('type summary add -P tv::Mat -F {:s}.print_tv_Mat'.format(__name__))
 
     # ASVLOFFSCREEN.  -p for --skip-pointers, -r for --skip-references
-    debugger.HandleCommand('type summary add -P ASVLOFFSCREEN -p -r -F {:s}.print_asvl'.format(__name__))
-    
-    # ASVLOFFSCREEN*
-    debugger.HandleCommand('type summary add -P ASVLOFFSCREEN* -F {:s}.print_asvl_pointer'.format(__name__))
+    #debugger.HandleCommand('type summary add -P ASVLOFFSCREEN -C no -p -r -F {:s}.print_asvl'.format(__name__))
+    debugger.HandleCommand('type summary add -P ASVLOFFSCREEN -C no -F {:s}.print_asvl'.format(__name__))
+
+    # ASVLOFFSCREEN* . Not working.
+    #debugger.HandleCommand('type summary add -P ASVLOFFSCREEN* -F {:s}.print_asvl_pointer'.format(__name__))
