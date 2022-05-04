@@ -327,6 +327,61 @@ def print_cv_Matx(valobj, internal_dict):
     # val = valobj.GetChildMemberWithName('val').GetValue()
     # return str(val)
 
+def print_tv_Point(valobj, internal_dict):
+    # tv::Point is defined like this:
+    # struct Vec2Data {
+    #    union {
+    #       T val[2];
+    #       struct { T x; T y; };
+    #    };
+    # }
+    # And simply use `x` and `y` will get 0 values in lldb script
+    # x = valobj.GetChildMemberWithName('x').GetValueAsSigned()
+    # y = valobj.GetChildMemberWithName('y').GetValueAsSigned()
+    # As work-around, we use `val`.
+    #
+    x = valobj.EvaluateExpression("val[0]").GetValue()
+    y = valobj.EvaluateExpression("val[1]").GetValue()
+    res = '(x={:s}, y={:s})'.format(x, y)
+    return res
+
+def print_tv_Size(valobj, internal_dict):
+    # # width = valobj.EvaluateExpression("val[0]").GetValueAsSigned(0)
+    # # height = valobj.EvaluateExpression("val[1]").GetValueAsSigned(0)
+    # width_val = valobj.GetChildMemberWithName('width')
+    # print("width_val: ", width_val)
+    # print("width_val.type(): ", type(width_val))
+    # print("width_value: ", width_val.GetValue())
+    # print("width_GetValueAsSigned(): ", valobj.GetChildMemberWithName('width').GetValueAsSigned())
+    # # print("val[0]: ", valobj.EvaluateExpression("val[0]").GetValueAsSigned(0))
+    # # print("val[1]: ", valobj.EvaluateExpression("val[1]").GetValueAsSigned(0))
+
+    # # width = valobj.GetChildMemberWithName('width').GetValueAsSigned()
+    # # height = valobj.GetChildMemberWithName('height').GetValueAsSigned()
+    width = valobj.EvaluateExpression("val[0]").GetValue()
+    height = valobj.EvaluateExpression("val[1]").GetValue()
+    res = '(width={:s}, height={:s})'.format(width, height)
+    #res = '(width=' + valobj.EvaluateExpression("val[0]").GetValue() + ', height=' + str(valobj.EvaluateExpression("val[1]").GetValue()) + ')'
+    return res
+
+def print_tv_Mat(valobj, internal_dict):
+    flags = valobj.GetChildMemberWithName('flags').GetValueAsSigned(0)
+    refcount = valobj.GetChildMemberWithName('_refcount').GetValue()
+    rows = valobj.GetChildMemberWithName('rows').GetValueAsSigned(0)
+    cols = valobj.GetChildMemberWithName('cols').GetValueAsSigned(0)
+    channels = valobj.EvaluateExpression("channels()").GetValueAsSigned()
+    depth = valobj.EvaluateExpression("depth()").GetValueAsSigned()
+    typestr = cv_mat_type_to_string(depth, channels)
+    data = valobj.GetChildMemberWithName('data').GetValue()
+    datastart = valobj.GetChildMemberWithName('datastart').GetValue()
+    dataend = valobj.GetChildMemberWithName('dataend').GetValue()
+    step = valobj.GetChildMemberWithName("step").GetValueAsSigned()
+    res = 'rows={:d}, cols={:d}, channels={:d}, typestr={:s}, step={:d}\nflags={:d}, data={:s}, datastart={:s}, dataend={:s}, refcount={:s}'.format(
+       rows, cols, channels, typestr, step,
+       flags, str(data), str(datastart), str(dataend), refcount
+    )
+    return res
+
 def __lldb_init_module(debugger, internal_dict):
     ### C array types. only 4 types required.
     debugger.HandleCommand('type summary add -P uint8_t[8] -F {:s}.print_uint8_array_len8'.format(__name__))
@@ -372,3 +427,12 @@ def __lldb_init_module(debugger, internal_dict):
     # This binding can print 9 'hohoho' if the formatter returns 'hohoho', for the case `cv::Mat<int, 3, 3> mat = ...` is called.
     # But when call `cv::Mat<float, 3, 3>`, the formatter is not called. Wierd.
     #debugger.HandleCommand('type summary add -P template<typename _Tp, int m, int n> cv::Matx<_Tp, m, n> -F {:s}.print_cv_Matx'.format(__name__))
+
+    # tv::Point
+    debugger.HandleCommand('type summary add -P tv::Point -F {:s}.print_tv_Point'.format(__name__))
+    
+    # tv::Size.   NOTE: `p src.size()` won't work. Don't know why.
+    debugger.HandleCommand('type summary add -P tv::Size -F {:s}.print_tv_Size'.format(__name__))
+
+    # tv::Mat
+    debugger.HandleCommand('type summary add -P tv::Mat -F {:s}.print_tv_Mat'.format(__name__))
