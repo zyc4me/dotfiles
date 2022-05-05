@@ -82,7 +82,7 @@ def print_int8_array_len16(valobj, internal_dict):
 #--------------------------------------------------------------------------------
 
 # dispatch for ARM NEON and Simlulated ARM NEON by `arm_neon_sim.hpp`
-def get_val_from_valobj(valobj, sse_type):
+def get_val_from_valobj(valobj, sse_type=None):
     arch = get_arch()
     if (arch == 'arm' or arch == 'aarch64'):
         val = valobj
@@ -90,14 +90,8 @@ def get_val_from_valobj(valobj, sse_type):
         num_children = len(valobj.children)
         if (num_children == 1): # neon_sim
             val = valobj.GetChildMemberWithName("val")
-        else: # NEON_2_SSE.h
-            print('sse_type is:', sse_type)
-            if (sse_type == 'm128d_f64'): # 128 bit. Failed to parse.
-                print('Warning: NEON_2_SSE.h not support float64x2_t yet!')
-                val = valobj
-                return val
-            else: # 64 bit. Works.
-                val = valobj.GetChildMemberWithName(sse_type)
+        elif (sse_type is not None): # NEON_2_SSE.h
+            val = valobj.GetChildMemberWithName(sse_type)
     return val
 
 def print_int8x8_t(valobj, internal_dict):
@@ -192,21 +186,90 @@ def print_float64x1_t(valobj, internal_dict):
     res += ')'
     return res
 
+
+def uint64_to_uint8_array_len8(uint64_value):
+    """
+    从 578437695752307201 (uint64_t型) 解析转化得到 1, 2, 3, 4, 5, 6, 7, 8 (uint8_t[8]型)
+    """
+    d = uint64_value
+    r8 = d % (1 << 8)
+    r7 = (d >> 8) % (1 << 8)
+    r6 = (d >> 16) % (1 << 8)
+    r5 = (d >> 24) % (1 << 8)
+    r4 = (d >> 32) % (1 << 8)
+    r3 = (d >> 40) % (1 << 8)
+    r2 = (d >> 48) % (1 << 8)
+    r1 = (d >> 56) % (1 << 8)
+
+    content = [r8, r7, r6, r5, r4, r3, r2, r1]
+    # content_str = [str(_) for _ in content]
+    # print(content)
+    # res = '(' + ', '.join(content_str) + ')'
+    return content
+
+def int64_to_int8_array_len8(int64_value):
+    """
+    从 578437695752339840 (int64_t型) 解析转化得到 -128, -127, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 16, 17, 18 (int8_t[8]型)
+    """
+    d = int64_value
+    r8 = d % (1 << 8)
+    r7 = (d >> 8) %  (1 << 8)
+    r6 = (d >> 16) % (1 << 8)
+    r5 = (d >> 24) % (1 << 8)
+    r4 = (d >> 32) % (1 << 8)
+    r3 = (d >> 40) % (1 << 8)
+    r2 = (d >> 48) % (1 << 8)
+    r1 = (d >> 56) % (1 << 8)
+
+    content = [r8, r7, r6, r5, r4, r3, r2, r1]
+    bucket = []
+    for item in content:
+        if (item >= 128):
+            item -= 256
+        bucket.append(item)
+    # content_str = [str(_) for _ in content]
+    # print(content)
+    # res = '(' + ', '.join(content_str) + ')'
+    return bucket
+
+
 # Q Vector Registers, 128 bit long
 def print_int8x16_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128i_i8')
-    res = '('
-    for i in range(16):
-        if (i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
-    res += ')'
+    num_children = len(valobj.children)
+    if (num_children == 2): # NEON_2_SSE.h
+        target = valobj.GetTarget()
+
+        # Get Pointer Type:
+        # https://stackoverflow.com/questions/21743237/dereferencing-a-sbvalue-which-is-of-type-void-in-lldb-python-script
+        #v00 = v0.Cast(target.FindFirstType('int8_t').GetPointerType()).GetValue()
+
+        v0 = valobj.GetChildAtIndex(0)
+        v00 = v0.Cast(target.FindFirstType('int8_t').GetPointerType()).GetValueAsSigned()
+        
+        content0 = int64_to_int8_array_len8(v00)
+        content0_str = [str(_) for _ in content0]
+
+        v1 = valobj.GetChildAtIndex(1)
+        v10 = v1.Cast(target.FindFirstType('int8_t').GetPointerType()).GetValueAsSigned()
+        content1 = int64_to_int8_array_len8(v10)
+        content1_str = [str(_) for _ in content1]
+        res = '(' + ', '.join(content0_str) + ', ' + ', '.join(content1_str) + ')'
+    
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(16):
+            if (i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+        res += ')'
+    
     return res
 
 def print_uint8x16_t(valobj, internal_dict):
     """
     When using NEON_2_SSE.h, this function failed to parse and print actual values of uint8x16_t type.
     As a work-around, you can use the following:
-    
+
 (lldb) parray 16 (uint8_t*)&vw8u2
 (uint8_t *) $5 = 0x00007fffffffcb40 "\U00000001\U00000002\U00000003\U00000004\U00000005\U00000006\a\b\v\f\r\U0000000e\U0000000f\U00000010\U00000011\U00000012\U00000001\U00000002\U00000003\U00000004\U00000005\U00000006\a\b\v\f\r\U0000000e\U0000000f\U00000010\U00000011\U00000012\xff\xff\xff\xff" {
   (uint8_t) [0] = 1
@@ -227,20 +290,40 @@ def print_uint8x16_t(valobj, internal_dict):
   (uint8_t) [15] = 18
 }
     """
-    val = get_val_from_valobj(valobj, 'm128i_u8')
-    res = '('
-    for i in range(16):
-        if (i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
-    res += ')'
-    #>>> options = lldb.SBExpressionOptions()
-    #>>> val = lldb.frame.EvaluateExpression("(uint8_t *)&vw8u2", options)
-    #>>> print(val.GetValueAsSigned(0))
-    #>>> print(val.GetChildAtIndex(0).GetValue())
+
+    num_children = len(valobj.children)
+    if (num_children == 2): # NEON_2_SSE.h
+        target = valobj.GetTarget()
+
+        # Get Pointer Type:
+        # https://stackoverflow.com/questions/21743237/dereferencing-a-sbvalue-which-is-of-type-void-in-lldb-python-script
+        #v00 = v0.Cast(target.FindFirstType('int8_t').GetPointerType()).GetValue()
+
+        v0 = valobj.GetChildAtIndex(0)
+        v00 = v0.Cast(target.FindFirstType('uint8_t').GetPointerType()).GetValueAsUnsigned()
+        
+        content0 = uint64_to_uint8_array_len8(v00)
+        content0_str = [str(_) for _ in content0]
+
+        v1 = valobj.GetChildAtIndex(1)
+        v10 = v1.Cast(target.FindFirstType('uint8_t').GetPointerType()).GetValueAsUnsigned()
+        content1 = uint64_to_uint8_array_len8(v10)
+        content1_str = [str(_) for _ in content1]
+
+        res = '(' + ', '.join(content0_str) + ', ' + ', '.join(content1_str) + ')'
+    
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(16):
+            if (i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+        res += ')'
+    
     return res
 
 def print_int16x8_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128i_i16')
+    val = get_val_from_valobj(valobj)
     res = '('
     for i in range(8):
         if ( i > 0): res += ', '
