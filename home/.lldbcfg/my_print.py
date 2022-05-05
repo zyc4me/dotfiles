@@ -232,6 +232,54 @@ def int64_to_int8_array_len8(int64_value):
     # res = '(' + ', '.join(content_str) + ')'
     return bucket
 
+def uint64_to_uint16_array_len4(uint64_value):
+    d = uint64_value
+    r4 = d % (1 << 16)
+    r3 = (d >> 16) % (1 << 16)
+    r2 = (d >> 32) % (1 << 16)
+    r1 = (d >> 48) % (1 << 16)
+    content = [r4, r3, r2, r1]
+    return content
+
+def int64_to_int16_array_len4(int64_value):
+    d = int64_value
+    r4 = d % (1 << 16)
+    r3 = (d >> 16) % (1 << 16)
+    r2 = (d >> 32) % (1 << 16)
+    r1 = (d >> 48) % (1 << 16)
+    content = [r4, r3, r2, r1]
+    bucket = []
+    for item in content:
+        if (item >= 32768):
+            item -= 65536
+        bucket.append(item)
+    return bucket
+
+def uint64_to_uint32_array_len2(uint64_value):
+    d = uint64_value
+    r2 = d % (1 << 32)
+    r1 = (d >> 32) % (1 << 32)
+    content = [r2, r1]
+    return content
+
+def int64_to_int32_array_len2(int64_value):
+    d = int64_value
+    r2 = d % (1 << 32)
+    r1 = (d >> 32) % (1 << 32)
+    content = [r2, r1]
+    bucket = []
+    for item in content:
+        if (item >= (1<<31)):
+            item -= (1<<32)
+        bucket.append(item)
+    return bucket
+
+def uint64_to_float_array_len2(uint64_value):
+    d = uint64_value
+    r2 = d % (1 << 32)
+    r1 = (d >> 32) % (1 << 32)
+    content = [r2, r1]
+    return content
 
 # Q Vector Registers, 128 bit long
 def print_int8x16_t(valobj, internal_dict):
@@ -323,75 +371,151 @@ def print_uint8x16_t(valobj, internal_dict):
     return res
 
 def print_int16x8_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
-    res = '('
-    for i in range(8):
-        if ( i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
-    res += ')'
+    if (len(valobj.children) == 2): # NEON_2_SSE.h
+        target = valobj.GetTarget()
+        v0 = valobj.GetChildAtIndex(0)
+        v00 = v0.Cast(target.FindFirstType('int16_t').GetPointerType()).GetValueAsSigned()
+        
+        content0 = int64_to_int16_array_len4(v00)
+        content0_str = [str(_) for _ in content0]
+
+        v1 = valobj.GetChildAtIndex(1)
+        v10 = v1.Cast(target.FindFirstType('int16_t').GetPointerType()).GetValueAsSigned()
+        content1 = int64_to_int16_array_len4(v10)
+        content1_str = [str(_) for _ in content1]
+
+        res = '(' + ', '.join(content0_str) + ', ' + ', '.join(content1_str) + ')'
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(8):
+            if ( i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+        res += ')'
     return res
 
 def print_uint16x8_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128i_u16')
-    res = '('
-    for i in range(8):
-        if ( i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
-    res += ')'
+    if (len(valobj.children) == 2): # NEON_2_SSE.h
+        target = valobj.GetTarget()
+        v0 = valobj.GetChildAtIndex(0)
+        v00 = v0.Cast(target.FindFirstType('uint16_t').GetPointerType()).GetValueAsUnsigned()
+        
+        content0 = uint64_to_uint16_array_len4(v00)
+        content0_str = [str(_) for _ in content0]
+
+        v1 = valobj.GetChildAtIndex(1)
+        v10 = v1.Cast(target.FindFirstType('uint16_t').GetPointerType()).GetValueAsUnsigned()
+        content1 = uint64_to_uint16_array_len4(v10)
+        content1_str = [str(_) for _ in content1]
+
+        res = '(' + ', '.join(content0_str) + ', ' + ', '.join(content1_str) + ')'
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(8):
+            if ( i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+        res += ')'
     return res
 
 def print_int32x4_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128i_i32')
-    res = '('
-    for i in range(4):
-        if (i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
-    res += ')'
+    if (len(valobj.children) == 2): # NEON_2_SSE.h
+        target = valobj.GetTarget()
+        v0 = valobj.GetChildAtIndex(0)
+        v00 = v0.Cast(target.FindFirstType('int32_t').GetPointerType()).GetValueAsSigned()
+        
+        content0 = int64_to_int32_array_len2(v00)
+        content0_str = [str(_) for _ in content0]
+
+        v1 = valobj.GetChildAtIndex(1)
+        v10 = v1.Cast(target.FindFirstType('int32_t').GetPointerType()).GetValueAsSigned()
+        content1 = int64_to_int32_array_len2(v10)
+        content1_str = [str(_) for _ in content1]
+
+        res = '(' + ', '.join(content0_str) + ', ' + ', '.join(content1_str) + ')'
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(4):
+            if (i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+        res += ')'
     return res
 
 def print_uint32x4_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128i_u32')
-    res = '('
-    for i in range(4):
-        if (i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
-    res += ')'
+    if (len(valobj.children) == 2): # NEON_2_SSE.h
+        target = valobj.GetTarget()
+        v0 = valobj.GetChildAtIndex(0)
+        v00 = v0.Cast(target.FindFirstType('uint32_t').GetPointerType()).GetValueAsUnsigned()
+        
+        content0 = uint64_to_uint32_array_len2(v00)
+        content0_str = [str(_) for _ in content0]
+
+        v1 = valobj.GetChildAtIndex(1)
+        v10 = v1.Cast(target.FindFirstType('uint32_t').GetPointerType()).GetValueAsUnsigned()
+        content1 = uint64_to_uint32_array_len2(v10)
+        content1_str = [str(_) for _ in content1]
+
+        res = '(' + ', '.join(content0_str) + ', ' + ', '.join(content1_str) + ')'
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(4):
+            if (i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+        res += ')'
+    return res
+
+def print_int64x2_t(valobj, internal_dict):
+    if (len(valobj.children) == 2): # NEON_2_SSE.h
+        v0 = valobj.GetChildAtIndex(0).GetValue()
+        v1 = valobj.GetChildAtIndex(1).GetValue()
+        res = '({:s}, {:s})'.format(v0, v1)
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(2):
+            if (i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
+        res += ')'
+    return res
+
+def print_uint64x2_t(valobj, internal_dict):
+    if (len(valobj.children) == 2): # NEON_2_SSE.h
+        v0 = valobj.GetChildAtIndex(0).GetValue()
+        v1 = valobj.GetChildAtIndex(1).GetValue()
+        res = '({:s}, {:s})'.format(v0, v1)
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(2):
+            if (i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
+        res += ')'
     return res
 
 def print_float32x4_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128_f32')
+    # NEON_2_SSE.h's float32x4_t can smoothly printed by default
+    val = get_val_from_valobj(valobj)
     res = '('
     for i in range(4):
         if (i > 0): res += ', '
         res += str(val.GetChildAtIndex(i).GetValue())
-    res += ')'
-    return res
-
-def print_int64x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128i_i64')
-    res = '('
-    for i in range(2):
-        if (i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValueAsSigned(0))
-    res += ')'
-    return res
-
-def print_uint64x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128i_u64')
-    res = '('
-    for i in range(2):
-        if (i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
     res += ')'
     return res
 
 def print_float64x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj, 'm128d_f64')
-    res = '('
-    for i in range(2):
-        if (i > 0): res += ', '
-        res += str(val.GetChildAtIndex(i).GetValue())
-    res += ')'
+    if (len(valobj.children) == 2): # NEON_2_SSE.h don't have this type currently.
+        v0 = valobj.GetChildAtIndex(0).GetValue()
+        v1 = valobj.GetChildAtIndex(1).GetValue()
+        res = '({:s}, {:s})'.format(v0, v1)
+    else:
+        val = get_val_from_valobj(valobj)
+        res = '('
+        for i in range(2):
+            if (i > 0): res += ', '
+            res += str(val.GetChildAtIndex(i).GetValue())
+        res += ')'
     return res
 
 def cv_mat_type_to_string(depth, channels):
