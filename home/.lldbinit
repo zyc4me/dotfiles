@@ -1,4 +1,5 @@
 settings set target.x86-disassembly-flavor intel
+command alias reload_script command source ~/.lldbinit
 
 # 用整数类型显示 int8_t, uint8_t， 替代默认的十六进制
 type format add -C no -f decimal int8_t

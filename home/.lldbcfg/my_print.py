@@ -81,17 +81,27 @@ def print_int8_array_len16(valobj, internal_dict):
 # custom printing for NEON Vector Register types
 #--------------------------------------------------------------------------------
 
-# dispatch for ARM NEON and Simlulated ARM NEON by `arm_neon_sim.hpp``
-def get_val_from_valobj(valobj):
+# dispatch for ARM NEON and Simlulated ARM NEON by `arm_neon_sim.hpp`
+def get_val_from_valobj(valobj, sse_type):
     arch = get_arch()
     if (arch == 'arm' or arch == 'aarch64'):
         val = valobj
     else:
-        val = valobj.GetChildMemberWithName("val")
+        num_children = len(valobj.children)
+        if (num_children == 1): # neon_sim
+            val = valobj.GetChildMemberWithName("val")
+        else: # NEON_2_SSE.h
+            print('sse_type is:', sse_type)
+            if (sse_type == 'm128d_f64'): # 128 bit. Failed to parse.
+                print('Warning: NEON_2_SSE.h not support float64x2_t yet!')
+                val = valobj
+                return val
+            else: # 64 bit. Works.
+                val = valobj.GetChildMemberWithName(sse_type)
     return val
 
 def print_int8x8_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_i8')
     res = '('
     for i in range(8):
         if (i > 0): res += ', '
@@ -100,7 +110,7 @@ def print_int8x8_t(valobj, internal_dict):
     return res
 
 def print_uint8x8_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_u8')
     res = '('
     for i in range(8):
         if (i > 0): res += ', '
@@ -109,7 +119,7 @@ def print_uint8x8_t(valobj, internal_dict):
     return res
 
 def print_int16x4_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_i16')
     res = '('
     for i in range(4):
         if (i > 0): res += ', '
@@ -118,7 +128,7 @@ def print_int16x4_t(valobj, internal_dict):
     return res
 
 def print_uint16x4_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_u16')
     res = '('
     for i in range(4):
         if (i > 0): res += ', '
@@ -127,7 +137,7 @@ def print_uint16x4_t(valobj, internal_dict):
     return res
 
 def print_int32x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_i32')
     res = '('
     for i in range(2):
         if (i > 0): res += ', '
@@ -136,7 +146,7 @@ def print_int32x2_t(valobj, internal_dict):
     return res
 
 def print_uint32x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_u32')
     res = '('
     for i in range(2):
         if (i > 0): res += ', '
@@ -145,7 +155,7 @@ def print_uint32x2_t(valobj, internal_dict):
     return res
 
 def print_int64x1_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_i64')
     res = '('
     for i in range(1):
         if (i > 0): res += ', '
@@ -154,7 +164,7 @@ def print_int64x1_t(valobj, internal_dict):
     return res
 
 def print_uint64x1_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_u64')
     res = '('
     for i in range(1):
         if (i > 0): res += ', '
@@ -163,7 +173,7 @@ def print_uint64x1_t(valobj, internal_dict):
     return res
 
 def print_float32x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_f32')
     # float_ptr = val
     # float_type = float_ptr.GetType().GetPointeeType()
     res = '('
@@ -174,7 +184,7 @@ def print_float32x2_t(valobj, internal_dict):
     return res
 
 def print_float64x1_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm64_d64')
     res = '('
     for i in range(1):
         if ( i > 0): res += ', '
@@ -184,7 +194,7 @@ def print_float64x1_t(valobj, internal_dict):
 
 # Q Vector Registers, 128 bit long
 def print_int8x16_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128i_i8')
     res = '('
     for i in range(16):
         if (i > 0): res += ', '
@@ -193,16 +203,44 @@ def print_int8x16_t(valobj, internal_dict):
     return res
 
 def print_uint8x16_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    """
+    When using NEON_2_SSE.h, this function failed to parse and print actual values of uint8x16_t type.
+    As a work-around, you can use the following:
+    
+(lldb) parray 16 (uint8_t*)&vw8u2
+(uint8_t *) $5 = 0x00007fffffffcb40 "\U00000001\U00000002\U00000003\U00000004\U00000005\U00000006\a\b\v\f\r\U0000000e\U0000000f\U00000010\U00000011\U00000012\U00000001\U00000002\U00000003\U00000004\U00000005\U00000006\a\b\v\f\r\U0000000e\U0000000f\U00000010\U00000011\U00000012\xff\xff\xff\xff" {
+  (uint8_t) [0] = 1
+  (uint8_t) [1] = 2
+  (uint8_t) [2] = 3
+  (uint8_t) [3] = 4
+  (uint8_t) [4] = 5
+  (uint8_t) [5] = 6
+  (uint8_t) [6] = 7
+  (uint8_t) [7] = 8
+  (uint8_t) [8] = 11
+  (uint8_t) [9] = 12
+  (uint8_t) [10] = 13
+  (uint8_t) [11] = 14
+  (uint8_t) [12] = 15
+  (uint8_t) [13] = 16
+  (uint8_t) [14] = 17
+  (uint8_t) [15] = 18
+}
+    """
+    val = get_val_from_valobj(valobj, 'm128i_u8')
     res = '('
     for i in range(16):
         if (i > 0): res += ', '
         res += str(val.GetChildAtIndex(i).GetValueAsUnsigned(0))
     res += ')'
+    #>>> options = lldb.SBExpressionOptions()
+    #>>> val = lldb.frame.EvaluateExpression("(uint8_t *)&vw8u2", options)
+    #>>> print(val.GetValueAsSigned(0))
+    #>>> print(val.GetChildAtIndex(0).GetValue())
     return res
 
 def print_int16x8_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128i_i16')
     res = '('
     for i in range(8):
         if ( i > 0): res += ', '
@@ -211,7 +249,7 @@ def print_int16x8_t(valobj, internal_dict):
     return res
 
 def print_uint16x8_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128i_u16')
     res = '('
     for i in range(8):
         if ( i > 0): res += ', '
@@ -220,7 +258,7 @@ def print_uint16x8_t(valobj, internal_dict):
     return res
 
 def print_int32x4_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128i_i32')
     res = '('
     for i in range(4):
         if (i > 0): res += ', '
@@ -229,7 +267,7 @@ def print_int32x4_t(valobj, internal_dict):
     return res
 
 def print_uint32x4_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128i_u32')
     res = '('
     for i in range(4):
         if (i > 0): res += ', '
@@ -238,7 +276,7 @@ def print_uint32x4_t(valobj, internal_dict):
     return res
 
 def print_float32x4_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128_f32')
     res = '('
     for i in range(4):
         if (i > 0): res += ', '
@@ -247,7 +285,7 @@ def print_float32x4_t(valobj, internal_dict):
     return res
 
 def print_int64x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128i_i64')
     res = '('
     for i in range(2):
         if (i > 0): res += ', '
@@ -256,7 +294,7 @@ def print_int64x2_t(valobj, internal_dict):
     return res
 
 def print_uint64x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128i_u64')
     res = '('
     for i in range(2):
         if (i > 0): res += ', '
@@ -265,7 +303,7 @@ def print_uint64x2_t(valobj, internal_dict):
     return res
 
 def print_float64x2_t(valobj, internal_dict):
-    val = get_val_from_valobj(valobj)
+    val = get_val_from_valobj(valobj, 'm128d_f64')
     res = '('
     for i in range(2):
         if (i > 0): res += ', '
@@ -491,44 +529,44 @@ def __lldb_init_module(debugger, internal_dict):
     #       type summary delete tv::Size
 
     ### C array types. only 4 types required.
-    debugger.HandleCommand('type summary add -P uint8_t[8] -F {:s}.print_uint8_array_len8'.format(__name__))
-    debugger.HandleCommand('type summary add -P int8_t[8] -F {:s}.print_int8_array_len8'.format(__name__))
-    debugger.HandleCommand('type summary add -P uint8_t[16] -F {:s}.print_uint8_array_len16'.format(__name__))
-    debugger.HandleCommand('type summary add -P int8_t[16] -F {:s}.print_int8_array_len16'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint8_t[8]  -C no -F {:s}.print_uint8_array_len8'.format(__name__))
+    debugger.HandleCommand('type summary add -P int8_t[8]   -C no -F {:s}.print_int8_array_len8'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint8_t[16] -C no -F {:s}.print_uint8_array_len16'.format(__name__))
+    debugger.HandleCommand('type summary add -P int8_t[16]  -C no -F {:s}.print_int8_array_len16'.format(__name__))
 
     ### NEON Vector Registers
     # D Vector Registers. 64 bit long
-    debugger.HandleCommand('type summary add -P int8x8_t -F {:s}.print_int8x8_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P int16x4_t -F {:s}.print_int16x4_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P int32x2_t -F {:s}.print_int32x2_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P int64x1_t -F {:s}.print_int64x1_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int8x8_t  -C no -F {:s}.print_int8x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int16x4_t -C no -F {:s}.print_int16x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int32x2_t -C no -F {:s}.print_int32x2_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P int64x1_t -C no -F {:s}.print_int64x1_t'.format(__name__))
 
-    debugger.HandleCommand('type summary add -P uint8x8_t -F {:s}.print_uint8x8_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P uint16x4_t -F {:s}.print_uint16x4_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P uint32x2_t -F {:s}.print_uint32x2_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P uint64x1_t -F {:s}.print_uint64x1_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint8x8_t  -C no -F {:s}.print_uint8x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint16x4_t -C no -F {:s}.print_uint16x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint32x2_t -C no -F {:s}.print_uint32x2_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P uint64x1_t -C no -F {:s}.print_uint64x1_t'.format(__name__))
 
-    # debugger.HandleCommand('type summary add -P float16x4_t -F {:s}.print_float16x4_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P float32x2_t -F {:s}.print_float32x2_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P float64x1_t -F {:s}.print_float64x1_t'.format(__name__))
+    # debugger.HandleCommand('type summary add -P float16x4_t -C no -F {:s}.print_float16x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P float32x2_t -C no -F {:s}.print_float32x2_t'.format(__name__))
+    debugger.HandleCommand('type summary add -P float64x1_t -C no -F {:s}.print_float64x1_t'.format(__name__))
 
     # Q Vector Registers. 128 bit long
-    debugger.HandleCommand('type summary add -P int8x16_t -F {:s}.print_int8x16_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P int16x8_t -F {:s}.print_int16x8_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P int32x4_t -F {:s}.print_int32x4_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P int64x2_t -F {:s}.print_int64x2_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P int8x16_t -F {:s}.print_int8x16_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P int16x8_t -F {:s}.print_int16x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P int32x4_t -F {:s}.print_int32x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P int64x2_t -F {:s}.print_int64x2_t'.format(__name__))
 
-    debugger.HandleCommand('type summary add -P uint8x16_t -F {:s}.print_uint8x16_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P uint16x8_t -F {:s}.print_uint16x8_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P uint32x4_t -F {:s}.print_uint32x4_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P uint64x2_t -F {:s}.print_uint64x2_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P uint8x16_t -F {:s}.print_uint8x16_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P uint16x8_t -F {:s}.print_uint16x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P uint32x4_t -F {:s}.print_uint32x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P uint64x2_t -F {:s}.print_uint64x2_t'.format(__name__))
 
-    # debugger.HandleCommand('type summary add -P float16x8_t -F {:s}.print_float16x8_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P float32x4_t -F {:s}.print_float32x4_t'.format(__name__))
-    debugger.HandleCommand('type summary add -P float64x2_t -F {:s}.print_float64x2_t'.format(__name__))
+    # debugger.HandleCommand('type summary add -P float16x8_t -C no -F {:s}.print_float16x8_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P float32x4_t -F {:s}.print_float32x4_t'.format(__name__))
+    debugger.HandleCommand('type summary add -C no -P float64x2_t -F {:s}.print_float64x2_t'.format(__name__))
 
     # cv::Mat
-    debugger.HandleCommand('type summary add -P cv::Mat -F {:s}.print_cv_Mat'.format(__name__))
+    debugger.HandleCommand('type summary add -P cv::Mat -C no -F {:s}.print_cv_Mat'.format(__name__))
 
     # cv::Matx, still buggy
     # This binding can print 9 'hohoho' if the formatter returns 'hohoho', for the case `cv::Mat<int, 3, 3> mat = ...` is called.
@@ -542,11 +580,8 @@ def __lldb_init_module(debugger, internal_dict):
     debugger.HandleCommand('type summary add -P tv::Size -C no -F {:s}.print_tv_Size'.format(__name__))
 
     # tv::Mat
-    debugger.HandleCommand('type summary add -P tv::Mat -F {:s}.print_tv_Mat'.format(__name__))
+    debugger.HandleCommand('type summary add -P tv::Mat -C no -F {:s}.print_tv_Mat'.format(__name__))
 
     # ASVLOFFSCREEN.  -p for --skip-pointers, -r for --skip-references
     #debugger.HandleCommand('type summary add -P ASVLOFFSCREEN -C no -p -r -F {:s}.print_asvl'.format(__name__))
     debugger.HandleCommand('type summary add -P ASVLOFFSCREEN -C no -F {:s}.print_asvl'.format(__name__))
-
-    # ASVLOFFSCREEN* . Not working.
-    #debugger.HandleCommand('type summary add -P ASVLOFFSCREEN* -F {:s}.print_asvl_pointer'.format(__name__))
