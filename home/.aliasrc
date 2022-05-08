@@ -70,3 +70,4 @@ alias s='neofetch'  # run fast
 alias nj='ninja'
 alias clnj='clear; ninja'
 alias nake='ninja'
+alias emacs-nox='emacs -nw'

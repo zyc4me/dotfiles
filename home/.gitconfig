@@ -25,9 +25,9 @@
     #autocrlf = input # linux/macosx
     #autocrlf = true # windows
 [https]
-    #proxy = http://127.0.0.1:44099
+    proxy = http://127.0.0.1:36219
 [http]
-    #proxy = http://127.0.0.1:44099
+    proxy = http://127.0.0.1:36219
 
 # when do git difftool with vimdiff, exit with :cq
 [difftool]

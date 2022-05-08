@@ -14,6 +14,15 @@ via curl:
 sh -c "$(curl -fsSL https://raw.github.com/zchrissirhcz/dotfiles/master/install.sh)"
 ```
 
+Install doom emacs (Good network connection required)
+```bash
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
+echo "EXPORT DOOM_BIN=~/.emacs.d/bin" >> ~/.pathrc
+echo "EXPORT PATH=$DOOM_BIN:$PATH" >> ~/.pathrc
+```
+
 ## Manually install
 
 **Get repo**

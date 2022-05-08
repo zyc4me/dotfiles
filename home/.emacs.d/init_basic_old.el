@@ -2,18 +2,6 @@
 (setq inhibit-startup-message t)
 
 
-;; 使用y or n提问，取代yes or no，避免多打字
-(fset 'yes-or-no-p 'y-or-n-p)
-
-
-;; 全局设定，显示行号
-(global-linum-mode 1)
-
-
-;; 全局设定，高亮当前航
-(global-hl-line-mode t)
-
-
 ;; 设置缩进为4个空格，而不是2个，保护视力
 (setq-default c-basic-offset 4)
 
@@ -33,9 +21,4 @@
 ;; 默认开启多个窗口，包括gdb命令窗口、代码窗口、变量窗口、栈帧窗口等
 (setq-default gdb-many-window t)
 
-;; 禁用光标闪烁
-(blink-cursor-mode 0)
-
-;;　不要产生~文件
-(setq make-backup-files nil)
 
