@@ -202,6 +202,18 @@ Tabby 不错的样子， 好看， 支持分屏， 支持 Linux/Windows/Mac
 https://github.com/Eugeny/tabby/releases/tag/v1.0.159
 
 
+## gitlint
+```bash
+pip install gitlint
+```
+Then puth .gitlint in repo root directory and call `gitlint install-hook`
+
+
+## zsh启动慢怎么办？
+- 去掉 conda 的启动，改为添加conda/bin到PATH
+- https://zhuanlan.zhihu.com/p/68303393
+- https://zhuanlan.zhihu.com/p/98450570
+
 ## References
 - [MaskRay's Config](https://github.com/MaskRay/Config)
 - [zsh-users/zsh-completions](https://github.com/zsh-users/zsh-completions)
