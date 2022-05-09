@@ -1,5 +1,4 @@
-# dotfiles
-Zhuo's Personal dotfiles for environtment settings.
+# Random Pieces
 
 ## bashrc/zshrc
 Current user's config file: `~/.bashrc` for bash, `~/.zshrc` for zsh.
@@ -58,43 +57,6 @@ Its default looking is wired to me, to make it the same looking as gnome-termina
 ```
 
 You can also copy from [mine](home/.config/terminator/config) in this repo.
-
-## git
-
-git is for flexibly source code version control. Can be use on Windows/Linux/MacOS.
-
-Let's use git with customed config:
-
-```bash
-#--- proxy
-[http]
-    #proxy = http://127.0.0.1:44099
-
-#--- diff & merge
-# when do git difftool with vimdiff, exit with :cq
-[difftool]
-	trustExitCode = true
-[mergetool]
-	trustExitCode = true
-[diff]
-	tool = meld
-
-#--- aliases
-[alias]
-    co = checkout
-    ci = commit
-    st = status
-    br = branch
-    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-    type = cat-file -t
-    dump = cat-file -p
-
-#--- commit hint message
-[commit]
-    template = ~/.gitmessage
-```
-
-You can also copy from [.gitmessage](home/.gitconfig) and [.gitmessage](configs/.gitmessage) in this repo.
 
 
 ## tmux
@@ -158,10 +120,6 @@ which, will create the entry point of vim in:
 - Windows:
 downlowd from [here](https://github.com/k-takata/the_silver_searcher-win32/releases) and put `ag.exe` in folder that in `PATH` env variable. I recommend `e:/soft/Git/usr/bin` folder.
 
-- Linux:
-```bash
-sudo apt install silversearcher_ag
-```
 
 ## binary/hex view
 - Vim
@@ -187,42 +145,6 @@ sudo apt install silversearcher_ag
 - Windows GitBash
   - Install [GitBash Dev](https://github.com/git-for-windows/build-extra/releases/download/git-sdk-1.0.7/git-sdk-installer-1.0.7-64.7z.exe) and run `Pacman -S tree`
   - Or, download [prebuilt tree.exe](https://sourceforge.net/projects/gnuwin32/files/tree/1.5.2.2/tree-1.5.2.2-bin.zip/download) and put it to `d:/soft/Git/bin/`
-
-## EditorConfig
-Based on OpenCV's editorconfig setting, with minor change. Just copy them and saved as `.editorconfig` in root directory of your project:
-
-```bash
-# https://editorconfig.org/
-
-root = true
-
-[*]
-##end_of_line = lf
-charset = utf-8
-insert_final_newline = true
-indent_style = space
-indent_size = 4
-
-[{CMakeLists.*,*.cmake}]
-indent_style = space
-indent_size = 2
-
-[Makefile]
-indent_style = tab
-
-[*.{bat,cmd,cmd.*}]
-end_of_line = crlf
-indent_style = space
-indent_size = 2
-
-[*.{ps1,ps1.*}]
-end_of_line = crlf
-indent_style = space
-indent_size = 4
-
-[*.{md,markdown}]
-indent_size = 2
-```
 
 
 ## Doxygen Dark Theme
@@ -264,17 +186,21 @@ cgdb can be customized `~/.cgdb/cgdbrc`, mine is [here](home/.cgdb/cgdbrc)
 ![](./screenshot/cgdb.png)
 
 
-## LeetCode
-Awesome plugins that I'm using:
-- Markdown All in One
-    Gives completion for files when add links.
-- CMake; CMake Tools
-- C/C++
-- Python
-- LeetCode
-- Remove Development
-- vscode-icons
-- x86 and x86_64 Assembly
+## bat
+```bash
+#--- bincat: cat 的替代，输出带颜色和行号
+# 官网： https://github.com/sharkdp/bat
+# 中文文档： https://github.com/chinanf-boy/bat-zh
+sudo apt install bat
+# alias bat='batcat'
+```
+
+## terminal-emulators 终端模拟器
+
+Tabby 不错的样子， 好看， 支持分屏， 支持 Linux/Windows/Mac
+
+https://github.com/Eugeny/tabby/releases/tag/v1.0.159
+
 
 ## References
 - [MaskRay's Config](https://github.com/MaskRay/Config)
