@@ -9,6 +9,19 @@
 (setq user-full-name "Zhuo Zhang"
       user-mail-address "imzhuo@foxmail.com")
 
+;; To setup gpg pinentry for macOSX:
+;;     brew install pinentry-mac
+;; Then in ~/.gnupg/gpg-agent.conf file:
+;;      pinentry-program /usr/local/bin/pinentry-mac
+;; Then restart service:
+;;      gpgconf --kill gpg-agent
+;; ref: https://www.reddit.com/r/emacs/comments/fe165f/pinentry_problems_in_osx/
+(setenv "GPG_AGENT_INFO" nil)
+(setq epg-gpg-program "gpg2")
+(use-package! pinentry
+        :init (setq epa-pinentry-mode `loopback)
+               (pinentry-start))
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
