@@ -24,10 +24,14 @@
     quotepath = false
     #autocrlf = input # linux/macosx
     #autocrlf = true # windows
-[https]
-    proxy = http://127.0.0.1:36219
-[http]
-    proxy = http://127.0.0.1:36219
+[include]
+    path = ~/.gitconfig.me
+    # Put local configs such as proxy in ~/.gitconfig.me
+    #[https]
+    #    proxy = http://127.0.0.1:36219
+    #[http]
+    #    proxy = http://127.0.0.1:36219
+
 
 # when do git difftool with vimdiff, exit with :cq
 [difftool]
