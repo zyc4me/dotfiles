@@ -1,0 +1,119 @@
+{
+    //------------------------------------------------------------
+    // VSCode builtin customization
+    //------------------------------------------------------------
+    // editor
+    "editor.cursorBlinking": "solid",
+    "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.minimap.enabled" : false,
+    "editor.inlayHints.enabled" : false,
+    "diffEditor.ignoreTrimWhitespace" : false,
+
+    // workbench
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+
+    // explorer
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    // window
+    "window.titleBarStyle": "custom",
+
+    // terminal
+    "terminal.integrated.inheritEnv": false,
+
+    // source control
+    "scm.defaultViewMode": "tree",
+
+    // update
+    "update.mode": "none",
+
+    //------------------------------------------------------------
+    // Microsoft CppTools plugin
+    //------------------------------------------------------------
+    "C_Cpp.intelliSenseCacheSize": 1024,
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+
+    //------------------------------------------------------------
+    // GitLens plugin
+    //------------------------------------------------------------
+    "gitlens.views.searchAndCompare.files.layout": "list",
+    "gitlens.codeLens.enabled": false,
+
+    //------------------------------------------------------------
+    // CMake plugin
+    //------------------------------------------------------------
+    "cmake.generator": "Ninja",
+    "cmake.useCMakePresets": "never",
+    "cmake.buildEnvironment": {
+        "CMAKE_BUILD_TYPE": "Debug"
+    },
+    "cmake.configureOnOpen": false,
+
+    "githubIssues.queries": [
+        {
+            "label": "My Issues",
+            "query": "default"
+        },
+        {
+            "label": "Created Issues",
+            "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+        }
+    ],
+
+    //------------------------------------------------------------
+    // Clangd plugin
+    //------------------------------------------------------------
+    //"clangd.path": "/usr/lib/llvm-14/bin/clangd",
+    "clangd.arguments": [
+        "-compile-commands-dir=build/linux-x64"
+    ],
+    "explicitFolding.rules": {
+        "*": {
+            "begin": "{",
+            "end": "}"
+        },
+        "javascriptreact": [
+            {
+                "begin": "{/*",
+                "end": "*/}"
+            },
+            {
+                "begin": "<",
+                "end": "/>"
+            }
+        ]
+    },
+
+    //------------------------------------------------------------
+    // CodeLLDB plugin
+    //------------------------------------------------------------
+    //"lldb.library": "/usr/lib/llvm-14/lib/liblldb.so.1",
+    // "lldb.adapterEnv": {
+    //     "LLDB_DEBUGSERVER_PATH": "/usr/lib/llvm-14/bin/lldb-server-14.0.0"
+    // },
+    "lldb.launch.initCommands": ["command source ${env:HOME}/.lldbinit"], // 加载用户的 ~/.lldbinit
+    "lldb.verboseLogging" : true,
+
+    // cSpell
+    "cSpell.userWords": [
+        "vdupq"
+    ],
+    "cSpell.enabled": false,
+
+    // cnblogs
+    "cnblogsClientForVSCode.workspace": "/home/zz/docs/cnblogs-zjutzz"
+
+    // notebook
+    // "notebook.cellToolbarLocation": {
+    //     "default": "right",
+    //     "jupyter-notebook": "left"
+    // },
+}
