@@ -17,6 +17,9 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
+    "workbench.colorCustomizations": {
+        "[Default Dark+]": {}
+    },
 
     // explorer
     "explorer.confirmDelete": false,
