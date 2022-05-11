@@ -1,7 +1,5 @@
 {
-    //------------------------------------------------------------
     // VSCode builtin customization
-    //------------------------------------------------------------
     // editor
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
@@ -39,23 +37,17 @@
     // update
     "update.mode": "none",
 
-    //------------------------------------------------------------
     // Microsoft CppTools plugin
-    //------------------------------------------------------------
     "C_Cpp.intelliSenseCacheSize": 1024,
     "C_Cpp.intelliSenseEngine": "Disabled",
     "C_Cpp.autocomplete": "Disabled",
     "C_Cpp.errorSquiggles": "Disabled",
 
-    //------------------------------------------------------------
     // GitLens plugin
-    //------------------------------------------------------------
     "gitlens.views.searchAndCompare.files.layout": "list",
     "gitlens.codeLens.enabled": false,
 
-    //------------------------------------------------------------
     // CMake plugin
-    //------------------------------------------------------------
     "cmake.generator": "Ninja",
     "cmake.useCMakePresets": "never",
     "cmake.buildEnvironment": {
@@ -74,9 +66,7 @@
         }
     ],
 
-    //------------------------------------------------------------
     // Clangd plugin
-    //------------------------------------------------------------
     //"clangd.path": "/usr/lib/llvm-14/bin/clangd",
     "clangd.arguments": [
         "-compile-commands-dir=build/linux-x64"
@@ -98,9 +88,7 @@
         ]
     },
 
-    //------------------------------------------------------------
     // CodeLLDB plugin
-    //------------------------------------------------------------
     //"lldb.library": "/usr/lib/llvm-14/lib/liblldb.so.1",
     //"lldb.libpython": "/home/zz/soft/miniconda3/lib/libpython3.so",
     // "lldb.adapterEnv": {
