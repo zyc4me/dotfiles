@@ -8,11 +8,14 @@
     "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "all",
     "editor.minimap.enabled" : false,
-    "editor.inlayHints.enabled" : false,
+    "editor.inlayHints.enabled" : "off",
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "editor.unicodeHighlight.ambiguousCharacters": true,
     "diffEditor.ignoreTrimWhitespace" : false,
 
     // workbench
     "workbench.iconTheme": "vscode-icons",
+    "workbench.activityBar.visible": true,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
@@ -26,7 +29,10 @@
 
     // terminal
     "terminal.integrated.inheritEnv": false,
-
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    
     // source control
     "scm.defaultViewMode": "tree",
 
@@ -96,6 +102,7 @@
     // CodeLLDB plugin
     //------------------------------------------------------------
     //"lldb.library": "/usr/lib/llvm-14/lib/liblldb.so.1",
+    //"lldb.libpython": "/home/zz/soft/miniconda3/lib/libpython3.so",
     // "lldb.adapterEnv": {
     //     "LLDB_DEBUGSERVER_PATH": "/usr/lib/llvm-14/bin/lldb-server-14.0.0"
     // },
