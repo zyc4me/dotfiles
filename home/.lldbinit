@@ -12,6 +12,9 @@ type format add -C no -f unsigned decimal uint8_t
 # NEON 相关的数据类型打印
 command script import ~/.lldbcfg/my_print.py
 
+# Record Replay
+command script import ~/.lldbcfg/my_rr.py
+
 #command script import ~/.lldbcfg/debugvis.py
 #command script import ~/.lldbcfg/hello.py
 #command script import ~/.lldbcfg/print_named_array.py
