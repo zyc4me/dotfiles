@@ -2,7 +2,7 @@
     // VSCode builtin customization
     // editor
     "editor.cursorBlinking": "solid",
-    "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'Yahei Consolas Hybrid', 'Consolas', 'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "all",
     "editor.minimap.enabled" : false,
