@@ -12,6 +12,7 @@
     "diffEditor.ignoreTrimWhitespace" : false,
 
     // workbench
+    "workbench.colorTheme": "Default Dark+",
     "workbench.iconTheme": "vscode-icons",
     "workbench.activityBar.visible": true,
     "workbench.editorAssociations": {
