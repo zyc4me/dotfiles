@@ -97,7 +97,9 @@ zstyle ':completion:*:*:*:default' menu yes select
 #----------
 
 # Load pre-defined aliases file here
-source ~/.aliasrc
+if [ -f ~/.aliasrc ]; then
+    source ~/.aliasrc
+fi
 
 # You can also put each single aliases here
 # e.g.
