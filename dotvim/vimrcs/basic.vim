@@ -30,8 +30,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=500
+" nocp 意思是不要使用兼容vi的按键模式
+" 在最新版 vim 中输入 `:help nocp` 知道，只要vim加载了配置文件，就会开启nocp
+" 老版本的 vim 的默认行为是 vi 兼容， 那时候必须开启 nocp
+if &cp " compatible
+  set nocp " nocompatible , i.e. Be iMproved
+endif
+
+" 设置 vim 最多能记住多少条历史命令，默认是50条
+set history=2000
 
 " Enable filetype plugins
 filetype plugin on
@@ -124,7 +131,10 @@ endif
 
 
 " Add a bit extra margin to the left
-set foldcolumn=1
+" Amir Salihefendic 为什么要设置折叠呢？ 如果关闭行号然后鼠标复制， 这就是给格式缩紧添乱
+"set foldcolumn=1
+" 默认值就是0， 但以防忘记，还是手动设置出来
+set foldcolumn=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

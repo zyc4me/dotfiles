@@ -67,12 +67,15 @@ link_directory_list()
     link_directory ~/.my_config/home/.pip ~/.pip
 
     link_directory ~/.my_config/home/.cgdb ~/.cgdb
-    
+
     #link_directory ~/.my_config/home/.zsh ~/.zsh # TODO: if macOSX, don't use this. otherwise, use this.
     link_directory ~/.my_config/home/.gradle ~/.gradle
-    
+
     #link_directory ~/.my_config/home/.emacs.d ~/.emacs.d
     link_directory ~/.my_config/home/.doom.d ~/.doom.d
+
+    # spacevim
+    #link_directory ~/.my_config/home/.SpaceVim.d ~/.SpaceVim.d
 
     mkdir -p ~/.config
     link_directory ~/.my_config/home/.config/terminator ~/.config/terminator

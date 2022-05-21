@@ -56,12 +56,18 @@ Plug 'https://gitee.com/mirrors_Xuyuanp/nerdtree-git-plugin'
 "Plug 'tpope/vim-fugitive'
 
 
+"======================================================================
+" => git plugins
+"----------------------------------------------------------------------
+" 注意： 有些插件名字里不带 git （如 vim-signify）
+"----------------------------------------------------------------------
 " a git plugin that show git diff markers in the sign column
 " Run :GitGutterEnable or :GitGutterToggle
 "Plug 'airblade/vim-gitgutter'
 
-" vim-signify serves as an alternative to vim-gitgutter
-" Run :SignifyDiff for comparison in two columns
+" vim-signify 的定位是 vim-gitgutter 的替代品
+" 切换是否显示 vim-signify 的命令 :SignifyDisable
+" 其他命令，输入 :signify 然后 tab 补全查看
 if has('nvim') || has('patch-8.0.902')
   "Plug 'mhinz/vim-signify'
   Plug 'https://gitee.com/mirrors_mhinz/vim-signify'
@@ -77,18 +83,18 @@ endif
 " Run :GitBlame for detail
 "Plug 'zivyangll/git-blame.vim'
 
-" ale
-""Plug 'w0rp/ale'  the original repo contains a large image. don't use it
-""Plug 'zchrissirhcz/ale' " use my fork. still slow
-Plug 'https://gitee.com/aczz/ale', {'branch': 'fallback'}
-
+"======================================================================
+" => status line plugins 状态栏插件
+"----------------------------------------------------------------------
 " lightline and lightline support for ale
 "Plug 'maximbaz/lightline-ale'
 Plug 'https://gitee.com/samw/lightline-ale'
 "Plug 'itchyny/lightline.vim'
 Plug 'https://gitee.com/mirrors_itchyny/lightline.vim'
 
-" Parentheses related
+"======================================================================
+" => parentheses plugins 括号相关的插件
+"----------------------------------------------------------------------
 "Plug 'jiangmiao/auto-pairs'
 Plug 'https://gitee.com/mirrors_jiangmiao/auto-pairs'
 "Plug 'tpope/vim-unimpaired'
@@ -121,7 +127,9 @@ Plug 'https://gitee.com/mirrors_amix/vim-zenroom2'
 "Plug 'tomasiser/vim-code-dark'
 Plug 'https://gitee.com/mirrors_tomasiser/vim-code-dark'
 
-" c++ related
+"======================================================================
+" => C++ related
+"----------------------------------------------------------------------
 "Plug 'rhysd/vim-clang-format'
 Plug 'https://gitee.com/mirrors_rhysd/vim-clang-format'
 
@@ -129,6 +137,11 @@ Plug 'https://gitee.com/mirrors_rhysd/vim-clang-format'
 Plug 'https://gitee.com/mirrors_octol/vim-cpp-enhanced-highlight'
 " gray out inactive code region
 "Plug 'mphe/grayout.vim'
+
+" ale
+""Plug 'w0rp/ale'  the original repo contains a large image. don't use it
+""Plug 'zchrissirhcz/ale' " use my fork. still slow
+Plug 'https://gitee.com/aczz/ale', {'branch': 'fallback'}
 
 " cmake syntax
 " Turn off since codedark color theme renders correctly

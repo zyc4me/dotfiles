@@ -1,7 +1,10 @@
-set nu
-set foldcolumn=0
+"禁止光标闪烁。闪烁会干扰视线
+set gcr=a:block-blinkon0
 
-set history=2000
+" 开启行号
+" 开 vim， 99% 情况是文本编辑， 但是vim默认不开启行号
+set nu
+set relativenumber
 
 set tags=tags;
 set autochdir
@@ -11,9 +14,6 @@ let g:go_version_warning = 0
 set cursorline
 "hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
-
-set gcr=a:block-blinkon0 "禁止光标闪烁。闪烁会干扰视线
-set nocp " nocompatible vim默认兼容vi的按键真是不舒服
 
 " enable mouse，可以在终端中使用鼠标
 " set mouse=a

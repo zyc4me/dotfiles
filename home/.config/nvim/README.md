@@ -1,5 +1,10 @@
 # Short Intro
 
+_Update_ 2022-05-22
+I switch to https://github.com/ravenxrz/dotfiles/tree/master/nvim
+https://www.bilibili.com/video/BV14a41147ap
+
+
 ![Screenshot](./assets/nvim-screenshot.png)
 
 This is my NeoVim config (for version 0.6 and greater).
