@@ -5,6 +5,14 @@ I switch to https://github.com/ravenxrz/dotfiles/tree/master/nvim
 https://www.bilibili.com/video/BV14a41147ap
 
 
+Modify:
+cd ~/.config/nvim
+nvim lua/user/options.lua
+```lua
+shiftwidth = 4,
+tabstop = 4,
+```
+
 ![Screenshot](./assets/nvim-screenshot.png)
 
 This is my NeoVim config (for version 0.6 and greater).
