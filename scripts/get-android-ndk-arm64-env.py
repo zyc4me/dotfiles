@@ -7,6 +7,7 @@
 用户只需提供 android ndk 路径即可。在 ndk-r21b 上测试 OK。
 """
 
+import os
 import platform
 
 
@@ -70,7 +71,9 @@ def make_command_full_paths(android_ndk_dir):
     print("\nNote: $NDK_CXX --target=$NDK_TARGET xx.cpp")
 
 if __name__ == '__main__':
-    android_ndk_dir = "/home/zz/soft/android-ndk-r21b"
+    android_ndk_dir = os.getenv('ANDROID_NDK')
+    if (android_ndk_dir is None):
+        android_ndk_dir = "/home/zz/soft/android-ndk-r21e"
     make_command_full_paths(android_ndk_dir)
 
 
