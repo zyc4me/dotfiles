@@ -80,6 +80,10 @@ link_directory_list()
     mkdir -p ~/.config
     link_directory ~/.my_config/home/.config/terminator ~/.config/terminator
 
+    # clangd
+    link_directory ~/.my_config/home/.config/clangd ~/.config/clangd
+
+    # vim, nvim
     link_directory ~/.my_config/home/.config/nvim ~/.config/nvim
     link_directory ~/.my_config/dotvim ~/.vim_runtime
     sh ~/.vim_runtime/install_awesome_vimrc.sh
