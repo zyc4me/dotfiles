@@ -1,54 +1,121 @@
 {
-    "workbench.iconTheme": "vscode-icons",
+    // editor
+    "editor.cursorBlinking": "solid",
+    "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
     "editor.renderControlCharacters": true,
     "editor.renderWhitespace": "all",
-    "editor.cursorBlinking": "solid",
-    "explorer.confirmDelete": true,
-    "tabnine.experimentalAutoImports": true,
-    "editor.fontFamily": "'Consolas', 'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-    "update.mode": "manual",
-    "C_Cpp.intelliSenseEngine": "Disabled",
-    "workbench.statusBar.visible": true,
+    "editor.minimap.enabled" : false,
+    "editor.inlayHints.enabled": false,
+    // "editor.quickSuggestions": {
+    //     "other": true,
+    //     "comments": false,
+    //     "strings": false
+    // },
+    // 修改自动补全提示的延时，默认10ms，改为400ms. 
+    // https://stackoverflow.com/questions/32911977/prevent-autocomplete-in-visual-studio-code
+    "editor.quickSuggestionsDelay": 400,
+
+    // debug console
+    //"debug.console.historySuggestions": true,
+    
+    // CodeLLDB plugin
+    // 关闭命令提示.
+    "lldb.commandCompletions": false,
+    "lldb.library": "/home/zz/soft/llvm15-dev/lib/liblldb.so",
+    "lldb.adapterEnv": {
+        "LLDB_DEBUGSERVER_PATH": "/home/zz/soft/llvm15-dev/bin/lldb-server"
+    },
+    // /home/zz/soft/llvm15-dev/bin/lldb
+    "lldb.launch.initCommands": ["command source ${env:HOME}/.lldbinit"], // 加载用户的 ~/.lldbinit
+    "lldb.verboseLogging" : true,
+
+    // workbench
+    "workbench.iconTheme": "vscode-icons",
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
+
+    // explorer
+    "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "workbench.colorTheme": "Default Dark+",
+
+    // window
     "window.titleBarStyle": "custom",
-    "git.confirmSync": false,
-    "cppRecolored.libclangPath": "/usr/lib/llvm-14/lib/libclang.so.1",
-    "extensions.ignoreRecommendations": true,
-    "dotnetAcquisitionExtension.installTimeoutValue": 30000,
-    "terminal.integrated.gpuAcceleration": "off",
-    "remote.SSH.remotePlatform": {
-        "157": "linux"
-    },
-    "settingsSync.ignoredExtensions": [
-        "ms-ceintl.vscode-language-pack-zh-hans",
-        "llvm-vs-code-extensions.vscode-clangd"
-    ],
-    "remote.SSH.useLocalServer": false,
+
+    // terminal
     "terminal.integrated.inheritEnv": false,
-    "latex-workshop.latex.clean.command": "pdflatex",
-    "cmakeExplorer.buildDir": "build/linux-x64",
+
+    // source control
+    "scm.defaultViewMode": "tree",
+
+    // update
+    "update.mode": "none",
+
+    // Microsoft CppTools plugin
+    "C_Cpp.intelliSenseCacheSize": 1024,
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+
+    // GitLens plugin
+    "gitlens.views.searchAndCompare.files.layout": "list",
     "gitlens.codeLens.enabled": false,
-    "clangd.path": "/usr/lib/llvm-14/bin/clangd",
+
+    // CMake plugin
+    "cmake.generator": "Ninja",
+    "cmake.useCMakePresets": "never",
+    "cmake.buildEnvironment": {
+        "CMAKE_BUILD_TYPE": "Debug"
+    },
+    "cmake.configureOnOpen": false,
+
+    "githubIssues.queries": [
+        {
+            "label": "My Issues",
+            "query": "default"
+        },
+        {
+            "label": "Created Issues",
+            "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+        }
+    ],
+
+    // Clangd plugin
+    //"clangd.path": "/usr/lib/llvm-14/bin/clangd",
     "clangd.arguments": [
         "-compile-commands-dir=build/linux-x64"
     ],
-    //"lldb.library": "/home/zz/soft/llvm13/lib", //works, 但是和用的clang版本不一致
-    //"lldb.library": "/usr/lib/llvm-14/lib/liblldb.so.1",
-    //"lldb.libpython": "/home/zz/soft/miniconda3/lib/libpython3.so",
-    "lldb.adapterEnv": {
-        "LLDB_DEBUGSERVER_PATH": "/usr/lib/llvm-14/bin/lldb-server-14.0.0"
+    "explicitFolding.rules": {
+        "*": {
+            "begin": "{",
+            "end": "}"
+        },
+        "javascriptreact": [
+            {
+                "begin": "{/*",
+                "end": "*/}"
+            },
+            {
+                "begin": "<",
+                "end": "/>"
+            }
+        ]
     },
-    "lldb.launch.initCommands": ["command source ${env:HOME}/.lldbinit"], // 加载用户的 ~/.lldbinit
-    "lldb.verboseLogging": true,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.minimap.enabled": false,
-    "editor.inlayHints.enabled": false,
+
+    // cSpell
     "cSpell.userWords": [
         "vdupq"
     ],
-    "cSpell.enabled": false
+    "cSpell.enabled": false,
+
+    // cnblogs
+    "cnblogsClientForVSCode.workspace": "/home/zz/docs/cnblogs-zjutzz",
+    "vsicons.dontShowNewVersionMessage": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+
+    // notebook
+    // "notebook.cellToolbarLocation": {
+    //     "default": "right",
+    //     "jupyter-notebook": "left"
+    // },
 }

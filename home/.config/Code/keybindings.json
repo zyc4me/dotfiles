@@ -1,0 +1,40 @@
+// 将键绑定放在此文件中以覆盖默认值auto[]
+[
+    {
+        "key": "ctrl+alt+h",
+        "command": "clangd.inlayHints.toggle"
+    },
+    {
+        // 切换焦点到调试控制台
+        "key": "ctrl+d j",
+        "command": "workbench.panel.repl.view.focus"
+    },
+    {
+        // 切换焦点到终端
+        "key": "ctrl+d k",
+        "command": "terminal.focus"
+    },
+    {
+        // 切换焦点到第一组打开的文件
+        "key": "ctrl+d l",
+        "command": "workbench.action.focusFirstEditorGroup"
+    },
+    {
+        // 切换焦点到源代码管理器
+        "key": "ctrl+d n",
+        "command": "workbench.scm.focus"
+    },
+    {
+        // 关闭侧边栏
+        "key": "ctrl+d ctrl+c",
+        "command": "workbench.action.closeSidebar"
+    },
+    {
+        // 其他一些默认快捷键的备忘记录
+        // Ctrl + Shift + F5: 调试重启
+        // F5:  continue (到达下一个断点)
+        // F10: step over (单步跳过)
+        // F11: step into (单步进入)
+        // Shift + F11: finish (单步跳出)
+    }
+]
