@@ -1,0 +1,10 @@
+[gpg]
+    program = gpg2
+
+[https]
+    proxy = http://127.0.0.1:36219
+[http]
+    proxy = http://127.0.0.1:36219
+
+[core]
+    autocrlf = input

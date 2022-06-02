@@ -1,0 +1,11 @@
+[gpg]
+    # brew install gpg2 gnupg pinentry-mac
+    program = gpg
+
+[https]
+    proxy = http://127.0.0.1:49622
+[http]
+    proxy = http://127.0.0.1:49622
+
+[core]
+    autocrlf = input

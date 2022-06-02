@@ -33,6 +33,9 @@ link_file_list()
     link_file  ~/.my_config/home/.gdbinit ~/.gdbinit
     link_file  ~/.my_config/home/.lldbinit ~/.lldbinit
     link_file  ~/.my_config/home/.gitconfig ~/.gitconfig
+    link_file  ~/.my_config/home/.gitconfig.linux ~/.gitconfig.linux
+    link_file  ~/.my_config/home/.gitconfig.mac ~/.gitconfig.mac
+    link_file  ~/.my_config/home/.gitconfig.windows ~/.gitconfig.windows
     link_file  ~/.my_config/home/.gitmessage ~/.gitmessage
     link_file  ~/.my_config/home/.tmux.conf ~/.tmux.conf
     #link_file  ~/.my_config/home/.zshrc ~/.zshrc
@@ -96,6 +99,11 @@ link_directory_list()
 remind_pathrc()
 {
     echo "Please create ~/.pathrc and put PATH related stuffs inside :-)"
+}
+
+remind_gitconfig_local()
+{
+    echo "Please link ~/.gitconfig.$OS to ~/.gitconfig.me (ln -sf ~/.gitconfig.mac ~/.gitconfig.me)"
 }
 
 hello()

@@ -22,16 +22,9 @@
     #editor = "if [[ $TERM_PROGRAM_VERSION == *-insider ]]; then ED='code-insiders -w'; elif [ $TERM_PROGRAM = vscode ]; then ED='code -w'; else ED='vim'; fi; $ED" # fail
     #editor = "if [ $TERM_PROGRAM_VERSION = 1.62.0-insider -o $TERM_PROGRAM_VERSION = 1.59.0-insider ]; then ED='code-insiders -w'; elif [ $TERM_PROGRAM = vscode ]; then ED='code -w'; else ED='vim'; fi; $ED"
     quotepath = false
-    #autocrlf = input # linux/macosx
-    #autocrlf = true # windows
 [include]
+    # NOTE: please link ~/.gitconfig.mac to ~/.gitconfig.me
     path = ~/.gitconfig.me
-    # Put local configs such as proxy in ~/.gitconfig.me
-    #[https]
-    #    proxy = http://127.0.0.1:36219
-    #[http]
-    #    proxy = http://127.0.0.1:36219
-
 
 # when do git difftool with vimdiff, exit with :cq
 [difftool]
@@ -82,13 +75,11 @@
 # we can config the default name of the created branch
 # otherwise it will show error message
 [init]
-    defaultBranch = master
+	defaultBranch = main
 
 # for interactive rebasing
 # https://stackoverflow.com/questions/18571741/multiple-git-editors
 # [sequence]
 #   editor = code -w
-[gpg]
-	program = gpg2
 [color]
 	ui = auto
