@@ -10,6 +10,7 @@
 #remote=`git remote -v | head -1 | awk '{print $2}'`
 #echo $remote
 
-new_url=`git remote -v | head -1 | awk '{print $2}' | sed -e 's/https:\/\//git@/g' -e 's/github.com\//github.com:/g'`
+remote=`git remote -v | grep 'https://github.com' | head -1 | awk '{print $1}'`
+new_url=`git remote -v | grep 'github' | head -1 | awk '{print $2}' | sed -e 's/https:\/\//git@/g' -e 's/github.com\//github.com:/g'`
 
-git remote set-url origin $new_url
+git remote set-url $remote $new_url
