@@ -115,4 +115,7 @@
     //     "default": "right",
     //     "jupyter-notebook": "left"
     // },
+
+    // GPG signing
+    "git.enableCommitSigning": true
 }

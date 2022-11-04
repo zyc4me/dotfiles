@@ -3,6 +3,7 @@
 CompileFlags:
     # Treat code as C++, use C++11 standard, enable more warnings
     Add: [-xc++, -std=c++17, -Wall, -Wno-missing-prototypes]
+    Add: [-Wall, -Wno-missing-prototypes]
     # Remove extra warnings specified in compile commands.
     # Single value is also acceptable, same as "Remove: [-mabi]"
     Remove: -mabi
@@ -18,8 +19,13 @@ Diagnostics:
 If:
   PathMatch: .*\.hpp
 CompileFlags:
-  Add: -Wno-unused-function
-#---
+  Add: [-Wno-unused-function, -std=c++11]
+---
+If:
+  PathMatch: .*\.cpp
+CompileFlags:
+  Add: [-Wno-unused-function, -std=c++11]
+---
 # -Wunused-member-function false positive:
 # https://github.com/clangd/clangd/issues/363
 # CompileFlagsButNotReally: # broken here
