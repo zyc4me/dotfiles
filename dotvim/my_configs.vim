@@ -151,7 +151,17 @@ map <C-K> :pyf <path-to-this-file>/clang-format.py<cr>
 imap <C-K> <c-o>:pyf <path-to-this-file>/clang-format.py<cr>
 
 "\u21A6 is ⇥
-set listchars=eol:$,tab:⇥¬¬,trail:~,extends:>,precedes:<,space:·
+"set listchars=eol:$,tab:⇥¬¬,trail:·,extends:>,precedes:<,space:·
+" 0x1F862 is 🡢
+" https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters
+set listchars=tab:🡢\ ,trail:·,extends:>,precedes:<,space:·
+
+" Set the list char color
+" https://vi.stackexchange.com/questions/6136/how-to-dim-characters-from-set-list/6140#6140
+" :hi SpecialKey ctermfg=grey guifg=grey50
+" https://gist.github.com/morumo/9405368
+:hi SpecialKey ctermfg=darkgray guifg=gray70
+
 
 """""""""""""""""""""""""""""""""""""""""""
 " don't add newline if found [noeol]
