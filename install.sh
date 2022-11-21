@@ -75,7 +75,7 @@ link_directory_list()
     link_directory ~/.my_config/home/.gradle ~/.gradle
 
     #link_directory ~/.my_config/home/.emacs.d ~/.emacs.d
-    link_directory ~/.my_config/home/.doom.d ~/.doom.d
+    #link_directory ~/.my_config/home/.doom.d ~/.doom.d
 
     # spacevim
     #link_directory ~/.my_config/home/.SpaceVim.d ~/.SpaceVim.d

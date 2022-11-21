@@ -54,5 +54,5 @@ def get_mirror_site(dist_num_str='16.04', site_name='aliyun'):
 if __name__ == '__main__':
     # Actually, the most simple method is to use vim's replace:
     # :%s/archive.ubuntu.com/mirrors.huaweicloud.com/g
-    get_mirror_site(dist_num_str='22.04', site_name='huawei')
+    get_mirror_site(dist_num_str='20.04', site_name='aliyun')
 
