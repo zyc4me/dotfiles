@@ -111,13 +111,18 @@
     "cSpell.enabled": false,
 
     // cnblogs
-    "cnblogsClientForVSCode.workspace": "/home/zz/docs/cnblogs-zjutzz"
+    "cnblogsClientForVSCode.workspace": "/home/zz/docs/cnblogs-zjutzz",
 
     // notebook
     // "notebook.cellToolbarLocation": {
     //     "default": "right",
     //     "jupyter-notebook": "left"
     // },
+
+    "clang-tidy.buildPath": "build/linux-x64",
+    "clang-tidy.checks": [
+        "bugprone-*"
+    ],
 
     // GPG signing
     "git.enableCommitSigning": true
