@@ -19,12 +19,12 @@ Diagnostics:
 If:
   PathMatch: .*\.hpp
 CompileFlags:
-  Add: [-Wno-unused-function, -std=c++11]
+  Add: [-Wno-unused-function, -std=c++17]
 ---
 If:
   PathMatch: .*\.cpp
 CompileFlags:
-  Add: [-Wno-unused-function, -std=c++11]
+  Add: [-Wno-unused-function, -std=c++17]
 ---
 # -Wunused-member-function false positive:
 # https://github.com/clangd/clangd/issues/363
