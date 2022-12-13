@@ -18,7 +18,7 @@ command script import ~/.lldbcfg/my_rr.py
 # cpython-lldb
 # command script import cpython_lldb # failed on macOS, 可能是因为默认的 lldb 和 conda 的python 版本不一样
 #command script import ~/work/github/cpython-lldb/cpython_lldb.py
-command script import ~/.lldb/cpython_lldb/cpython_lldb.py
+#command script import ~/.lldb/cpython_lldb/cpython_lldb.py
 
 #command script import ~/.lldbcfg/debugvis.py
 #command script import ~/.lldbcfg/hello.py
