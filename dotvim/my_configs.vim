@@ -203,3 +203,8 @@ noremap <C-j> :terminal<CR>
 "=== 那就干脆干掉它们
 cnoreabbrev X x
 cnoreabbrev W w
+
+"===
+"=== 关掉哔哔哔的声音
+"===
+set belloff=all
