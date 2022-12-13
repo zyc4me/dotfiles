@@ -238,4 +238,5 @@ home/.gradle/notifications/
 a.out
 
 # CCache
-**/.ccache/
+# 忽略 ccache 目录下的任意目录
+**/.ccache/*/

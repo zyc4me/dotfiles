@@ -86,6 +86,9 @@ link_directory_list()
     # clangd
     link_directory ~/.my_config/home/.config/clangd ~/.config/clangd
 
+    # ccache
+    link_directory ~/.my_config/home/.ccache ~/.ccache
+
     # vim, nvim
     link_directory ~/.my_config/home/.config/nvim ~/.config/nvim
     link_directory ~/.my_config/dotvim ~/.vim_runtime
