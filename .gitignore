@@ -236,3 +236,6 @@ home/.gradle/notifications/
 
 #C/C++ Compiled Binary
 a.out
+
+# CCache
+**/.ccache/
