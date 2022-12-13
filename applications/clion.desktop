@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CLion
+GenericName=IDE
+Exec=/opt/clion/bin/clion.sh
+Terminal=false
+MimeType=text/plain;
+Icon=clion
+Categories=IDE
+StartupNotify=true
