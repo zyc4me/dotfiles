@@ -65,3 +65,275 @@ export PATH=$CMAKE:$CUDA_BINDIR:$PATH
 export LD_LIBRARY_PATH=$CUDA_LIBDIR:$OPENCV_LIBDIR:$LD_LIBRARY_PATH
 
 
+
+# please build system's complete config
+# source <(plz --completion_script)
+
+# ROS
+#source /opt/ros/kinetic/setup.zsh
+
+# VIM's lightline
+export TERM=xterm-256color
+
+
+#----------
+# => Python
+#----------
+
+# Conda
+#turn_on_conda=true
+#https://github.com/ContinuumIO/anaconda-issues/issues/10173#issuecomment-441386441
+#if [ "$turn_on_conda" = true ] ; then
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/zz/soft/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/zz/soft/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/zz/soft/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/zz/soft/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+#fi
+
+# PYTHONPATH: add the folder where invoke python as sys.path[1]
+#export PYTHONPATH=:/home/zz/work/caffe-BVLC/python:$PYTHONPATH
+#PyCaffe. Compiled with py34 and used for SNPE conversion.
+#conda activate py34
+#export PYTHONPATH=$HOME/work/depot/python/caffe:$PYTHONPATH
+#export PYTHONPATH=:$PYTHONPATH
+# For lldb
+#export PYTHONPATH=/usr/lib/llvm-8/lib/python2.7/site-packages
+#export PYTHONPATH=/usr/lib/llvm-14/lib/python3.8/site-packages
+#export PYTHONPATH=/home/zz/soft/llvm15-dev/lib/python3.8/site-packages
+
+
+#----------
+# doom emacs
+#----------
+EMACS_BIN=/home/zz/soft/emacs-28.1/bin
+DOOM_BIN=/home/zz/.emacs.d/bin
+
+#----------
+# => PATH
+#----------
+
+# This environment variable `PATH` is for finding executable paths
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
+
+#export GOPATH=/home/zz/.go
+#export ANDROID_SDK=$HOME/soft/android-sdk-linux
+export ANDROID_SDK=$HOME/Android/Sdk
+#export ANDROID_NDK=$HOME/soft/android-ndk-r21b
+export ANDROID_NDK=$HOME/soft/android-ndk-r21e
+#export ANDROID_NDK=$HOME/soft/android-ndk-r22b
+#export ANDROID_NDK=$HOME/soft/android-ndk-r23b
+#export ANDROID_NDK=$HOME/soft/android-ndk-r24-beta2
+export ANDROID_NDK_ROOT=$ANDROID_NDK
+export ANDROID_NDK_HOME=$ANDROID_NDK
+export NDK_ROOT=$ANDROID_NDK
+
+export MEGCC_BIN=/home/zz/soft/megcc/bin
+
+PNNX_BIN=/home/zz/soft/pnnx-20220418-ubuntu
+
+#PROTOBUF=/home/zz/soft/protobuf-3.8.0/bin
+#EMACS=$HOME/soft/emacs-26.1/bin
+
+#CUDA_BIN=/usr/local/cuda-10.2/bin
+#CUDA_LIBDIR=/usr/local/cuda-10.2/lib64
+CUDA_BIN=/usr/local/cuda-11.8/bin
+CUDA_LIBDIR=/usr/local/cuda-11.8/lib64
+
+# VULKANSDK. 包含了 spirv-tools
+source ~/soft/vulkansdk/1.3.231.1/setup-env.sh
+
+# 消除 ASan 报告的内存泄漏. https://github.com/KhronosGroup/Vulkan-Loader/issues/256
+export VK_ICD_FILENAMES=${VULKAN_SDK}/../source/Vulkan-Tools/icd/linux/VkICD_mock_icd.json
+
+#export VULKAN_SDK=$HOME/soft/vulkansdk/1.2.148.0/x86_64
+#export VULKAN_SDK=$HOME/soft/vulkansdk/1.3.204.1/x86_64
+#export VULKAN_SDK=$HOME/soft/vulkansdk/1.3.231.1/x86_64
+#VULKAN_LIBDIR=$VULKAN_SDK/lib
+
+#export VULKAN_SDK=$HOME/soft/vulkansdk/1.1.114.0/x86_64
+#VULKAN_LIBDIR=$HOME/soft/vulkansdk/1.1.114.0/x86_64/lib
+
+# LLVM IR <=> SPIR-V tool
+LLVM_SPIRV_BIN=/home/zz/artifacts/SPIRV-LLVM-Translator/master/linux-x64/bin
+
+# SPIRV-Tools
+#SPIRV_TOOLS_BIN=/home/zz/artifacts/SPIRV-Tools/master/linux-x64/bin
+
+#OPENCV_LIBDIR=/usr/local/opencv-3.4.5/lib
+
+#CMAKE_BIN=/home/zz/soft/cmake-3.19.8/bin
+#CMAKE_BIN=/home/zz/soft/cmake-3.20/bin
+#CMAKE_BIN=/home/zz/soft/cmake-3.22.0/bin
+#CMAKE_BIN=/home/zz/soft/cmake-3.23.0-rc5/bin
+#CMAKE_BIN=/home/zz/soft/cmake-3.24.2/bin
+CMAKE_BIN=/home/zz/soft/cmake-3.25.2/bin
+SIGMASTAR_BIN=/home/zz/soft/gcc-linaro-arm-linux-gnueabihf-4.8/bin
+TDA4_BIN=/home/zz/soft/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin
+
+#DOXYGEN_BIN=/home/zz/soft/doxygen/bin
+DOXYGEN_BIN=/home/zz/soft/doxygen-1.9.3-dev/bin
+#DOXYGEN_BIN=/home/zz/soft/doxygen-1.9.2-fix/bin
+
+NVIM_BIN=/home/zz/soft/nvim/bin
+
+# 2021年 06月 04日 星期五 13:48:53 CST
+# Hisilicon Linux, Cross-Toolchain PATH
+HISI_BIN=/home/zz/soft/hisi-linux/arm-hisiv500-linux/target/bin
+#
+
+# 2021年10月19日11:11:13
+#ARCDB_BIN=/home/zz/lib/arctools_arcdb-v1.0.2.5_build211013/ArcDB/linux
+# 2022-01-14 08:39:11
+#ARCDB_BIN=/home/zz/lib/arctools_arcdb-v1.0.3.2_build220113/ArcDB/linux
+# 2022-03-28 09:29:46
+ARCDB_BIN=/home/zz/lib/arctools_arcdb-v1.0.3.3/ArcDB/linux
+
+
+export TORCH_CUDA_ARCH_LIST="7.0"
+export CUDA_TOOLKIT_ROOT_DIR="/usr/local/cuda-10.0"
+export SNPE_ROOT=$HOME/work/snpe/snpe-1.32
+#source $SNPE_ROOT/bin/envsetup.sh -c /home/zz/work/caffe-BVLC
+
+#----------
+# clang
+#----------
+#export LLVM_BIN=~/soft/llvm11/llvm-11.0.0/bin
+#LLVM_BIN_DIR=/home/zz/soft/llvm-14.0.0/bin
+#LLVM_LIB_DIR=/home/zz/soft/llvm-14.0.0/lib
+LLVM_BIN_DIR=/home/zz/soft/llvm16-dev/bin
+
+#LLVM_BIN_DIR=/home/zz/soft/llvm-13.0.0/bin
+#LLVM_LIB_DIR=/home/zz/soft/llvm-13.0.0/lib
+#CLANGD_BIN_DIR=/home/zz/soft/clangd_13.0.0/bin
+
+export CC=clang
+export CXX=clang++
+
+#----------
+# nodejs, required by coc.vim
+#----------
+#NODEJS_BIN=/home/zz/soft/node-v14.15.4/bin
+
+#----------
+# Python
+#----------
+CONDA_BIN=/home/zz/soft/miniconda3/bin
+
+#----------
+# opencv
+#----------
+OPENCV_LIBDIR=/home/zz/soft/opencv-4.5.2/lib
+
+#----------
+# xmake
+#----------
+#[[ -s "$HOME/.xmake/profile"  ]] && source "$HOME/.xmake/profile" # load xmake profile
+
+#----------
+# valgrind
+#----------
+#VALGRIND_BIN=/usr/local/valgrind-3.16.1/bin
+
+
+#----------
+# VIM8
+#----------
+VIM_BIN=/usr/local/vim8/bin
+
+#---------
+#
+#---------
+#IWYU_BIN=/home/zz/soft/iwyu/bin
+IWYU_BIN=/home/zz/soft/iwyu-clang12/bin
+
+#----------
+# Gpg2
+#----------
+#GPG_BIN=/usr/local/gpg2/bin
+
+export ARTIFACTORY_USER=zz9555
+export ARTIFACTORY_PSWD=AKCp8jQ8tBZ4AAWshgeFrvqH7vVgng8JnQgdwsubsqgqhwZSDUe4J7siVaK6GTAeygnFUE4dm
+
+export ARTIFACTS_DIR=$HOME/artifacts
+
+#export JAVA_HOME=/home/zz/lib/jdk1.8.0_301
+#export JRE_HOME=${JAVA_HOME}/jre
+#export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+#export PATH=${JAVA_HOME}/bin:$PATH
+#export PATH=$PATH:$ANDROID_SDK/tools
+
+#export QNX_HOST=/home/zz/soft/qnx700_sdp/host/linux/x86_64
+#export QNX_TARGET=/home/zz/soft/qnx700_sdp/target/qnx7
+#export MAKEFLAGS=-I/home/zz/soft/qnx700_sdp/target/qnx7/usr/include
+#export QNX_ROOT_PATH=/home/zz/soft/qnx700_sdp
+
+# =================================
+
+LCOV_BIN=/home/zz/soft/lcov-1.15/bin
+
+#CLANG14_BIN=/home/zz/soft/llvm14-dev/bin
+
+# NPM packages
+NPM_GLOBAL_BIN=~/.npm-global/bin
+JDK11_BIN=~/soft/jdk-11.0.14+9/bin
+JDK11_LIB_DIR=~/soft/jdk-11.0.14+9/lib
+
+# BDE Tools(Bloomberg Development Environment)
+BDETOOLS_BIN=$HOME/work/github/bde-tools/bin
+
+# Lite-XL Editor
+LITE_XL_BIN=/home/zz/soft/lite-xl/bin
+
+# force FireFox using Dolphin
+export GTK_USE_PORTAL=1
+export MOZ_USE_XINPUT2=1
+
+# rr
+RR_BIN=/home/zz/soft/rr-5.5.0-dev/bin
+
+# npm global packages
+NPM_GLOBAL_BIN=~/.npm-global/bin
+
+#--------
+# PATH
+#--------
+CODELLDB_BIN=/home/zz/.vscode-insiders/extensions/vadimcn.vscode-lldb-1.8.1/lldb/bin
+export PATH=$CODELLDB_BIN:$RR_BIN:$EMACS_BIN:$DOOM_BIN:$JDK11_BIN:$NPM_GLOBAL_BIN:$LCOV_BIN:$NVIM_BIN:$IWYU_BIN:$ARCDB_BIN:$HISI_BIN:$DOXYGEN_BIN:$SIGMASTAR_BIN:$TDA4_BIN:$CMAKE_BIN:$CUDA_BIN:$ANDROID_SDK/platform-tools:$PNNX_BIN:$LITE_XL_BIN:$NPM_GLOBAL_BIN:$LLVM_SPIRV_BIN:$MEGCC_BIN:$PATH
+
+#----------
+# => LD_LIBRARY_PATH, LD_PRELOAD
+#----------
+unset LD_PRELOAD
+
+# These env vars are for customized lib finding path
+#export LD_LIBRARY_PATH=/home/zz/soft/protobuf-3.6.x/lib:$LD_LIBRARY_PATH
+#export LD_LIBRARY_PATH=$CUDA_LIBDIR:$OPENCV_LIBDIR
+export LD_LIBRARY_PATH=$JDK11_LIB_DIR:$LLVM_LIB_DIR:$CUDA_LIBDIR:$OPENCV_LIBDIR:$LD_LIBRARY_PATH
+
+#export LSAN_OPTIONS=verbosity=1:log_threads=1
+# Disable leak sanitizer when -fsanitizer=address
+export ASAN_OPTIONS=detect_leaks=1
+
+# Enable thread leak repoirt when use -fsanitize=thread
+export TSAN_OPTIONS="report_thread_leaks=1"  
+
+# RISCV
+export RISCV=$HOME/soft/riscv
+
+# Taichi
+export TAICHI_REPO_DIR=$HOME/work/taichi
