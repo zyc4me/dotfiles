@@ -1,4 +1,4 @@
-﻿"C:\Users\Chris\_vimrc
+"C:\Users\Chris\_vimrc
 "gvim配置for win7
 
 """"""""""""""""""""""启用win快捷键"""""""""""""""""""""
@@ -269,3 +269,9 @@ filetype plugin indent on    " 启用自动补全
 set hlsearch                 " 开启高亮显示结果
 set nowrapscan               " 搜索到文件两端时不重新搜索
 set incsearch                " 开启实时搜索功能
+
+try
+    set undodir=~/.vim_undo_dir
+    set undofile
+catch
+entry
