@@ -1,5 +1,9 @@
-"C:\Users\Chris\_vimrc
-"gvim配置for win7
+"C:\Users\zz\_vimrc
+"vim/gvim 配置 for Windows
+
+"" 禁止光标闪烁
+set gcr=a:block-blinkon0
+set nocp
 
 """"""""""""""""""""""启用win快捷键"""""""""""""""""""""
 """""包括ctrl+c,ctrl+v等
@@ -33,11 +37,9 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
 set guifont=Monaco:h11	""英文字体
-set guifontwide=YaHei_Consolas_Hybrid:h11	""中文字体。总算有个能用的
+""set guifont=Consolas:h12
+set guifontwide=YaHei_Consolas_Hybrid:h12	""中文字体。总算有个能用的
 
-""""""""""""""""""""""""""""个人洁癖""""""""""""""""""""
-set gcr=a:block-blinkon0  " 禁止光标闪烁。讨厌光标闪，闪是装逼。
-set nocp " nocompatible vim默认兼容vi的按键真是不舒服
 
 """""""""""""""""""""""""""显示格式相关"""""""""""""""""""""""""""""""
 set nu "行号，number
@@ -237,7 +239,7 @@ nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
 " 文本格式和排版 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 set list                        " 显示Tab符，->
-set listchars=tab:\|\ ,         " 使用一高亮竖线代替
+""set listchars=tab:\|\ ,         " 使用一高亮竖线代替
 set tabstop=4			" 制表符为4
 set autoindent			" 自动对齐（继承前一行的缩进方式）
 set smartindent			" 智能自动缩进（以c程序的方式）
@@ -285,3 +287,34 @@ try
 	set undofile
 catch
 endtry
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" listchars
+" usage: :set list
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"\u21A6 is ⇥
+"set listchars=eol:$,tab:⇥¬¬,trail:·,extends:>,precedes:<,space:·
+" 0x1F862 is 🡢
+" https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters
+set listchars=tab:🡢\ ,trail:·,extends:>,precedes:<,space:·
+
+" Set the list char color
+" https://vi.stackexchange.com/questions/6136/how-to-dim-characters-from-set-list/6140#6140
+" :hi SpecialKey ctermfg=grey guifg=grey50
+" https://gist.github.com/morumo/9405368
+:hi SpecialKey ctermfg=darkgray guifg=gray70
+
+
+"===
+"=== Terminal Behaviors
+"===
+"autocmd TermOpen term://* startinsert
+" 使用 Ctrl + j 召唤出terminal， 就像 VSCode 一样
+noremap <C-j> :terminal<CR>
+
+"===
+"=== 有些按键从来不想用，但容易大小写弄错导致误用
+"=== 那就干脆干掉它们
+cnoreabbrev X x 
+cnoreabbrev W w    
