@@ -1,7 +1,6 @@
 # coding: utf-8
 
 import subprocess
-import collections
 import sys
 
 def find_duplicated_items(lst):
