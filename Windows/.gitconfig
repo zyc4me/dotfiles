@@ -13,6 +13,7 @@
     hist = log --pretty=tformat:'%Cgreen%h%Creset %ad | %s%d %C(bold blue)[%an]%Creset' --graph --date=short
     type = cat-file -t
     dump = cat-file -p
+    ls = log --tags --no-walk --date=iso-local --pretty='%C(auto)%h %cd%d %s'
 
 [core]
 	autocrlf = true

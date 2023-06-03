@@ -45,6 +45,7 @@
         --format '%(tag)_,,,_%(taggerdate:raw)_,,,_%(taggername)_,,,_%(subject)' refs/tags \
         | awk 'BEGIN { FS = \"_,,,_\"  } ; { t=strftime(\"%Y-%m-%d  %H:%M\",$2); printf \"%-20s %-18s %-25s %s\\n\", t, $1, $4, $3  }'"
     forget = rm --cached
+    tagls = log --tags --no-walk --date=iso-local --pretty='%C(auto)%h %cd%d %s'
 
 [commit]
     template = ~/.gitmessage
