@@ -1,11 +1,13 @@
 {
     "ignored_packages":
     [
-        "Vintage",
+        //"Vintage",
+        /*"EditorConfig",*/
     ],
-    "color_scheme": "Dark+.sublime-color-scheme",
+    "color_scheme": "Mariana.sublime-color-scheme",
     "theme": "Default Dark.sublime-theme",
     "font_size": 11,
     "draw_white_space": "all",
-    "translate_tabs_to_spaces": true
+    "translate_tabs_to_spaces": true,
+    "vintage_ctrl_keys": true,
 }
