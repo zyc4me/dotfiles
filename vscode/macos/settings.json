@@ -1,0 +1,148 @@
+{
+    // VSCode builtin customization
+    // editor
+    "editor.cursorBlinking": "solid",
+    //"editor.fontFamily": "'Yahei Consolas Hybrid', 'Consolas', 'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.minimap.enabled" : false,
+    "editor.inlayHints.enabled" : "off",
+    "editor.unicodeHighlight.invisibleCharacters": true,
+    "editor.unicodeHighlight.ambiguousCharacters": true,
+    // 修改自动补全提示的延时，默认10ms，改为400ms. 
+    // https://stackoverflow.com/questions/32911977/prevent-autocomplete-in-visual-studio-code
+    "editor.quickSuggestionsDelay": 400,
+    
+    "diffEditor.ignoreTrimWhitespace" : false,
+
+    // workbench
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.activityBar.visible": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.colorCustomizations": {
+    
+        "[Default Dark+]": {}
+    },
+
+    // explorer
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    // window
+    "window.titleBarStyle": "custom",
+
+    // terminal
+    "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    
+    // source control
+    "scm.defaultViewMode": "tree",
+
+    // update
+    "update.mode": "none",
+
+    // Microsoft CppTools plugin
+    "C_Cpp.intelliSenseCacheSize": 1024,
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+
+    // GitLens plugin
+    "gitlens.views.searchAndCompare.files.layout": "list",
+    "gitlens.codeLens.enabled": false,
+
+    // CMake plugin
+    "cmake.generator": "Ninja",
+    "cmake.useCMakePresets": "never",
+    "cmake.buildEnvironment": {
+        "CMAKE_BUILD_TYPE": "Debug"
+    },
+    "cmake.configureOnOpen": false,
+
+    "githubIssues.queries": [
+        {
+            "label": "My Issues",
+            "query": "default"
+        },
+        {
+            "label": "Created Issues",
+            "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+        }
+    ],
+
+    // Clangd plugin
+    //"clangd.path": "/usr/lib/llvm-14/bin/clangd",
+    "clangd.arguments": [
+        "-compile-commands-dir=build/mac-arm64"
+    ],
+    "explicitFolding.rules": {
+        "*": {
+            "begin": "{",
+            "end": "}"
+        },
+        "javascriptreact": [
+            {
+                "begin": "{/*",
+                "end": "*/}"
+            },
+            {
+                "begin": "<",
+                "end": "/>"
+            }
+        ]
+    },
+
+    // CodeLLDB plugin
+    //"lldb.library": "/usr/lib/llvm-14/lib/liblldb.so.1",
+    //"lldb.libpython": "/home/zz/soft/miniconda3/lib/libpython3.so",
+    // "lldb.adapterEnv": {
+    //     "LLDB_DEBUGSERVER_PATH": "/usr/lib/llvm-14/bin/lldb-server-14.0.0"
+    // },
+    // 关闭命令提示.
+    "lldb.commandCompletions": false,
+    "lldb.launch.initCommands": ["command source ${env:HOME}/.lldbinit"], // 加载用户的 ~/.lldbinit
+    "lldb.verboseLogging" : true,
+
+    // cSpell
+    "cSpell.userWords": [
+        "vdupq"
+    ],
+    "cSpell.enabled": false,
+    "editor.bracketPairColorization.enabled": false,
+    "git.enableCommitSigning": true,
+
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/node_modules/**": true,
+        "**/.cache/**": true
+    },
+    "telemetry.telemetryLevel": "off",
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "clangd.fallbackFlags": [
+        "-std=c++11"
+    ],
+    "[c]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+    },
+    "clangd.checkUpdates": true,
+    "window.zoomLevel": -1,
+    "cnblogsClientForVSCode.macos.workspace": "/Users/zz/Documents/cnblogs",
+    "terminal.external.osxExec": "iTerm.app",
+    
+    // When press "Ctrl+S", save file, then switch to normal mode, which visually change cursor style from `thin` to `solid`.
+    // https://stackoverflow.com/questions/49050087/in-vscode-exit-vim-insert-mode-on-save 
+    // https://github.com/vscode-neovim/vscode-neovim/issues/74#issuecomment-563214553
+    "macros": {
+        "saveAndExitVimInsertMode": [
+            "workbench.action.files.save",
+            "vscode-neovim.escape"
+        ]
+    },
+}
