@@ -11,7 +11,22 @@
     "ignored_packages":
     [
         //"Vintage",
-        /*"EditorConfig",*/
+        // A File Icon
+        // CMake
+        // CMakeEditor
+        // Comment Marks
+        // EditorConfig
+        // FileIcons
+        // IconFonts
+        // LSP
+        // LSP-clangd
+        // Package Control
+        // Status Message
+        // Terminus
+        // Theme - Arc
+        // Todo
+        // Visual Studio Code
+        // Visual Studio Code Plus Scheme
     ],
     "indent_guide_options":
     [
@@ -27,10 +42,11 @@
     "soda_classic_tabs": true,
     "soda_folder_icons": true,
     "tab_size": 2,
-    "theme": "auto",
+    "theme": "Default Dark.sublime-theme",
     "draw_white_space": "all",
     "translate_tabs_to_spaces": true,
     "dark_theme": "Default.sublime-theme",
     "light_theme": "Default.sublime-theme",
     //"vintage_ctrl_keys": true,
+    "color_scheme": "Dark+.sublime-color-scheme",
 }
