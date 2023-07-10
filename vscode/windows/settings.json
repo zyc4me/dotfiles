@@ -1,0 +1,71 @@
+{
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "terminal.integrated.shell.windows": "C:\\Windows\\System32\\cmd.exe",
+    "remote.SSH.remotePlatform": {
+        "172.17.122.43": "linux",
+        "172.17.13.13": "linux"
+    },
+    "editor.inlayHints.enabled": "off",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.renderWhitespace": "all",
+    "cSpell.userWords": [
+        "batchnorm",
+        "deepcopy",
+        "dtype",
+        "hasattr",
+        "ncnn",
+        "pnnx",
+        "submod",
+        "Tencent",
+        "Unpooling"
+    ],
+    "cSpell.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "editor.cursorBlinking": "solid",
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Default Dark+",
+
+    "terminal.integrated.profiles.windows": {
+        "MSYS2 UCRT": {
+            "path": "cmd.exe",
+            "args": [
+                "/c",
+                "D:\\soft\\msys64\\msys2_shell.cmd -defterm -here -no-start -ucrt64"
+            ]
+        },
+        "MSYS2 MINGW": {
+            "path": "cmd.exe",
+            "args": [
+                "/c",
+                "D:\\soft\\msys64\\msys2_shell.cmd -defterm -here -no-start -mingw64"
+            ]
+        }
+    },
+    "clangd.arguments": [
+        "-compile-commands-dir=build_zz/tda4"
+    ],
+    "files.associations": {
+        "Doxyfile": "doxyfile",
+        "Doxyfile2": "doxyfile"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+    "vscode-neovim.useCtrlKeysForInsertMode": false,
+    "vscode-neovim.useCtrlKeysForNormalMode": false,
+    "cmake.languageSupport.dotnetPath": "/home/zz/soft/dotnet-sdk-6.0.411/dotnet",
+    "scm.defaultViewMode": "tree",
+    "[proto3]": {
+        "editor.defaultFormatter": "zxh404.vscode-proto3"
+    },
+    // "git.path": "D:\\soft\\msys64\\usr\\bin\\git-wrap.bat"
+
+    // Microsoft CppTools plugin
+    "C_Cpp.intelliSenseCacheSize": 1024,
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+}
