@@ -1,37 +1,40 @@
-adam-bender.commit-message-editor
-adpyke.codesnap
-alefragnani.Bookmarks
-asvetliakov.vscode-neovim
-cnblogs.vscode-cnb
-dunstontc.viml
-eamodio.gitlens
-EditorConfig.EditorConfig
-galarius.vscode-opencl
-geddski.macros
-johnpapa.vscode-peacock
-josetr.cmake-language-support-vscode
-llvm-vs-code-extensions.vscode-clangd
-llvm-vs-code-extensions.vscode-mlir
-mattn.Lisp
-MS-CEINTL.vscode-language-pack-zh-hans
-ms-dotnettools.vscode-dotnet-runtime
-ms-python.isort
-ms-python.python
-ms-python.vscode-pylance
-ms-toolsai.jupyter
-ms-toolsai.jupyter-keymap
-ms-toolsai.jupyter-renderers
-ms-toolsai.vscode-jupyter-cell-tags
-ms-toolsai.vscode-jupyter-slideshow
-ms-vscode-remote.remote-ssh
-ms-vscode-remote.remote-ssh-edit
-ms-vscode.cpptools
-ms-vscode.remote-explorer
-penguinliong.vscode-spvasm
-shd101wyy.markdown-preview-enhanced
-streetsidesoftware.code-spell-checker
-vadimcn.vscode-lldb
-vscode-icons-team.vscode-icons
-vscodevim.vim
-xaver.clang-format
-zchrissirhcz.cmake-highlight
+code --install-extension adam-bender.commit-message-editor
+code --install-extension adpyke.codesnap
+code --install-extension alefragnani.Bookmarks
+code --install-extension asvetliakov.vscode-neovim
+code --install-extension cnblogs.vscode-cnb
+code --install-extension dunstontc.viml
+code --install-extension eamodio.gitlens
+code --install-extension EditorConfig.EditorConfig
+code --install-extension galarius.vscode-opencl
+code --install-extension geddski.macros
+code --install-extension johnpapa.vscode-peacock
+code --install-extension josetr.cmake-language-support-vscode
+code --install-extension llvm-vs-code-extensions.vscode-clangd
+code --install-extension llvm-vs-code-extensions.vscode-mlir
+code --install-extension mattn.Lisp
+code --install-extension MS-CEINTL.vscode-language-pack-zh-hans
+code --install-extension ms-dotnettools.vscode-dotnet-runtime
+code --install-extension ms-python.isort
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-toolsai.jupyter
+code --install-extension ms-toolsai.jupyter-keymap
+code --install-extension ms-toolsai.jupyter-renderers
+code --install-extension ms-toolsai.vscode-jupyter-cell-tags
+code --install-extension ms-toolsai.vscode-jupyter-slideshow
+code --install-extension ms-vscode-remote.remote-ssh
+code --install-extension ms-vscode-remote.remote-ssh-edit
+code --install-extension ms-vscode-remote.remote-wsl
+code --install-extension ms-vscode.cpptools
+code --install-extension ms-vscode.makefile-tools
+code --install-extension ms-vscode.remote-explorer
+code --install-extension penguinliong.vscode-spvasm
+code --install-extension samubarb.vscode-doxyfile
+code --install-extension shd101wyy.markdown-preview-enhanced
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension vadimcn.vscode-lldb
+code --install-extension vscode-icons-team.vscode-icons
+code --install-extension xaver.clang-format
+code --install-extension zchrissirhcz.cmake-highlight
+code --install-extension zxh404.vscode-proto3
