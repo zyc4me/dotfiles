@@ -44,3 +44,7 @@ export PATH=EMACS26:$PATH
 
 ### setting elpa mirror site
 see `.emacs.d/init_package.el`. By default, I use emacs-china's mirror site.
+
+## References
+- [十年Linux，百年Emacs](https://www.bilibili.com/video/BV15s411o7Td/)
+- [system-config](https://github.com/baohaojun/system-config)
