@@ -1,6 +1,6 @@
 [user]
-    email = imzhuo@foxmail.com
-    name = Zhuo Zhang
+	email = imzhuo@foxmail.com
+	name = Zhuo Zhang
     #signingkey = 0961A0300B14A36D
 [core]
     editor = vim
@@ -84,3 +84,5 @@
 #   editor = code -w
 [color]
 	ui = auto
+[pager]
+	branch = false

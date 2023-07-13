@@ -1,0 +1,2 @@
+CompileFlags:
+    Add: [-DCAROTENE_NEON=1]
