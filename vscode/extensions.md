@@ -3,6 +3,7 @@ code --install-extension adpyke.codesnap
 code --install-extension alefragnani.Bookmarks
 code --install-extension asvetliakov.vscode-neovim
 code --install-extension cnblogs.vscode-cnb
+code --install-extension CS128.cs128-clang-tidy
 code --install-extension dunstontc.viml
 code --install-extension eamodio.gitlens
 code --install-extension EditorConfig.EditorConfig

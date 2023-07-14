@@ -56,16 +56,18 @@
     },
     "vscode-neovim.useCtrlKeysForInsertMode": false,
     "vscode-neovim.useCtrlKeysForNormalMode": false,
-    "cmake.languageSupport.dotnetPath": "/home/zz/soft/dotnet-sdk-6.0.411/dotnet",
+    "cmake.languageSupport.dotnetPath": "c:/Program Files/dotnet/dotnet",
     "scm.defaultViewMode": "tree",
     "[proto3]": {
         "editor.defaultFormatter": "zxh404.vscode-proto3"
     },
+    "git.openRepositoryInParentFolders": "never",
+    "clang-tidy.lintOnSave": false,
     // "git.path": "D:\\soft\\msys64\\usr\\bin\\git-wrap.bat"
 
     // Microsoft CppTools plugin
-    "C_Cpp.intelliSenseCacheSize": 1024,
-    "C_Cpp.intelliSenseEngine": "Disabled",
-    "C_Cpp.autocomplete": "Disabled",
-    "C_Cpp.errorSquiggles": "Disabled",
+    // "C_Cpp.intelliSenseCacheSize": 1024,
+    // "C_Cpp.intelliSenseEngine": "Disabled",
+    // "C_Cpp.autocomplete": "Disabled",
+    // "C_Cpp.errorSquiggles": "Disabled",
 }
