@@ -1,0 +1,8 @@
+pylint
+py-cpuinfo
+opencv-python
+black
+pygments
+gitpython
+requests
+natsort
