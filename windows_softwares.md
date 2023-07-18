@@ -11,3 +11,5 @@ https://github.com/microsoft/vssetup.powershell
 https://learn.microsoft.com/zh-cn/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.3#msi
 - Scoop
 https://github.com/ScoopInstaller/Scoop
+- 把磁盘目录映射为新的磁盘
+https://blog.csdn.net/qq_18497293/article/details/126928573
